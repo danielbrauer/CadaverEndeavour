@@ -1,5 +1,4 @@
-extends Node
-
+class_name PointType
 
 enum PointType {
 	Dog,
