@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d3uhybbiifuqg"]
 
+[ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="1_7dwaf"]
 [ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="1_hjlm1"]
+[ext_resource type="Texture2D" uid="uid://cn8a4iiq33odq" path="res://images/objects/object_bodyparts_ear_left.png" id="3_j2tkq"]
 
 [sub_resource type="Animation" id="Animation_fa068"]
 length = 0.001
@@ -27,11 +29,17 @@ playback_auto_capture = false
 modulate = Color(0, 0, 0, 1)
 
 [node name="Icon" type="Sprite2D" parent="Node2D" unique_id=657892400]
+material = ExtResource("1_7dwaf")
 position = Vector2(368.99997, 287)
 scale = Vector2(2.3359375, 2.4296875)
 texture = ExtResource("1_hjlm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1305502464]
 texture = SubResource("ImageTexture_hjlm1")
+
+[node name="ObjectBodypartsEarLeft" type="Sprite2D" parent="Node2D" unique_id=501724349]
+material = ExtResource("1_7dwaf")
+position = Vector2(-157, 317)
+texture = ExtResource("3_j2tkq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2014514002]
