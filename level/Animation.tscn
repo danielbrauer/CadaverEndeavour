@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="1_spol3"]
 [ext_resource type="AudioStream" uid="uid://cx2v7oinnwokv" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="2_474y1"]
+[ext_resource type="Texture2D" uid="uid://dki7bik43e7d3" path="res://images/Environment/environment_morgue.png" id="2_g4w0v"]
+[ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="3_41twx"]
 
 [sub_resource type="Animation" id="Animation_fa068"]
 length = 0.001
@@ -62,9 +64,21 @@ playback_auto_capture = false
 [node name="Node2D" type="Node2D" parent="." unique_id=1217653713]
 
 [node name="Cadaver" type="Sprite2D" parent="Node2D" unique_id=1351781870]
-position = Vector2(9, 120)
-scale = Vector2(0.24778226, 0.24778226)
+position = Vector2(-32, 358)
+scale = Vector2(0.89375985, 0.89375985)
 texture = ExtResource("1_spol3")
+
+[node name="EnvironmentMorgue" type="Sprite2D" parent="Node2D" unique_id=635512563]
+z_index = -10
+position = Vector2(0.00014686584, -1.9999504)
+scale = Vector2(0.94791675, 0.94791675)
+texture = ExtResource("2_g4w0v")
+
+[node name="EnvironmentTable" type="Sprite2D" parent="Node2D" unique_id=984813290]
+z_index = -4
+position = Vector2(-70, 233)
+scale = Vector2(1.0688705, 1.0688705)
+texture = ExtResource("3_41twx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2014514002]
 

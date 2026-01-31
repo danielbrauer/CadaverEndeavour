@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jwvkenks4n70"
-path="res://.godot/imported/environment_parlor.png-b22a54a0019e7ac46b5b87e918cd106e.ctex"
+uid="uid://byty4olnb2cel"
+path="res://.godot/imported/environment_parlor_portrait.png-204f4d6046f89bf4810da0301597c970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Environment/environment_parlor.png"
-dest_files=["res://.godot/imported/environment_parlor.png-b22a54a0019e7ac46b5b87e918cd106e.ctex"]
+source_file="res://images/Environment/Parlor/environment_parlor_portrait.png"
+dest_files=["res://.godot/imported/environment_parlor_portrait.png-204f4d6046f89bf4810da0301597c970.ctex"]
 
 [params]
 
@@ -36,5 +36,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1
