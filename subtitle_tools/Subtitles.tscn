@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b7dvt8joviqgj"]
+
+[ext_resource type="Script" uid="uid://bxebefakt4v4v" path="res://subtitle_tools/subtitle_player.gd" id="1_2g50v"]
+[ext_resource type="Resource" path="res://subtitle_tools/resources/843551__klankbeeld__weather-report-snow-storm-new-england-noaa-7-260127.tres" id="2_8ax77"]
+
+[node name="Subtitles" type="Node2D" unique_id=1837995542]
+script = ExtResource("1_2g50v")
+config = ExtResource("2_8ax77")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1167891999]
+
+[node name="Container" type="Control" parent="." unique_id=412692689]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubtitleLabel" type="Label" parent="Container" unique_id=1361662594]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
