@@ -1,0 +1,99 @@
+Index: project.godot
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>; Engine configuration file.\n; It's best edited using the editor UI and not directly,\n; since the parameters that go here are not all obvious.\n;\n; Format:\n;   [section] ; section goes between []\n;   param=value ; assign values to parameters\n\nconfig_version=5\n\n[application]\n\nconfig/name=\"CadaverEndeavour\"\nconfig/features=PackedStringArray(\"4.6\", \"Mobile\")\nconfig/icon=\"res://icon.svg\"\n\n[display]\n\nwindow/size/viewport_width=1920\nwindow/size/viewport_height=1080\n\n[dotnet]\n\nproject/assembly_name=\"CadaverEndeavour\"\n\n[global_group]\n\nAttachment=\"\"\n\n[input]\n\ndrag={\n\"deadzone\": 0.2,\n\"events\": [Object(InputEventMouseButton,\"resource_local_to_scene\":false,\"resource_name\":\"\",\"device\":-1,\"window_id\":0,\"alt_pressed\":false,\"shift_pressed\":false,\"ctrl_pressed\":false,\"meta_pressed\":false,\"button_mask\":0,\"position\":Vector2(0, 0),\"global_position\":Vector2(0, 0),\"factor\":1.0,\"button_index\":1,\"canceled\":false,\"pressed\":false,\"double_click\":false,\"script\":null)\n]\n}\n\n[physics]\n\n3d/physics_engine=\"Jolt Physics\"\n2d/default_gravity=0.0\n\n[rendering]\n\nrendering_device/driver.windows=\"d3d12\"\nrenderer/rendering_method=\"mobile\"\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/project.godot b/project.godot
+--- a/project.godot	(revision 59100028bbfec1f058a943c9982eda3137da6214)
++++ b/project.godot	(date 1769860275892)
+@@ -14,6 +14,10 @@
+ config/features=PackedStringArray("4.6", "Mobile")
+ config/icon="res://icon.svg"
+ 
++[autoload]
++
++DraggingManager="*uid://csb3ybyjs0hnc"
++
+ [display]
+ 
+ window/size/viewport_width=1920
+Index: Scripts/DraggingManager.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Scripts/DraggingManager.gd b/Scripts/DraggingManager.gd
+new file mode 100644
+--- /dev/null	(date 1769860311683)
++++ b/Scripts/DraggingManager.gd	(date 1769860311683)
+@@ -0,0 +1,3 @@
++extends Node
++
++var is_dragging = false
+Index: Scripts/DraggingManager.gd.uid
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Scripts/DraggingManager.gd.uid b/Scripts/DraggingManager.gd.uid
+new file mode 100644
+--- /dev/null	(date 1769860202990)
++++ b/Scripts/DraggingManager.gd.uid	(date 1769860202990)
+@@ -0,0 +1,1 @@
++uid://csb3ybyjs0hnc
+Index: scenes/attachment_point.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>extends Area2D\n\n\n\n# Called when the node enters the scene tree for the first time.\nfunc _ready() -> void:\n\tpass # Replace with function body.\n\n\n# Called every frame. 'delta' is the elapsed time since the previous frame.\nfunc _process(delta: float) -> void:\n\tget_tree().get_first_node_in_group(\"cadaver\")\n\tpass\n\nfunc _on_area_entered(area: Area2D) -> void:\n\t\n\tpass # Replace with function body.\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/scenes/attachment_point.gd b/scenes/attachment_point.gd
+--- a/scenes/attachment_point.gd	(revision 59100028bbfec1f058a943c9982eda3137da6214)
++++ b/scenes/attachment_point.gd	(date 1769860959188)
+@@ -1,17 +1,15 @@
+-extends Area2D
+-
++extends StaticBody2D
+ 
+ 
+ # Called when the node enters the scene tree for the first time.
+ func _ready() -> void:
+-	pass # Replace with function body.
++	modulate = Color(Color.MEDIUM_ORCHID,0.7)
+ 
+ 
++#TODO: Reformat this
+ # Called every frame. 'delta' is the elapsed time since the previous frame.
+ func _process(delta: float) -> void:
+-	get_tree().get_first_node_in_group("cadaver")
+-	pass
+-
+-func _on_area_entered(area: Area2D) -> void:
+-	
+-	pass # Replace with function body.
++	if(DraggingManager.is_dragging):
++		visible = true
++	else:
++		visible = false
+Index: scenes/attachment_point.tscn
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[gd_scene format=3 uid=\"uid://5y3wv22c3gwb\"]\n\n[ext_resource type=\"Script\" uid=\"uid://dnabibjpogx4b\" path=\"res://scenes/attachment_point.gd\" id=\"1_egywe\"]\n\n[node name=\"AttachmentPoint\" type=\"Area2D\" unique_id=1010685651]\nscript = ExtResource(\"1_egywe\")\n\n[connection signal=\"area_entered\" from=\".\" to=\".\" method=\"_on_area_entered\"]\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/scenes/attachment_point.tscn b/scenes/attachment_point.tscn
+--- a/scenes/attachment_point.tscn	(revision 59100028bbfec1f058a943c9982eda3137da6214)
++++ b/scenes/attachment_point.tscn	(date 1769861097947)
+@@ -2,7 +2,5 @@
+ 
+ [ext_resource type="Script" uid="uid://dnabibjpogx4b" path="res://scenes/attachment_point.gd" id="1_egywe"]
+ 
+-[node name="AttachmentPoint" type="Area2D" unique_id=1010685651]
++[node name="AttachmentPoint" type="StaticBody2D" unique_id=1834878620]
+ script = ExtResource("1_egywe")
+-
+-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

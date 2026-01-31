@@ -1,0 +1,24 @@
+Index: Scripts/DraggingManager.gd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Scripts/DraggingManager.gd b/Scripts/DraggingManager.gd
+new file mode 100644
+--- /dev/null	(date 1769853418422)
++++ b/Scripts/DraggingManager.gd	(date 1769853418422)
+@@ -0,0 +1,3 @@
++extends Node
++
++var is_dragging = false
+Index: Scripts/DraggingManager.gd.uid
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Scripts/DraggingManager.gd.uid b/Scripts/DraggingManager.gd.uid
+new file mode 100644
+--- /dev/null	(date 1769853418428)
++++ b/Scripts/DraggingManager.gd.uid	(date 1769853418428)
+@@ -0,0 +1,1 @@
++uid://csb3ybyjs0hnc
