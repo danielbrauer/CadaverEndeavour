@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://7rkhgor6df57"
+
+[deps]
+
+files=["res://resources/items.Hunting.translation", "res://resources/items.BodyPart.translation", "res://resources/items.Nature.translation", "res://resources/items.Dog.translation", "res://resources/items.Cat.translation", "res://resources/items.Eyes.translation", "res://resources/items.Ears.translation"]
+
+source_file="res://resources/items.csv"
+dest_files=["res://resources/items.Hunting.translation", "res://resources/items.BodyPart.translation", "res://resources/items.Nature.translation", "res://resources/items.Dog.translation", "res://resources/items.Cat.translation", "res://resources/items.Eyes.translation", "res://resources/items.Ears.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

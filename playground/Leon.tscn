@@ -1,21 +1,72 @@
 [gd_scene format=3 uid="uid://deqvsnj3237vo"]
 
-[ext_resource type="Script" uid="uid://dw68xsxmti62f" path="res://playground/rigid_body_2d.gd" id="1_lfo8y"]
-[ext_resource type="Texture2D" uid="uid://dfmt1eltdbalh" path="res://resources/feather.svg" id="2_lfo8y"]
-[ext_resource type="PackedScene" uid="uid://5y3wv22c3gwb" path="res://scenes/attachment_point.tscn" id="3_bnluu"]
+[ext_resource type="PackedScene" uid="uid://bb88v7d8pjx3b" path="res://scenes/person.tscn" id="1_qducr"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_bnluu"]
+[ext_resource type="AudioStream" uid="uid://cx2v7oinnwokv" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="4_bnluu"]
+
+[sub_resource type="Animation" id="Animation_faril"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xl8aj"]
+resource_name = "fade_out"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xmvqg"]
+_data = {
+&"RESET": SubResource("Animation_faril"),
+&"fade_out": SubResource("Animation_xl8aj")
+}
 
 [node name="Leon" type="Node2D" unique_id=1845188345]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=763241795]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=332279965 groups=["Attachment"]]
-script = ExtResource("1_lfo8y")
+[node name="Family" type="Node" parent="." unique_id=462732308]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=477848674]
+[node name="Wife" parent="Family" unique_id=622991439 instance=ExtResource("1_qducr")]
+key = "Wife"
 
-[node name="CharacterAppearance" type="Sprite2D" parent="RigidBody2D" unique_id=1020217476]
-texture = ExtResource("2_lfo8y")
+[node name="Son" parent="Family" unique_id=491089885 instance=ExtResource("1_qducr")]
+key = "Son"
 
-[node name="AttachmentPoint" parent="RigidBody2D" unique_id=1010685651 instance=ExtResource("3_bnluu")]
+[node name="Baby" parent="Family" unique_id=1436008471 instance=ExtResource("1_qducr")]
+key = "Baby"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/AttachmentPoint" unique_id=1210692087]
+[node name="Available" type="Node" parent="." unique_id=195255452]
+
+[node name="Antlers" parent="Available" unique_id=844568332 instance=ExtResource("3_bnluu")]
+key = "Antlers"
+
+[node name="Selected" type="Node" parent="." unique_id=541610652]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1363372476]
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=1952139118]
+stream = ExtResource("4_bnluu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1609180732]
+libraries/ = SubResource("AnimationLibrary_xmvqg")
