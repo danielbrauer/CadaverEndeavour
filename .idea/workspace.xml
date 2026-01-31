@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84d45ac7-dc87-43c1-befd-10772d51ddeb" name="Changes" comment="" />
+    <list default="true" id="84d45ac7-dc87-43c1-befd-10772d51ddeb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scenes/GameManager.gd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scenes/OnGameOver.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playground/Pau.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/playground/Pau.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/CSVreaddd.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/CSVreaddd.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/attachment_point.gd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/attachment_point.gd.uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/attachment_point.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/attachment_point.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/attachment_scene.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/attachment_scene.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/attachment_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/attachment_scene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/mouse_follower.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/mouse_follower.gd" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="409" />
+    <option name="cachedIndexableFilesCount" value="368" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -35,12 +48,12 @@
     &quot;assignee&quot;: &quot;Papupapipapo&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/danielbrauer/CadaverEndeavour.git&quot;,
-    &quot;accountId&quot;: &quot;46100e43-0fef-4abf-b3db-97aef8b24db8&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/danielbrauer/CadaverEndeavour.git",
+    "accountId": "2fd03b33-a07e-4567-b7b2-1587adca323c"
   }
-}</component>
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -54,22 +67,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;GdScript Start and Debug.Player GDScript.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "GdScript Start and Debug.Player GDScript.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="GdScript Start and Debug.Player GDScript">
     <configuration name="Debug GDScript (Running session)" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory">
       <option name="json" value="{&#10;  // Launch: &quot;Launch a new instance of the game&quot;,&#10;  // Attach: &quot;Attach to an already running game, which was started from the Godot Editor&quot;&#10;  &quot;request&quot; : &quot;Attach&quot;,&#10;  &quot;debugServer&quot; : 6006, // port should match the Debug Adapter port in the Godot Editor project settings.&#10;  &quot;scene&quot; : &quot;main&quot;, // main, current, res://path/to/file.tscn&#10;  &#10;  // &quot;playArgs&quot; : [ &quot;--editor&quot; ], // debugging a tool script&#10;  // &quot;playArgs&quot;: [&quot;--debug-collisions&quot;,&quot;--debug-navigation&quot;], // different options&#10;  &#10;  // one click deploy and debug via Godot Editor:&#10;  // &quot;platform&quot;: &quot;Android&quot;, // including Android, iOS, Web and W4 consoles&#10;  // &quot;device&quot;: &quot;0&quot;, // index of the device of a &quot;platform&quot; type&#10;}" />
@@ -131,6 +146,7 @@
       <updated>1769852279258</updated>
       <workItem from="1769852282081" duration="24222000" />
       <workItem from="1769893486626" duration="1257000" />
+      <workItem from="1769894854596" duration="8394000" />
     </task>
     <task id="LOCAL-00001" summary="first version drag">
       <option name="closed" value="true" />
@@ -180,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769894311020</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix">
+      <option name="closed" value="true" />
+      <created>1769894887759</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1769894887759</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +220,8 @@
     <MESSAGE value="last" />
     <MESSAGE value="feat - drag and momentum" />
     <MESSAGE value="merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -213,11 +238,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="GdScriptLineBreakpointTypeId">
-          <url>file://$PROJECT_DIR$/scenes/mouse_follower.gd</url>
-          <line>70</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

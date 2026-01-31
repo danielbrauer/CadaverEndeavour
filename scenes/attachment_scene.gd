@@ -1,15 +1,18 @@
 extends StaticBody2D
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	modulate = Color(Color.MEDIUM_ORCHID,0.7)
+	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
+	
+func _on_game_state_changed():
+	if AppStateManager.currentState != AppStateManager.States.GAMEOVER:
+		return
 
-
-#TODO: Reformat this
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if(DraggingManager.is_dragging):
-		visible = true
-	else:
-		visible = false
+	
+	var bodies: Array[Area2D] = $Area2D.get_overlapping_areas()
+	
+	for body in bodies:
+		if body.is_in_group("Grabbable"):
+			body.reparent(self)
+			body.collision_layer = 0
+			body.collision_mask = 0
+			#TODO: Here get points
