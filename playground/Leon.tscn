@@ -1,25 +1,20 @@
 [gd_scene format=3 uid="uid://deqvsnj3237vo"]
 
-[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="1_hlvss"]
 [ext_resource type="Script" uid="uid://dw68xsxmti62f" path="res://playground/rigid_body_2d.gd" id="1_lfo8y"]
+[ext_resource type="Texture2D" uid="uid://dfmt1eltdbalh" path="res://resources/feather.svg" id="2_lfo8y"]
 [ext_resource type="PackedScene" uid="uid://5y3wv22c3gwb" path="res://scenes/attachment_point.tscn" id="3_bnluu"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qducr"]
-radius = 75.16
-height = 243.42
 
 [node name="Leon" type="Node2D" unique_id=1845188345]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=763241795]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=332279965]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=332279965 groups=["Attachment"]]
 script = ExtResource("1_lfo8y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=477848674]
-shape = SubResource("CapsuleShape2D_qducr")
 
 [node name="CharacterAppearance" type="Sprite2D" parent="RigidBody2D" unique_id=1020217476]
-texture = ExtResource("1_hlvss")
+texture = ExtResource("2_lfo8y")
 
 [node name="AttachmentPoint" parent="RigidBody2D" unique_id=1010685651 instance=ExtResource("3_bnluu")]
 

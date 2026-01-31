@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://pgnnuysx6aao"]
+
+[ext_resource type="Texture2D" uid="uid://dfmt1eltdbalh" path="res://resources/feather.svg" id="1_uauuc"]
+[ext_resource type="PackedScene" uid="uid://5y3wv22c3gwb" path="res://scenes/attachment_point.tscn" id="2_7g5x6"]
+
+[node name="Feather" type="Node2D" unique_id=597309226]
+
+[node name="Feather" type="Sprite2D" parent="." unique_id=823313223]
+position = Vector2(58, 40)
+texture = ExtResource("1_uauuc")
+
+[node name="AttachmentPoint" parent="." unique_id=1010685651 instance=ExtResource("2_7g5x6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttachmentPoint" unique_id=1821341676]
