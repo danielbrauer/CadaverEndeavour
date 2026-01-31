@@ -1,12 +1,6 @@
 extends Node
 
+class_name ScorePoint
 
-enum PointType {
-	Dog,
-	Cat,
-	Nature,
-	Green
-}
-
-@export var point_type : PointType
+@export var point_type : PointType.PointType
 @export var point_amount : float

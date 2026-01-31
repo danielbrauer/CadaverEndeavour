@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="CadaverEndeavour"
+run/main_scene="uid://c8f2avuyprwqm"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PointType="*uid://glew0325iwyd"
 
 [display]
 
@@ -27,6 +32,7 @@ project/assembly_name="CadaverEndeavour"
 
 Attachment=""
 ScorePoint=""
+Preferences=""
 
 [input]
 
