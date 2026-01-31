@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://85p0cinoa4ay"]
 
 [ext_resource type="Script" uid="uid://ceyvbch6rj1nr" path="res://scenes/mouse_follower.gd" id="1_tpeuq"]
-[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="2_4jc3e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tpeuq"]
 radius = 25.0
@@ -16,9 +15,6 @@ length = 1.0
 rest_length = 1.0
 stiffness = 10.0
 damping = 0.25
-
-[node name="Sprite2D" type="Sprite2D" parent="Spring2d" unique_id=1996472817]
-texture = ExtResource("2_4jc3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=210241733]
 shape = SubResource("CircleShape2D_tpeuq")

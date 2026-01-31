@@ -12,6 +12,7 @@ var draggedRB : RigidBody2D
 func _on_begin_drag(otherObject : Node2D):
 	$Spring2d.node_a = self.get_path()
 	$Spring2d.node_b = otherObject.get_path()
+	draggedRB = otherObject as RigidBody2D
 	print($Spring2d.node_b)
 
 
@@ -29,7 +30,10 @@ func _process(delta: float) -> void:
 		#Unparent and let keep momentum of object
 		#tween.tween_callback(print_done)
 
-
+func _physics_process(delta: float) -> void:
+	if draggedRB != null:
+		draggedRB.apply_central_force(draggedRB.linear_velocity * -0.3)
+	
 func check_below_mouse():
 	var space_state = get_world_2d().direct_space_state
 	var mouse_pos = get_global_mouse_position()
@@ -63,3 +67,4 @@ func check_below_mouse():
 
 func _on_release():
 	$Spring2d.node_b = NodePath("")
+	draggedRB = null
