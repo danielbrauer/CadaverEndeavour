@@ -33,8 +33,9 @@ project/assembly_name="CadaverEndeavour"
 Attachment=""
 ScorePoint=""
 Grabbable=""
-Depth2=""
 Depth3=""
+ContainmentArea=""
+faceArea=""
 
 [input]
 

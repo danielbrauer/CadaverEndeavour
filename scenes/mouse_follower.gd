@@ -13,6 +13,9 @@ func _on_begin_drag(otherObject : Node2D):
 	# Stop the object's own momentum while we hold it
 	if "velocity" in draggedRB:
 		draggedRB.velocity = Vector2.ZERO
+	
+	if "beingDragged" in draggedRB:
+		draggedRB.beingDragged = true
 		
 	DraggingManager.is_dragging = true
 
@@ -66,20 +69,28 @@ func check_below_mouse():
 
 func _on_release():
 	if draggedRB:
-		if DraggingManager.goalBody:
-			# Snap to slot
-			draggedRB.global_transform = DraggingManager.goalBody.global_transform
-		else:
-			# Free placement
-			draggedRB.global_transform = $RemoteTransform2D.global_transform
+		draggedRB.global_transform = $RemoteTransform2D.global_transform
+		
+		# FIX: Tell the object to immediately re-scan its surroundings
+		if draggedRB.has_method("force_update_containment"):
+			draggedRB.force_update_containment()
+
+		if "velocity" in draggedRB:
+			draggedRB.velocity = current_velocity
 			
-			# 3. Apply Momentum to the remote object
-			# We check if the object has a "velocity" variable (from the previous script)
-			if "velocity" in draggedRB:
-				draggedRB.velocity = current_velocity
+		if "beingDragged" in draggedRB:
+			draggedRB.beingDragged = false
 
 	# Disconnect
 	$RemoteTransform2D.remote_path = NodePath("")
 	draggedRB = null
 	DraggingManager.is_dragging = false
 	current_velocity = Vector2.ZERO
+
+func _snap_to_pos():
+	if DraggingManager.goalBody:
+		# TOdo 
+		draggedRB.global_transform = DraggingManager.goalBody.global_transform
+	else:
+		pass
+				# Free placement

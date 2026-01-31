@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dvaahw6vr18x4"
+
+[deps]
+
+files=["res://resources/testDoc.name.translation", "res://resources/testDoc.cost.translation", "res://resources/testDoc.type.translation"]
+
+source_file="res://resources/testDoc.csv"
+dest_files=["res://resources/testDoc.name.translation", "res://resources/testDoc.cost.translation", "res://resources/testDoc.type.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

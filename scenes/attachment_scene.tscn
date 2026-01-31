@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7spvp"]
 size = Vector2(128, 127)
 
-[node name="AttachmentScene" type="StaticBody2D" unique_id=2060454781 groups=["Attachment"]]
+[node name="AttachmentScene" type="StaticBody2D" unique_id=2060454781 groups=["Attachment", "ContainmentArea"]]
 script = ExtResource("1_7spvp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1320409730]
+visible = false
 texture = ExtResource("1_fiuk2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=574105476]

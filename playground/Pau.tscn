@@ -2,51 +2,110 @@
 
 [ext_resource type="PackedScene" uid="uid://d218xgswraw3o" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
 [ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
+[ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_h8427"]
 [ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
-size = Vector2(250, 500)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn1q5"]
-size = Vector2(500, 700)
+[ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
+[ext_resource type="Script" uid="uid://dcdxkelr7if10" path="res://scenes/CSVreaddd.gd" id="5_br0o5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_br0o5"]
 size = Vector2(700, 900)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
+size = Vector2(500, 388)
 
 [node name="Pau" type="Node2D" unique_id=1404171942]
 position = Vector2(0, -2)
 
 [node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
+position = Vector2(2, -3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
 
-[node name="DragElement" parent="." unique_id=223695341 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+[node name="Guy" type="Node2D" parent="." unique_id=2129724939]
 
-[node name="AttachmentScene2" parent="." unique_id=212488838 instance=ExtResource("1_kype0")]
-position = Vector2(-232, -191)
+[node name="Sprite2D2" type="Sprite2D" parent="Guy" unique_id=2009050031]
+visible = false
+position = Vector2(35, -7)
+scale = Vector2(14.640001, 12.6)
+texture = ExtResource("2_h8427")
 
-[node name="AttachmentScene3" parent="." unique_id=1134421088 instance=ExtResource("1_kype0")]
-position = Vector2(146, -185)
+[node name="AttachmentScene2" parent="Guy" unique_id=212488838 instance=ExtResource("1_kype0")]
+position = Vector2(35, -10)
+scale = Vector2(-3.7340317, 6.378488)
 
-[node name="AttachmentScene4" parent="." unique_id=228926584 instance=ExtResource("1_kype0")]
-position = Vector2(0, -339)
-scale = Vector2(4.239999, 1)
+[node name="TextureRect" type="TextureRect" parent="Guy" unique_id=247055286]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -203.0
+offset_top = -418.0
+offset_right = 274.46
+offset_bottom = 394.16498
+grow_horizontal = 2
+texture = ExtResource("2_h8427")
+stretch_mode = 4
 
-[node name="Depth1" type="Area2D" parent="." unique_id=1936375506]
-position = Vector2(0, -2)
+[node name="Node2D" type="Node2D" parent="." unique_id=1951764879]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Depth1" unique_id=1334105584]
-position = Vector2(0, 107)
-shape = SubResource("RectangleShape2D_vi51d")
+[node name="Depth3" type="Area2D" parent="Node2D" unique_id=2027257295 groups=["Depth3"]]
+visible = false
 
-[node name="Depth2" type="Area2D" parent="." unique_id=1955069041 groups=["Depth2"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Depth2" unique_id=376176157]
-position = Vector2(0, 107)
-shape = SubResource("RectangleShape2D_kn1q5")
-
-[node name="Depth3" type="Area2D" parent="." unique_id=2027257295 groups=["Depth3"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Depth3" unique_id=1220052597]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Depth3" unique_id=1220052597]
 position = Vector2(0, 107)
 shape = SubResource("RectangleShape2D_br0o5")
+
+[node name="Containementarea" type="Node2D" parent="." unique_id=180779257]
+position = Vector2(3, 0)
+
+[node name="Depth5" type="StaticBody2D" parent="Containementarea" unique_id=482617014 groups=["ContainmentArea"]]
+position = Vector2(674, 295)
+
+[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth5" unique_id=1921466088]
+scale = Vector2(501.315, 350)
+texture = ExtResource("3_kn1q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth5" unique_id=1823810928]
+shape = SubResource("RectangleShape2D_vi51d")
+
+[node name="Depth4" type="StaticBody2D" parent="Containementarea" unique_id=708215493 groups=["ContainmentArea"]]
+position = Vector2(674, -251)
+
+[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth4" unique_id=1344038644]
+scale = Vector2(501.315, 350)
+texture = ExtResource("3_kn1q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth4" unique_id=1996677151]
+shape = SubResource("RectangleShape2D_vi51d")
+
+[node name="Depth6" type="StaticBody2D" parent="Containementarea" unique_id=1495456604 groups=["ContainmentArea"]]
+position = Vector2(-626, -27)
+scale = Vector2(1, 2.3200006)
+
+[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth6" unique_id=1118881368]
+scale = Vector2(501.315, 350)
+texture = ExtResource("3_kn1q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth6" unique_id=1070789756]
+shape = SubResource("RectangleShape2D_vi51d")
+
+[node name="DragElement3" parent="Containementarea" unique_id=810712407 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+position = Vector2(615, -249)
+
+[node name="DragElement4" parent="Containementarea" unique_id=590028688 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+position = Vector2(828, -306)
+
+[node name="DragElement5" parent="Containementarea" unique_id=594111844 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+position = Vector2(626, 332)
+
+[node name="DragElement6" parent="Containementarea" unique_id=226898675 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+position = Vector2(-762, -52)
+
+[node name="DragElement7" parent="Containementarea" unique_id=210254576 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+position = Vector2(-625, -262)
+
+[node name="DragElement8" parent="Containementarea" unique_id=1094334970 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+position = Vector2(-578, 99)
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=1330591153]
+script = ExtResource("5_br0o5")
