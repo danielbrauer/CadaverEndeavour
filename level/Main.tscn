@@ -1,3 +1,9 @@
 [gd_scene format=3 uid="uid://d3uhybbiifuqg"]
 
+[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="1_hjlm1"]
+
 [node name="Main" type="Node2D" unique_id=148638150]
+
+[node name="Cadaver" type="Sprite2D" parent="." unique_id=367111894]
+position = Vector2(235, 476)
+texture = ExtResource("1_hjlm1")
