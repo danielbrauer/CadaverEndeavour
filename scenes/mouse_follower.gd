@@ -1,70 +1,85 @@
 extends StaticBody2D
 
-
-
 var area2d : Area2D
-var draggedRB : RigidBody2D
+var draggedRB : Node2D
 
-# Called when the node enters the scene tree for the first time.
-
-
+# Variable to track how fast we are throwing the object
+var current_velocity : Vector2 = Vector2.ZERO 
 
 func _on_begin_drag(otherObject : Node2D):
-	$Spring2d.node_a = self.get_path()
-	$Spring2d.node_b = otherObject.get_path()
-	draggedRB = otherObject as RigidBody2D
-	print($Spring2d.node_b)
-
+	$RemoteTransform2D.remote_path = otherObject.get_path()
+	draggedRB = otherObject
+	
+	# Stop the object's own momentum while we hold it
+	if "velocity" in draggedRB:
+		draggedRB.velocity = Vector2.ZERO
+		
+	DraggingManager.is_dragging = true
 
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("drag"):
 		check_below_mouse()
-	if Input.is_action_pressed("drag"):
-		global_position = get_global_mouse_position() 
 		
+	if Input.is_action_pressed("drag"):
+		var target_pos = get_global_mouse_position()
+		
+		# 1. Calculate Velocity
+		# We compare where we want to be (mouse) vs where we are now
+		var raw_velocity = (target_pos - global_position) / delta
+		
+		# Smooth the velocity (Lerp) to avoid jittery throwing
+		current_velocity = current_velocity.lerp(raw_velocity, 15 * delta)
+		
+		# 2. Move to mouse
+		global_position = target_pos 
+	
 	if Input.is_action_just_released("drag"):
 		DraggingManager.is_dragging = false
 		_on_release()
-	
-		#Unparent and let keep momentum of object
-		#tween.tween_callback(print_done)
 
-func _physics_process(delta: float) -> void:
-	if draggedRB != null:
-		draggedRB.apply_central_force(draggedRB.linear_velocity * -0.3)
-	
 func check_below_mouse():
 	var space_state = get_world_2d().direct_space_state
 	var mouse_pos = get_global_mouse_position()
 	
-	# 1. Setup a point query
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = mouse_pos
-	query.collide_with_areas = true # Set to true if your objects are Areas
+	query.collide_with_areas = true
 	query.collide_with_bodies = true
 	
-	# 2. Get ALL overlapping results (up to 32 objects)
 	var results = space_state.intersect_point(query, 32)
 	
 	if results.size() > 0:
 		var top_object = null
-		var max_z = -99999 # Start with a very low Z
+		var max_z = -99999
 	
 		for hit in results:
 			var collider = hit.collider
 			
-			# Check if this object is higher than our current 'top'
-			# Note: We check z_index, but you could also check CanvasItem.z_as_relative
-			if collider is CanvasItem:
+			if collider is CanvasItem and collider.is_in_group("Grabbable"):
 				if collider.z_index > max_z:
 					max_z = collider.z_index
 					top_object = collider
 		
 		if top_object:
-			print("Clicked on the top object: ", top_object.name)
 			_on_begin_drag(top_object)
 
 func _on_release():
-	$Spring2d.node_b = NodePath("")
+	if draggedRB:
+		if DraggingManager.goalBody:
+			# Snap to slot
+			draggedRB.global_transform = DraggingManager.goalBody.global_transform
+		else:
+			# Free placement
+			draggedRB.global_transform = $RemoteTransform2D.global_transform
+			
+			# 3. Apply Momentum to the remote object
+			# We check if the object has a "velocity" variable (from the previous script)
+			if "velocity" in draggedRB:
+				draggedRB.velocity = current_velocity
+
+	# Disconnect
+	$RemoteTransform2D.remote_path = NodePath("")
 	draggedRB = null
+	DraggingManager.is_dragging = false
+	current_velocity = Vector2.ZERO

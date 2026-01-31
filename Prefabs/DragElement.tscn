@@ -6,9 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5g54j"]
 radius = 63.03174
 
-[node name="DragElement" type="RigidBody2D" unique_id=1468661358]
-mass = 0.001
-can_sleep = false
+[node name="DragElement" type="Area2D" unique_id=590028688]
 script = ExtResource("2_r2htx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=849736944]

@@ -32,6 +32,9 @@ project/assembly_name="CadaverEndeavour"
 
 Attachment=""
 ScorePoint=""
+Grabbable=""
+Depth2=""
+Depth3=""
 
 [input]
 
@@ -44,7 +47,7 @@ drag={
 [physics]
 
 3d/physics_engine="Jolt Physics"
-2d/default_gravity=1.0
+2d/default_gravity=0.0
 
 [rendering]
 
