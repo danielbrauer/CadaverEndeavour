@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://85p0cinoa4ay"]
+
+[ext_resource type="Script" uid="uid://ceyvbch6rj1nr" path="res://scenes/mouse_follower.gd" id="1_tpeuq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpeuq"]
+radius = 25.0
+
+[node name="MouseFollower" type="StaticBody2D" unique_id=57633638 groups=["faceArea"]]
+collision_layer = 2147483648
+collision_mask = 0
+script = ExtResource("1_tpeuq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=210241733]
+shape = SubResource("CircleShape2D_tpeuq")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1069490388]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://0k5floenqelt"]
+
+[ext_resource type="PackedScene" uid="uid://d218xgswraw3o" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
+[ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
+
+[node name="Pau" type="Node2D" unique_id=1404171942]
+
+[node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
+
+[node name="AttachmentScene" parent="." unique_id=2060454781 instance=ExtResource("1_kype0")]
+position = Vector2(546, 41)
+
+[node name="DragElement" parent="." unique_id=223695341 instance=ExtResource("2_vi51d")]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=363345212]

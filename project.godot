@@ -17,6 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+DraggingManager="*uid://csb3ybyjs0hnc"
+
+[autoload]
+
 PointTypeInst="*uid://glew0325iwyd"
 
 [display]
@@ -32,6 +36,10 @@ project/assembly_name="CadaverEndeavour"
 
 Attachment=""
 ScorePoint=""
+Grabbable=""
+Depth3=""
+ContainmentArea=""
+faceArea=""
 Preferences=""
 
 [input]

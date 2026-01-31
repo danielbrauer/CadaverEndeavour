@@ -2,7 +2,5 @@
 
 [ext_resource type="Script" uid="uid://dnabibjpogx4b" path="res://scenes/attachment_point.gd" id="1_egywe"]
 
-[node name="AttachmentPoint" type="Area2D" unique_id=1010685651]
+[node name="AttachmentPoint" type="StaticBody2D" unique_id=1834878620]
 script = ExtResource("1_egywe")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]

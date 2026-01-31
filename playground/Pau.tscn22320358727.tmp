@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://0k5floenqelt"]
+
+[ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
+
+[node name="Pau" type="Node2D" unique_id=1404171942]
+position = Vector2(0, -2)
+
+[node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
+
+[node name="DragElement" parent="." unique_id=223695341 instance=ExtResource("2_vi51d")]
+mass = 0.5
+
+[node name="Spring2d" type="DampedSpringJoint2D" parent="." unique_id=1252598301]
+node_a = NodePath("../MouseFollower")
+node_b = NodePath("../DragElement")
+length = 1.0
+rest_length = 1.0
+stiffness = 10.0
+damping = 0.25

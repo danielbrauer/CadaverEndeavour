@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://0k5floenqelt"]
+
+[ext_resource type="PackedScene" uid="uid://d218xgswraw3o" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
+[ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
+size = Vector2(250, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn1q5"]
+size = Vector2(500, 700)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br0o5"]
+size = Vector2(700, 900)
+
+[node name="Pau" type="Node2D" unique_id=1404171942]
+position = Vector2(0, -2)
+
+[node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
+
+[node name="DragElement" parent="." unique_id=223695341 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
+
+[node name="AttachmentScene2" parent="." unique_id=212488838 instance=ExtResource("1_kype0")]
+position = Vector2(-232, -191)
+
+[node name="AttachmentScene3" parent="." unique_id=1134421088 instance=ExtResource("1_kype0")]
+position = Vector2(146, -185)
+
+[node name="AttachmentScene4" parent="." unique_id=228926584 instance=ExtResource("1_kype0")]
+position = Vector2(0, -339)
+scale = Vector2(4.239999, 1)
+
+[node name="Depth1" type="Area2D" parent="." unique_id=1936375506]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Depth1" unique_id=1334105584]
+position = Vector2(0, 107)
+shape = SubResource("RectangleShape2D_vi51d")
+
+[node name="Depth2" type="Area2D" parent="." unique_id=1955069041 groups=["Depth2"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Depth2" unique_id=376176157]
+position = Vector2(0, 107)
+shape = SubResource("RectangleShape2D_kn1q5")
+
+[node name="Depth3" type="Area2D" parent="." unique_id=2027257295 groups=["Depth3"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Depth3" unique_id=1220052597]
+position = Vector2(0, 107)
+shape = SubResource("RectangleShape2D_br0o5")
