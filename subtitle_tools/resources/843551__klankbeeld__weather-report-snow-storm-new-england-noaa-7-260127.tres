@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SubtitleConfig" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://subtitle_tools/subtitle_config.gd" id="1"]
+[ext_resource type="AudioStreamMP3" path="res://subtitle_tools/resources/843551__klankbeeld__weather-report-snow-storm-new-england-noaa-7-260127.mp3" id="2"]
+
+[resource]
+script = ExtResource("1")
+audio_stream = ExtResource("2")
+transcription_path = "res://subtitle_tools/resources/843551__klankbeeld__weather-report-snow-storm-new-england-noaa-7-260127.json"

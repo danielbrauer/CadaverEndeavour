@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://c36svjna68hkv"]
+
+[ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="1_5njmj"]
+[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="1_spol3"]
+[ext_resource type="AudioStream" uid="uid://cx2v7oinnwokv" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="2_474y1"]
+[ext_resource type="Texture2D" uid="uid://dki7bik43e7d3" path="res://images/Environment/environment_morgue.png" id="2_g4w0v"]
+[ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="3_41twx"]
+[ext_resource type="Texture2D" uid="uid://nlct37h66la5" path="res://images/objects/obect_bodypart_teeth_yellow.png" id="5_g45jy"]
+[ext_resource type="Texture2D" uid="uid://ct87wna4pqe8b" path="res://images/objects/object_accessories_bow_red.png" id="6_fwud4"]
+
+[sub_resource type="Animation" id="Animation_fa068"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Music:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7dwaf"]
+resource_name = "gameplay_cutscene"
+length = 90.333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10.1874275, 13.202074),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 13.2137985, 16.961943),
+"transitions": PackedFloat32Array(1, -1.4640853, 0.00030056943),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.17, 1.17)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2tkq"]
+_data = {
+&"RESET": SubResource("Animation_fa068"),
+&"gameplay_cutscene": SubResource("Animation_7dwaf")
+}
+
+[node name="Main" type="Node2D" unique_id=148638150]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=875672336]
+libraries/ = SubResource("AnimationLibrary_j2tkq")
+autoplay = &"gameplay_cutscene"
+playback_auto_capture = false
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1217653713]
+material = ExtResource("1_5njmj")
+
+[node name="Cadaver" type="Sprite2D" parent="Node2D" unique_id=1351781870]
+z_index = -4
+material = ExtResource("1_5njmj")
+position = Vector2(-37.000015, 283)
+scale = Vector2(0.98730844, 0.98730844)
+texture = ExtResource("1_spol3")
+
+[node name="EnvironmentMorgue" type="Sprite2D" parent="Node2D" unique_id=635512563]
+z_index = -10
+position = Vector2(0.00014686584, -1.9999504)
+scale = Vector2(0.94791675, 0.94791675)
+texture = ExtResource("2_g4w0v")
+
+[node name="EnvironmentTable" type="Sprite2D" parent="Node2D" unique_id=984813290]
+z_index = -7
+position = Vector2(-79.49997, 246.39946)
+scale = Vector2(1.0950414, 1.0950414)
+texture = ExtResource("3_41twx")
+
+[node name="ObectBodypartTeethYellow" type="Sprite2D" parent="Node2D" unique_id=1058285549]
+position = Vector2(-852, -173)
+scale = Vector2(0.2822338, 0.2822338)
+texture = ExtResource("5_g45jy")
+
+[node name="Area2D" type="Area2D" parent="Node2D/ObectBodypartTeethYellow" unique_id=1126525975]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/ObectBodypartTeethYellow/Area2D" unique_id=233669879]
+polygon = PackedVector2Array(246, -9, 221, 104, 140, 150, -202, 143, -315, 81, -311, -18, -297, -87, -177, -204, 163, -195, 216, -126)
+
+[node name="ObjectAccessoriesBowRed" type="Sprite2D" parent="Node2D" unique_id=2071647445]
+position = Vector2(612, -375)
+scale = Vector2(0.42332268, 0.42332268)
+texture = ExtResource("6_fwud4")
+
+[node name="Area2D" type="Area2D" parent="Node2D/ObjectAccessoriesBowRed" unique_id=235047289]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/ObjectAccessoriesBowRed/Area2D" unique_id=1730666890]
+polygon = PackedVector2Array(-308.2755, -342.04346, -121.65662, -325.50757, -46.06421, -249.91516, 57.87549, -240.46606, 175.98865, -316.05853, 305.9132, -353.85474, 317.7245, -179.04724, 284.65283, -37.3114, 150.00378, -86.918945, 289.37732, 135.13391, 242.13208, 243.7981, 142.91699, 319.3905, 57.87549, 347.73767, 8.267944, 71.35278, -46.06421, 87.88867, -90.94714, 314.66602, -138.1925, 319.3905, -253.94348, 189.46594, -296.46423, 71.35278, -171.26416, -86.918945, -308.2755, -37.3114)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2014514002]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1708058806]
+stream = ExtResource("2_474y1")

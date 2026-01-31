@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://demj7t6qpd6wn"]
+
+[ext_resource type="Shader" uid="uid://co34rgvbfm1gr" path="res://Materials/shadow.gdshader" id="1_vhtad"]
+
+[resource]
+shader = ExtResource("1_vhtad")
+shader_parameter/shadow_offset = Vector2(18.27, 24.24)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.45490196)
