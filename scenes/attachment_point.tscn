@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5y3wv22c3gwb"]
 
-[ext_resource type="Script" uid="uid://dnabibjpogx4b" path="res://scenes/attachment_point.gd" id="1_egywe"]
+[ext_resource type="Script" uid="uid://dnabibjpogx4b" path="res://scenes/OnEndReparent.gd" id="1_egywe"]
 
 [node name="AttachmentPoint" type="StaticBody2D" unique_id=1834878620]
 script = ExtResource("1_egywe")
