@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://5y3wv22c3gwb"]
+
+[ext_resource type="Script" uid="uid://dnabibjpogx4b" path="res://scenes/attachment_point.gd" id="1_egywe"]
+
+[node name="AttachmentPoint" type="Area2D" unique_id=1010685651]
+script = ExtResource("1_egywe")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
