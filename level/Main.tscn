@@ -1,9 +1,37 @@
 [gd_scene format=3 uid="uid://d3uhybbiifuqg"]
 
-[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="1_hjlm1"]
+[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="1_hjlm1"]
+
+[sub_resource type="Animation" id="Animation_fa068"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_7dwaf"]
+resource_name = "gameplay_cutscene"
+length = 90.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2tkq"]
+_data = {
+&"RESET": SubResource("Animation_fa068"),
+&"gameplay_cutscene": SubResource("Animation_7dwaf")
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_hjlm1"]
 
 [node name="Main" type="Node2D" unique_id=148638150]
 
-[node name="Cadaver" type="Sprite2D" parent="." unique_id=367111894]
-position = Vector2(235, 476)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=875672336]
+libraries/ = SubResource("AnimationLibrary_j2tkq")
+playback_auto_capture = false
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1217653713]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Icon" type="Sprite2D" parent="Node2D" unique_id=657892400]
+position = Vector2(368.99997, 287)
+scale = Vector2(2.3359375, 2.4296875)
 texture = ExtResource("1_hjlm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1305502464]
+texture = SubResource("ImageTexture_hjlm1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2014514002]

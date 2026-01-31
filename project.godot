@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CadaverEndeavour"
-run/main_scene="uid://c8f2avuyprwqm"
+run/main_scene="uid://d3uhybbiifuqg"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
