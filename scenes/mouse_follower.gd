@@ -1,15 +1,16 @@
-extends StaticBody2D
+extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	modulate = Color(Color.MEDIUM_ORCHID,0.7)
+	DraggingManager.OnBeginDrag.connect(OnBeginDrag)
+	pass # Replace with function body.
 
 
-#TODO: Reformat this
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(DraggingManager.is_dragging):
-		visible = true
-	else:
-		visible = false
+	pass
+
+func OnBeginDrag():
+	print("print")
+	pass

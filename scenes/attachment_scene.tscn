@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d218xgswraw3o"]
+
+[ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="1_7spvp"]
+[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="1_fiuk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7spvp"]
+size = Vector2(128, 127)
+
+[node name="AttachmentScene" type="StaticBody2D" unique_id=2060454781 groups=["Attachment"]]
+script = ExtResource("1_7spvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1320409730]
+texture = ExtResource("1_fiuk2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=574105476]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7spvp")
