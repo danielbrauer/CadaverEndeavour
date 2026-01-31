@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ckujbaafj31lx"]
+
+[ext_resource type="Script" uid="uid://bxebefakt4v4v" path="res://subtitle_tools/subtitle_player.gd" id="1_subtitle"]
+[ext_resource type="Resource" path="res://subtitle_tools/resources/843551__klankbeeld__weather-report-snow-storm-new-england-noaa-7-260127.tres" id="2_w4611"]
+
+[node name="SubtitlePlayer" type="Node2D" unique_id=123456789]
+script = ExtResource("1_subtitle")
+config = ExtResource("2_w4611")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=987654321]
+
+[node name="Container" type="Control" parent="." unique_id=1088021233]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubtitleLabel" type="Label" parent="Container" unique_id=456789123]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 146.0
+offset_top = 332.0
+offset_right = 917.0
+offset_bottom = 377.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Subtitles will appear here"
+horizontal_alignment = 3
+vertical_alignment = 3
