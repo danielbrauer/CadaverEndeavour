@@ -2,14 +2,49 @@
 
 [ext_resource type="Script" uid="uid://cncwld5xl53mo" path="res://level/end_screen.gd" id="1_jxwei"]
 [ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_jxwei"]
+[ext_resource type="Texture2D" uid="uid://jwvkenks4n70" path="res://images/Environment/Parlor/environment_parlor.png" id="2_lecd4"]
 [ext_resource type="PackedScene" uid="uid://c5qcm0mbgk2lu" path="res://level/Family.tscn" id="2_vjk32"]
 [ext_resource type="Script" path="res://scenes/OnClickRestart.gd" id="3_vjk32"]
+[ext_resource type="Texture2D" uid="uid://ddprdjxfwvojh" path="res://images/Environment/Coffin/environment_coffin.png" id="4_hi776"]
 [ext_resource type="Script" uid="uid://cg7q8724wmvxp" path="res://level/dead_guy_container.gd" id="4_jxwei"]
+[ext_resource type="Texture2D" uid="uid://bl35u2qmnqmkh" path="res://images/Environment/Coffin/environment_coffin_upperlid_open.png" id="5_15f3w"]
+[ext_resource type="Texture2D" uid="uid://byty4olnb2cel" path="res://images/Environment/Parlor/environment_parlor_portrait.png" id="7_kd0oc"]
+[ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="10_1mt13"]
+[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="11_2te2f"]
+[ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="12_2mvjn"]
+[ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="13_ew1dc"]
+[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="14_qx5mk"]
+[ext_resource type="Texture2D" uid="uid://t1ufqj8sp8n2" path="res://images/Environment/Coffin/environment_coffin_lowerlid.png" id="15_ndpvb"]
+[ext_resource type="Texture2D" uid="uid://b4smgx6acfk43" path="res://images/Environment/Coffin/environment_coffin_upperlid_closed.png" id="16_qkedd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyc4r"]
+radius = 34.295845
+height = 98.64314
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o8dq5"]
+radius = 27.002869
+height = 129.9632
 
 [node name="EndScreen" type="Node2D" unique_id=1179016300]
 script = ExtResource("1_jxwei")
 theLabel = NodePath("Label")
 valid_states = Array[int]([4])
+
+[node name="EnvironmentParlor" type="Sprite2D" parent="." unique_id=767814078]
+position = Vector2(-1, -16)
+texture = ExtResource("2_lecd4")
+
+[node name="EnvironmentParlorPortrait" type="Sprite2D" parent="." unique_id=979311251]
+position = Vector2(0, -18)
+texture = ExtResource("7_kd0oc")
+
+[node name="EnvironmentCoffin" type="Sprite2D" parent="." unique_id=1401240648]
+position = Vector2(716, 420)
+texture = ExtResource("4_hi776")
+
+[node name="EnvironmentCoffinUpperlidOpen" type="Sprite2D" parent="." unique_id=1263936699]
+position = Vector2(783, 396)
+texture = ExtResource("5_15f3w")
 
 [node name="Family" parent="." unique_id=469513113 instance=ExtResource("2_vjk32")]
 
@@ -41,3 +76,58 @@ script = ExtResource("3_vjk32")
 [node name="DeadGuyContainer" type="Node2D" parent="." unique_id=456638911 groups=["DeadGuy"]]
 position = Vector2(425, 0)
 script = ExtResource("4_jxwei")
+
+[node name="Guyy" type="Node2D" parent="DeadGuyContainer" unique_id=317901728 groups=["DeadGuy"]]
+
+[node name="Cadaver" type="Sprite2D" parent="DeadGuyContainer/Guyy" unique_id=2084619145]
+z_index = -4
+material = ExtResource("10_1mt13")
+position = Vector2(-37.000015, 283)
+scale = Vector2(0.98730844, 0.98730844)
+texture = ExtResource("11_2te2f")
+
+[node name="EnvironmentTable" type="Sprite2D" parent="DeadGuyContainer/Guyy" unique_id=1511174767]
+z_index = -7
+position = Vector2(-79.49997, 246.39946)
+scale = Vector2(1.0950414, 1.0950414)
+texture = ExtResource("12_2mvjn")
+
+[node name="AttachmentScene2" type="StaticBody2D" parent="DeadGuyContainer/Guyy" unique_id=842314720 groups=["Attachment", "ContainmentArea"]]
+position = Vector2(-82, 79)
+rotation = 3.1415927
+scale = Vector2(6.0940323, -7.2584877)
+script = ExtResource("13_ew1dc")
+
+[node name="Area2D" type="Area2D" parent="DeadGuyContainer/Guyy/AttachmentScene2" unique_id=1086303846]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadGuyContainer/Guyy/AttachmentScene2/Area2D" unique_id=1667208546]
+position = Vector2(-5.9604645e-08, -15.98129)
+shape = SubResource("CapsuleShape2D_jyc4r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeadGuyContainer/Guyy/AttachmentScene2/Area2D" unique_id=1718844132]
+position = Vector2(-0.820475, 42.84639)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o8dq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadGuyContainer/Guyy/AttachmentScene2" unique_id=932864600]
+position = Vector2(-5.9604645e-08, -15.98129)
+shape = SubResource("CapsuleShape2D_jyc4r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeadGuyContainer/Guyy/AttachmentScene2" unique_id=1557789760]
+position = Vector2(-0.820475, 42.84639)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o8dq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadGuyContainer/Guyy/AttachmentScene2" unique_id=1711035060]
+visible = false
+texture = ExtResource("14_qx5mk")
+
+[node name="EnvironmentCoffinLowerlid" type="Sprite2D" parent="." unique_id=512965526]
+visible = false
+position = Vector2(-40, 430)
+texture = ExtResource("15_ndpvb")
+
+[node name="EnvironmentCoffinUpperlidClosed" type="Sprite2D" parent="." unique_id=1570038477]
+visible = false
+position = Vector2(-36, 422)
+texture = ExtResource("16_qkedd")

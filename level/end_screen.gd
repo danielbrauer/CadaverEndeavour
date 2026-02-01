@@ -67,6 +67,6 @@ func _sequence_family_scores() -> void:
 				neutral_score = 1.0
 			
 			label_node.text = person_name + ": " + str(score)
-			AudioManager.update_ending_music(happy_score, sad_score, neutral_score)
+			AudioManager.update_ending_music(happy_score, sad_score, neutral_score, persons[i].person)
 			await get_tree().create_timer(AudioManager.crossfade_duration).timeout
 			await get_tree().create_timer(3.0).timeout

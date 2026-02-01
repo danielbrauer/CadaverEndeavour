@@ -17,12 +17,25 @@ enum EndingType {
 @export var neutral_ending: AudioStream
 @export var crossfade_duration: float = 2.0
 
+@export var baby_happy_sfx: AudioStream
+@export var baby_sad_sfx: AudioStream
+@export var wife_happy_sfx: AudioStream
+@export var wife_sad_sfx: AudioStream
+@export var son_happy_sfx: AudioStream
+@export var son_sad_sfx: AudioStream
+
 @onready var main_music_player: AudioStreamPlayer = $MainMusicPlayer
 @onready var title_music_player: AudioStreamPlayer = $TitleMusicPlayer
 @onready var phone_call_player: AudioStreamPlayer = $PhoneCallPlayer
 @onready var happy_ending_player: AudioStreamPlayer = $HappyEndingPlayer
 @onready var sad_ending_player: AudioStreamPlayer = $SadEndingPlayer
 @onready var neutral_ending_player: AudioStreamPlayer = $NeutralEndingPlayer
+@onready var baby_happy_player: AudioStreamPlayer = $BabyHappyPlayer
+@onready var baby_sad_player: AudioStreamPlayer = $BabySadPlayer
+@onready var wife_happy_player: AudioStreamPlayer = $WifeHappyPlayer
+@onready var wife_sad_player: AudioStreamPlayer = $WifeSadPlayer
+@onready var son_happy_player: AudioStreamPlayer = $SonHappyPlayer
+@onready var son_sad_player: AudioStreamPlayer = $SonSadPlayer
 
 var current_dominant_ending: EndingType = EndingType.NONE
 
@@ -37,18 +50,36 @@ func _ready() -> void:
 	happy_ending_player.stream = happy_ending
 	sad_ending_player.stream = sad_ending
 	neutral_ending_player.stream = neutral_ending
+	
+	if baby_happy_player and baby_happy_sfx:
+		baby_happy_player.stream = baby_happy_sfx
+	if baby_sad_player and baby_sad_sfx:
+		baby_sad_player.stream = baby_sad_sfx
+	if wife_happy_player and wife_happy_sfx:
+		wife_happy_player.stream = wife_happy_sfx
+	if wife_sad_player and wife_sad_sfx:
+		wife_sad_player.stream = wife_sad_sfx
+	if son_happy_player and son_happy_sfx:
+		son_happy_player.stream = son_happy_sfx
+	if son_sad_player and son_sad_sfx:
+		son_sad_player.stream = son_sad_sfx
+	
 	phone_call_player.finished.connect(_on_longer_track_finished)	
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
 	
-	if AppStateManager.currentState == AppStateManager.States.MENU or AppStateManager.currentState == AppStateManager.States.INTRO:
+	if AppStateManager.currentState == AppStateManager.States.MENU:
 		_play_title_music()
+	elif AppStateManager.currentState == AppStateManager.States.INTRO:
+		_play_game_audio()
 
 func _on_game_state_changed() -> void:
 	match AppStateManager.currentState:
-		AppStateManager.States.MENU, AppStateManager.States.INTRO:
+		AppStateManager.States.MENU:
 			_play_title_music()
-		AppStateManager.States.GAME:
+		AppStateManager.States.INTRO:
 			_play_game_audio()
+		AppStateManager.States.GAME:
+			pass
 		AppStateManager.States.GAMEOVER:
 			_stop_game_audio()
 		AppStateManager.States.ENDSCREEN:
@@ -97,6 +128,18 @@ func _stop_all_audio() -> void:
 		sad_ending_player.stop()
 	if neutral_ending_player:
 		neutral_ending_player.stop()
+	if baby_happy_player:
+		baby_happy_player.stop()
+	if baby_sad_player:
+		baby_sad_player.stop()
+	if wife_happy_player:
+		wife_happy_player.stop()
+	if wife_sad_player:
+		wife_sad_player.stop()
+	if son_happy_player:
+		son_happy_player.stop()
+	if son_sad_player:
+		son_sad_player.stop()
 
 func _start_ending_music() -> void:
 	current_dominant_ending = EndingType.NONE
@@ -124,7 +167,7 @@ func _input(event: InputEvent) -> void:
 func _on_longer_track_finished() -> void:
 	OnMainAudioFinished.emit()
 
-func update_ending_music(happy_score: float, sad_score: float, neutral_score: float) -> void:
+func update_ending_music(happy_score: float, sad_score: float, neutral_score: float, person_type: Person.PersonType = Person.PersonType.BABY) -> void:
 	var scores = {
 		EndingType.HAPPY: happy_score,
 		EndingType.SAD: sad_score,
@@ -139,23 +182,27 @@ func update_ending_music(happy_score: float, sad_score: float, neutral_score: fl
 			max_score = scores[ending_type]
 			new_dominant = ending_type
 	
-	if new_dominant == current_dominant_ending:
-		return
+	var ending_changed = new_dominant != current_dominant_ending
 	
-	var old_dominant = current_dominant_ending
-	current_dominant_ending = new_dominant
+	if ending_changed:
+		var old_dominant = current_dominant_ending
+		current_dominant_ending = new_dominant
+		
+		var tween = create_tween()
+		tween.set_parallel(true)
+		
+		if old_dominant != EndingType.NONE:
+			var old_player = _get_ending_player(old_dominant)
+			if old_player:
+				tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration)
+		
+		var new_player = _get_ending_player(new_dominant)
+		if new_player:
+			tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration)
 	
-	var tween = create_tween()
-	tween.set_parallel(true)
-	
-	if old_dominant != EndingType.NONE:
-		var old_player = _get_ending_player(old_dominant)
-		if old_player:
-			tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration).set_ease(Tween.EaseType.EASE_IN )
-	
-	var new_player = _get_ending_player(new_dominant)
-	if new_player:
-		tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration).set_ease(Tween.EaseType.EASE_OUT)
+	var sfx_player = _get_character_sfx_player(person_type, new_dominant)
+	if sfx_player:
+		sfx_player.play()
 
 func _get_ending_player(ending_type: EndingType) -> AudioStreamPlayer:
 	match ending_type:
@@ -165,5 +212,25 @@ func _get_ending_player(ending_type: EndingType) -> AudioStreamPlayer:
 			return sad_ending_player
 		EndingType.NEUTRAL:
 			return neutral_ending_player
+		_:
+			return null
+
+func _get_character_sfx_player(person_type: Person.PersonType, ending_type: EndingType) -> AudioStreamPlayer:
+	match person_type:
+		Person.PersonType.BABY:
+			if ending_type == EndingType.SAD:
+				return baby_sad_player
+			else:
+				return baby_happy_player
+		Person.PersonType.WIFE:
+			if ending_type == EndingType.SAD:
+				return wife_sad_player
+			else:
+				return wife_happy_player
+		Person.PersonType.SON:
+			if ending_type == EndingType.SAD:
+				return son_sad_player
+			else:
+				return son_happy_player
 		_:
 			return null
