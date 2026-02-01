@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://de3ul1wvvy41o"]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_nlat2"]
+[ext_resource type="Texture2D" uid="uid://bvfkkvod7438n" path="res://images/titlescreen/oboe.png" id="2_i6r0j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhdsb"]
+radius = 50.943554
+height = 832.0
+
+[node name="Oboe" type="Node2D" unique_id=35227713]
+
+[node name="DragElement" parent="." unique_id=236443659 instance=ExtResource("1_nlat2")]
+rotation = 1.5707964
+types = Array[int]([0, 2])
+
+[node name="ObjectBodypartAntlerLeft" type="Sprite2D" parent="DragElement" unique_id=1181375987]
+texture = ExtResource("2_i6r0j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=238571868]
+position = Vector2(12, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bhdsb")
