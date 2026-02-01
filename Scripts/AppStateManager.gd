@@ -10,4 +10,5 @@ var currentState : States = States.MENU:
 		if currentState != value:
 			var old_state = currentState
 			currentState = value
+			print(currentState)
 			OnGameStateChanged.emit()
