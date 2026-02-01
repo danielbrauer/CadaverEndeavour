@@ -23,8 +23,6 @@
 [ext_resource type="Script" uid="uid://ci830o60xoidd" path="res://scenes/cameraMover.gd" id="16_6ynke"]
 [ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="16_ruqv7"]
 [ext_resource type="PackedScene" uid="uid://ckujbaafj31lx" path="res://subtitle_tools/subtitle_player.tscn" id="22_2pa0e"]
-[ext_resource type="Script" uid="uid://bxebefakt4v4v" path="res://subtitle_tools/subtitle_player.gd" id="23_ff4d2"]
-[ext_resource type="Resource" uid="uid://dfyfoaofauy25" path="res://subtitle_tools/resources/phone_call.tres" id="24_fsclo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04yrl"]
 size = Vector2(368, 213)
@@ -334,9 +332,7 @@ script = ExtResource("16_6ynke")
 max_lean_distance = 150.0
 smoothing = 3.0
 
-[node name="SubtitlePlayer" type="Node2D" parent="Node2D/Animation/Camera2D/Node2D" unique_id=123456789 instance=ExtResource("22_2pa0e")]
-script = ExtResource("23_ff4d2")
-config = ExtResource("24_fsclo")
+[node name="SubtitlePlayer" parent="Node2D/Animation/Camera2D/Node2D" unique_id=123456789 instance=ExtResource("22_2pa0e")]
 
 [node name="Music" type="AudioStreamPlayer2D" parent="Node2D/Animation" unique_id=1708058806]
 stream = ExtResource("15_1ymms")

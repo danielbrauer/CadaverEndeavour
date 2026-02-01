@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxebefakt4v4v" path="res://subtitle_tools/subtitle_player.gd" id="1_subtitle"]
 [ext_resource type="Resource" path="res://subtitle_tools/resources/Voiceover main scene.tres" id="2_w4611"]
+[ext_resource type="Texture2D" uid="uid://ba8yuaiux03ty" path="res://images/Environment/phone.png" id="3_yekq1"]
 
 [node name="SubtitlePlayer" type="Node2D" unique_id=123456789]
 script = ExtResource("1_subtitle")
@@ -12,11 +13,7 @@ volume_db = -80.0
 
 [node name="Container" type="Control" parent="." unique_id=1088021233]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -27,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 54.0
-offset_top = 150.0
-offset_right = 543.0
-offset_bottom = 217.0
+offset_left = -339.0
+offset_top = 375.75
+offset_right = 150.0
+offset_bottom = 442.75
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.48235294)
@@ -39,3 +36,8 @@ text = "Subtitles will appear here"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Container" unique_id=1213377355]
+position = Vector2(324.00006, 400.75003)
+scale = Vector2(0.2549639, 0.2653346)
+texture = ExtResource("3_yekq1")
