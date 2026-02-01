@@ -583,6 +583,7 @@ texture = ExtResource("2_lecd4")
 [node name="EnvironmentParlorPortrait" type="Sprite2D" parent="." unique_id=979311251]
 z_index = -8
 position = Vector2(0, -18)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_kd0oc")
 
 [node name="ChoirMain" type="Node2D" parent="." unique_id=417325130]
