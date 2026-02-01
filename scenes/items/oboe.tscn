@@ -10,7 +10,6 @@ height = 832.0
 [node name="Oboe" type="Node2D" unique_id=35227713]
 
 [node name="DragElement" parent="." unique_id=236443659 instance=ExtResource("1_nlat2")]
-rotation = 1.5707964
 types = Array[int]([0, 2])
 
 [node name="ObjectBodypartAntlerLeft" type="Sprite2D" parent="DragElement" unique_id=1181375987]

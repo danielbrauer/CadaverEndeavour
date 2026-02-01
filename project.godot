@@ -13,7 +13,11 @@ config_version=5
 config/name="CadaverEndeavour"
 run/main_scene="uid://d3uhybbiifuqg"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://cvjkcqqe87cvo"
+
+[audio]
+
+buses/default_bus_layout="uid://dbxemgl8lbjmy"
 
 [autoload]
 

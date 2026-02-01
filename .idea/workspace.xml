@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="84d45ac7-dc87-43c1-befd-10772d51ddeb" name="Changes" comment="" />
+    <list default="true" id="84d45ac7-dc87-43c1-befd-10772d51ddeb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level/Game.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/level/Game.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/OnGameOver.gd" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/OnGameOver.gd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenes/items/oboe.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/items/oboe.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subtitle_tools/resources/phone_call.tres" beforeDir="false" afterPath="$PROJECT_DIR$/subtitle_tools/resources/phone_call.tres" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subtitle_tools/subtitle_player.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/subtitle_tools/subtitle_player.tscn" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -239,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769955215432</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="hotfix - dedguy no background">
+      <option name="closed" value="true" />
+      <created>1769955663588</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1769955663588</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +277,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="feat - added camera slightly moves" />
     <MESSAGE value="feat - oboe added" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat - oboe added" />
+    <MESSAGE value="hotfix - dedguy no background" />
+    <option name="LAST_COMMIT_MESSAGE" value="hotfix - dedguy no background" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SubtitleConfig" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SubtitleConfig" format=3 uid="uid://dfyfoaofauy25"]
 
-[ext_resource type="Script" path="res://subtitle_tools/subtitle_config.gd" id="1"]
-[ext_resource type="AudioStream" path="res://subtitle_tools/resources/phone_call.mp3" id="2"]
+[ext_resource type="Script" uid="uid://uvexyo0vvbww" path="res://subtitle_tools/subtitle_config.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://e6txxm76aliy" path="res://subtitle_tools/resources/phone_call.mp3" id="2"]
 
 [resource]
 script = ExtResource("1")
