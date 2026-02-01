@@ -51,7 +51,9 @@ func _process(delta: float) -> void:
 
 func collect_preferences() -> Array[Preference] :
 	var results : Array[Preference] = []
-	results.assign(self.find_children("*", "Preference"))
+	for child in self.get_children():
+		if child is Preference:
+			results.append(child)
 	return results
 
 func collect_points() -> Array[ScorePoint] :
