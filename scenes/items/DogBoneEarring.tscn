@@ -1,25 +1,26 @@
 [gd_scene format=3 uid="uid://dm8vk5s27lv13"]
 
-[ext_resource type="PackedScene" path="res://Prefabs/DragElement.tscn" id="1_ieeph"]
-[ext_resource type="Texture2D" path="res://images/objects/object_accessories_dogboneearrings_right.png" id="2_ieeph"]
-[ext_resource type="PackedScene" path="res://scenes/item_points.tscn" id="3_17fys"]
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_ieeph"]
+[ext_resource type="Texture2D" uid="uid://ce3no14mibgut" path="res://images/objects/object_accessories_dogboneearrings_right.png" id="2_ieeph"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_17fys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1i43i"]
 radius = 200.0
 height = 574.0
 
-[node name="Antlers" type="Node2D"]
+[node name="Antlers" type="Node2D" unique_id=1109045017]
+scale = Vector2(0.1, 0.1)
 
-[node name="DragElement" parent="." instance=ExtResource("1_ieeph")]
+[node name="DragElement" parent="." unique_id=1123628354 instance=ExtResource("1_ieeph")]
 
 [node name="ObjectAccessoriesDogboneearringsRight" type="Sprite2D" parent="DragElement" unique_id=405302908]
 position = Vector2(0, -2)
 texture = ExtResource("2_ieeph")
 
-[node name="ItemPoints" parent="DragElement" instance=ExtResource("3_17fys")]
+[node name="ItemPoints" parent="DragElement" unique_id=241643258 instance=ExtResource("3_17fys")]
 position = Vector2(-1, 0)
 key = "dog bone earring"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=483321813]
 position = Vector2(23, 13)
 shape = SubResource("CapsuleShape2D_1i43i")

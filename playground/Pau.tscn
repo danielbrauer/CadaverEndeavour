@@ -1,22 +1,25 @@
 [gd_scene format=3 uid="uid://c1urh4wa8jbi5"]
 
-[ext_resource type="PackedScene" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
-[ext_resource type="PackedScene" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
-[ext_resource type="Texture2D" path="res://resources/dead.png" id="2_h8427"]
-[ext_resource type="Texture2D" path="res://resources/1px.png" id="3_kn1q5"]
-[ext_resource type="Script" path="res://scenes/GameManager.gd" id="6_h8427"]
-[ext_resource type="PackedScene" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
-[ext_resource type="Script" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
-[ext_resource type="PackedScene" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
-[ext_resource type="PackedScene" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
-[ext_resource type="PackedScene" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
+[ext_resource type="PackedScene" uid="uid://d218xgswraw3o" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
+[ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
+[ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_h8427"]
+[ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
+[ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
+[ext_resource type="PackedScene" uid="uid://cv4angv3bd3pf" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
+[ext_resource type="Script" uid="uid://boip1q0v6l1p3" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
+[ext_resource type="PackedScene" uid="uid://nt6fb0ri1aay" path="res://scenes/items/Eyes.tscn" id="7_nl4cy"]
+[ext_resource type="PackedScene" uid="uid://dm8vk5s27lv13" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
+[ext_resource type="PackedScene" uid="uid://mjhym178mijs" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
+[ext_resource type="PackedScene" uid="uid://b373w1pwb5ecy" path="res://scenes/items/antlers.tscn" id="10_h5gsp"]
+[ext_resource type="PackedScene" uid="uid://dhcsrqvyr3a4t" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
+[ext_resource type="PackedScene" uid="uid://ljlqsbbsnp6s" path="res://scenes/items/CatEarR.tscn" id="11_d2pce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
 size = Vector2(500, 388)
 
 [node name="MainGameLoop" type="Node2D" unique_id=1404171942]
 
-[node name="MouseFollower" parent="." instance=ExtResource("1_vi51d")]
+[node name="MouseFollower" parent="." unique_id=1880016701 instance=ExtResource("1_vi51d")]
 position = Vector2(2, -3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
@@ -42,7 +45,7 @@ grow_horizontal = 2
 texture = ExtResource("2_h8427")
 stretch_mode = 4
 
-[node name="AttachmentScene2" parent="Guy" instance=ExtResource("1_kype0")]
+[node name="AttachmentScene2" parent="Guy" unique_id=207547248 instance=ExtResource("1_kype0")]
 position = Vector2(35, -10)
 scale = Vector2(-3.7340317, 6.378488)
 
@@ -80,6 +83,42 @@ texture = ExtResource("3_kn1q5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tables/Table 3" unique_id=1070789756]
 shape = SubResource("RectangleShape2D_vi51d")
 
+[node name="Eye" parent="Tables" unique_id=1673550227 instance=ExtResource("7_nl4cy")]
+position = Vector2(-548.99994, -148.99998)
+
+[node name="Eye2" parent="Tables" unique_id=50655866 instance=ExtResource("7_nl4cy")]
+position = Vector2(-501.00006, -154.00002)
+
+[node name="Cat Ear L" parent="Tables" unique_id=1176130850 instance=ExtResource("7_6ejfv")]
+position = Vector2(-709, -200)
+
+[node name="Cat Ear R" parent="Tables" unique_id=13818087 instance=ExtResource("11_d2pce")]
+position = Vector2(-751, -196)
+
+[node name="Antlers" parent="Tables" unique_id=35227713 instance=ExtResource("10_h5gsp")]
+position = Vector2(-453.99997, 73.99999)
+
+[node name="Antlers2" parent="Tables" unique_id=457146849 instance=ExtResource("10_h5gsp")]
+position = Vector2(-546.99994, 74.00001)
+
+[node name="Dog Bone Earring" parent="Tables" unique_id=1673744633 instance=ExtResource("8_hmplt")]
+position = Vector2(-643, 136)
+
+[node name="Dog Bone Earring2" parent="Tables" unique_id=1109045017 instance=ExtResource("8_hmplt")]
+position = Vector2(-586, 137)
+
+[node name="Monocle" parent="Tables" unique_id=2036129028 instance=ExtResource("9_d2pce")]
+position = Vector2(659, -308)
+
+[node name="Pinecone 1" parent="Tables" unique_id=977459451 instance=ExtResource("10_hmplt")]
+position = Vector2(-535, -276)
+
+[node name="Pinecone 2" parent="Tables" unique_id=1552097 instance=ExtResource("10_hmplt")]
+position = Vector2(-576, -276)
+
+[node name="Pinecone 3" parent="Tables" unique_id=2137026169 instance=ExtResource("10_hmplt")]
+position = Vector2(-499, -275)
+
 [node name="GameMaanger" type="Node2D" parent="." unique_id=339843467]
 script = ExtResource("6_h8427")
 
@@ -87,18 +126,3 @@ script = ExtResource("6_h8427")
 script = ExtResource("7_7rxly")
 deadguy = NodePath("../Guy")
 outOfScreenPosY = -1016.0
-
-[node name="Antlers" parent="." instance=ExtResource("7_6ejfv")]
-position = Vector2(-706, -200)
-
-[node name="Antlers2" parent="." instance=ExtResource("8_hmplt")]
-position = Vector2(-640, 136)
-
-[node name="Antlers3" parent="." instance=ExtResource("7_6ejfv")]
-position = Vector2(-799, 190)
-
-[node name="Antlers4" parent="." instance=ExtResource("9_d2pce")]
-position = Vector2(662, -308)
-
-[node name="Antlers5" parent="." instance=ExtResource("10_hmplt")]
-position = Vector2(-469, -269)

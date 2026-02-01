@@ -2,17 +2,6 @@ extends Node2D
 
 @export var key: String
 
-var enum_map = { 
-	"Hunting": PointType.PointType.Hunting,
-	"BodyPart": PointType.PointType.BodyPart,
-	"Nature": PointType.PointType.Nature,
-	"Dog": PointType.PointType.Dog,
-	"Cat": PointType.PointType.Cat,
-	"Eyes": PointType.PointType.Eyes,
-	"Ears": PointType.PointType.Ears
-}
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -22,11 +11,10 @@ func _ready() -> void:
 		return
 	var points = csv[self.key]
 	
-	for key in enum_map.keys():
-		if !points.has(key):
-			print("Missing key ", key, " in CSV entry: ", points)
+	for csv_key in points:
+		if !PointType.is_valid_key(csv_key):
 			continue
 		var node : ScorePoint = preload("res://scenes/point.tscn").instantiate()
-		node.point_amount = points[key]
-		node.point_type = enum_map[key]
+		node.point_amount = points[csv_key]
+		node.point_type = PointType.from_string(csv_key)
 		self.add_child(node)

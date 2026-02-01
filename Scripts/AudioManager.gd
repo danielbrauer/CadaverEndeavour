@@ -2,6 +2,13 @@ extends Node
 
 signal OnMainAudioFinished
 
+enum EndingType {
+	NONE,
+	HAPPY,
+	SAD,
+	NEUTRAL
+}
+
 @export var title_music: AudioStream
 @export var main_music: AudioStream
 @export var main_phone_call: AudioStream
@@ -16,7 +23,7 @@ signal OnMainAudioFinished
 @onready var sad_ending_player: AudioStreamPlayer = $SadEndingPlayer
 @onready var neutral_ending_player: AudioStreamPlayer = $NeutralEndingPlayer
 
-var current_dominant_ending: String = ""
+var current_dominant_ending: EndingType = EndingType.NONE
 var longer_track_player: AudioStreamPlayer
 
 func _ready() -> void:
@@ -106,18 +113,18 @@ func _on_longer_track_finished() -> void:
 
 func update_ending_music(happy_score: float, sad_score: float, neutral_score: float) -> void:
 	var scores = {
-		"happy": happy_score,
-		"sad": sad_score,
-		"neutral": neutral_score
+		EndingType.HAPPY: happy_score,
+		EndingType.SAD: sad_score,
+		EndingType.NEUTRAL: neutral_score
 	}
 	
-	var new_dominant = ""
+	var new_dominant: EndingType = EndingType.NONE
 	var max_score = -INF
 	
-	for key in scores:
-		if scores[key] > max_score:
-			max_score = scores[key]
-			new_dominant = key
+	for ending_type in scores:
+		if scores[ending_type] > max_score:
+			max_score = scores[ending_type]
+			new_dominant = ending_type
 	
 	if new_dominant == current_dominant_ending:
 		return
@@ -128,7 +135,7 @@ func update_ending_music(happy_score: float, sad_score: float, neutral_score: fl
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
-	if old_dominant != "":
+	if old_dominant != EndingType.NONE:
 		var old_player = _get_ending_player(old_dominant)
 		if old_player:
 			tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration)
@@ -137,13 +144,13 @@ func update_ending_music(happy_score: float, sad_score: float, neutral_score: fl
 	if new_player:
 		tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration)
 
-func _get_ending_player(ending_type: String) -> AudioStreamPlayer:
+func _get_ending_player(ending_type: EndingType) -> AudioStreamPlayer:
 	match ending_type:
-		"happy":
+		EndingType.HAPPY:
 			return happy_ending_player
-		"sad":
+		EndingType.SAD:
 			return sad_ending_player
-		"neutral":
+		EndingType.NEUTRAL:
 			return neutral_ending_player
 		_:
 			return null

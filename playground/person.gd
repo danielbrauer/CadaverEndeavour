@@ -3,38 +3,40 @@
 extends Node
 class_name Person
 
-@export var key: String
-
-# Note: Loaded from CSV
-var baseline_points: float = 0.0
-
-var enum_map = { 
-	"Hunting": PointType.PointType.Hunting,
-	"BodyPart": PointType.PointType.BodyPart,
-	"Nature": PointType.PointType.Nature,
-	"Dog": PointType.PointType.Dog,
-	"Cat": PointType.PointType.Cat,
-	"Eyes": PointType.PointType.Eyes,
-	"Ears": PointType.PointType.Ears
+enum PersonType {
+	BABY,
+	WIFE,
+	SON
 }
 
-# Called when the node enters the scene tree for the first time.
+static var _enum_to_string: Dictionary = {
+	PersonType.BABY: "Baby",
+	PersonType.WIFE: "Wife",
+	PersonType.SON: "Son"
+}
+
+@export var person: PersonType = PersonType.BABY
+
+var baseline_points: float = 0.0
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	var csv = CSVReader.read_csv_to_dict("res://resources/people.csv")
-	if !csv.has(self.key):
-		print("Missing key ", self.key, " in CSV: ", csv)
+	var key = _enum_to_string[person]
+	if !csv.has(key):
+		print("Missing key ", key, " in CSV: ", csv)
 		return
-	var preferences = csv[self.key]
+	var preferences = csv[key]
 	
-	for key in enum_map.keys():
-		if !preferences.has(key):
-			print("Missing key ", key, " in CSV entry: ", preferences)
+	for csv_key in preferences:
+		if csv_key == "BASELINE":
+			continue
+		if !PointType.is_valid_key(csv_key):
 			continue
 		var node : Preference = preload("res://scenes/preference.tscn").instantiate()
-		node.preference_multiplier = preferences[key]
-		node.preference_type = enum_map[key]
+		node.preference_multiplier = preferences[csv_key]
+		node.preference_type = PointType.from_string(csv_key)
 		self.add_child(node)
 	if !preferences.has("BASELINE"):
 		print("Missing BASELINE: ", preferences)

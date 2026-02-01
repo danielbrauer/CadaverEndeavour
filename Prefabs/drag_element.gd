@@ -8,7 +8,7 @@ var min_stop_speed : float = 10
 
 # --- State Variables ---
 var beingDragged : bool = false
-var is_inside_dropable : bool = false
+var is_inside_dropable : bool = true
 var is_dying : bool = false 
 var grace_period : float = 0.75 
 
@@ -24,18 +24,11 @@ var death_tween : Tween
 var start_position: Vector2
 
 func _ready() -> void:
-	# 1. Capture the starting position
 	start_position = global_position
-	max_spawn_protection = spawn_protection # Remember the config value
+	max_spawn_protection = spawn_protection
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exit)
-	
-	# Wait for one physics frame so get_overlapping_bodies() is accurate
-	await get_tree().physics_frame
-	
-	# Check initial overlap
-	force_update_containment()
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():

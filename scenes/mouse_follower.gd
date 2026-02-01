@@ -13,15 +13,13 @@ var rotation_speed : float = 0.15
 var current_velocity : Vector2 = Vector2.ZERO
 
 func _on_begin_drag(otherObject : Node2D):
-	# 1. MATCH TRANSFORM FIRST
-	# Snap this controller to the object's exact spot and angle
 	global_transform = otherObject.global_transform
 	
-	# 2. THEN CONNECT
 	$RemoteTransform2D.remote_path = otherObject.get_path()
 	draggedRB = otherObject
 	
-	# 3. SAVE STATE & APPLY VISUALS
+	_stop_animations(draggedRB)
+	
 	original_z = draggedRB.z_index
 	original_scale = draggedRB.scale
 	
@@ -99,6 +97,8 @@ func check_below_mouse():
 func _on_release():
 	if not draggedRB: return
 
+	_stop_animations(draggedRB)
+
 	# --- RESET VISUALS ---
 	draggedRB.scale = original_scale
 	draggedRB.z_index = original_z
@@ -126,3 +126,10 @@ func _on_release():
 	draggedRB = null
 	DraggingManager.is_dragging = false
 	current_velocity = Vector2.ZERO
+
+func _stop_animations(node: Node) -> void:
+	var animation_players = node.find_children("*", "AnimationPlayer", true, false)
+	for anim_player in animation_players:
+		if anim_player is AnimationPlayer:
+			anim_player.stop()
+			anim_player.seek(0.0, true)
