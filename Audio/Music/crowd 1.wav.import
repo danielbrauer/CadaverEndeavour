@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t4slwb3b3w6e"
+path="res://.godot/imported/crowd 1.wav-b51a59fe3212ff5b302eb7bf5f67af60.sample"
+
+[deps]
+
+source_file="res://Audio/Music/crowd 1.wav"
+dest_files=["res://.godot/imported/crowd 1.wav-b51a59fe3212ff5b302eb7bf5f67af60.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

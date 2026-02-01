@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m75oj7vpjqs4"
+path="res://.godot/imported/happy baby.wav-28bf5316d2557fa9b8d86b43cb826d01.sample"
+
+[deps]
+
+source_file="res://Audio/Music/happy baby.wav"
+dest_files=["res://.godot/imported/happy baby.wav-28bf5316d2557fa9b8d86b43cb826d01.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
