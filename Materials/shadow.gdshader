@@ -10,6 +10,6 @@ void fragment() {
     shadow.rgb = shadow_color.rgb;
     shadow.a *= shadow_color.a;
     
-    vec4 original = texture(TEXTURE, UV);
-    COLOR = mix(shadow, original, original.a) * modulate;
+    vec4 original = texture(TEXTURE, UV) * modulate;
+    COLOR = mix(shadow, original, original.a);
 }
