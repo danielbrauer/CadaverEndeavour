@@ -1,0 +1,33 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://vu711e7fonya"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_g28q7"]
+resource_name = "Compressor"
+threshold = -14.2
+ratio = 10.0
+gain = 0.5
+attack_us = 68.0
+sidechain = &"Voice Bus"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j3pel"]
+resource_name = "Distortion"
+mode = 4
+pre_gain = -3.0
+post_gain = 3.0
+
+[resource]
+bus/1/name = &"Music Bus"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectCompressor_g28q7")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Voice Bus"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectDistortion_j3pel")
+bus/2/effect/0/enabled = false
