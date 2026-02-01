@@ -42,6 +42,7 @@ enum EndingType {
 @onready var coffin_player: AudioStreamPlayer = $CoffinPlayer
 
 var current_dominant_ending: EndingType = EndingType.NONE
+var main_timer : SceneTreeTimer
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -68,7 +69,12 @@ func _ready() -> void:
 	if son_sad_player and son_sad_sfx:
 		son_sad_player.stream = son_sad_sfx
 	
-	main_music_player.finished.connect(_on_main_track_finished)	
+	# main_music_player.finished.connect(_on_main_track_finished)
+	if self.main_timer:
+		self.main_timer.free()
+		self.main_timer = null
+	self.main_timer = get_tree().create_timer(112)
+	self.main_timer.timeout.connect(_on_main_track_finished)
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
 	
 	if AppStateManager.currentState == AppStateManager.States.MENU:
@@ -85,7 +91,7 @@ func _on_game_state_changed() -> void:
 		AppStateManager.States.GAME:
 			pass
 		AppStateManager.States.GAMEOVER:
-			_stop_game_audio()
+			pass
 		AppStateManager.States.ENDSCREEN:
 			_stop_game_audio()
 			_start_ending_music()
@@ -166,6 +172,10 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F and event.ctrl_pressed:
 		main_music_player.stop()
+		if self.main_timer:
+			self.main_timer.free()
+			self.main_timer = null
+		_stop_game_audio()
 		OnMainAudioFinished.emit()
 
 func _on_main_track_finished() -> void:
