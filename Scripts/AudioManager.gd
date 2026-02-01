@@ -71,7 +71,7 @@ func _ready() -> void:
 	
 	# main_music_player.finished.connect(_on_main_track_finished)
 	if self.main_timer:
-		self.main_timer.free()
+		self.main_timer.timeout.disconnect(_on_main_track_finished)
 		self.main_timer = null
 	self.main_timer = get_tree().create_timer(112)
 	self.main_timer.timeout.connect(_on_main_track_finished)
@@ -173,7 +173,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F and event.ctrl_pressed:
 		main_music_player.stop()
 		if self.main_timer:
-			self.main_timer.free()
+			self.main_timer.timeout.disconnect(_on_main_track_finished)
 			self.main_timer = null
 		_stop_game_audio()
 		OnMainAudioFinished.emit()
