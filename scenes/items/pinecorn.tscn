@@ -8,14 +8,15 @@
 radius = 143.0
 height = 340.0
 
-[node name="Antlers" type="Node2D" unique_id=1552097]
-scale = Vector2(0.1, 0.1)
+[node name="Pinecorn" type="Node2D" unique_id=1552097]
 
 [node name="DragElement" parent="." unique_id=1129824742 instance=ExtResource("1_kxgud")]
+scale = Vector2(0.25, 0.25)
 types = Array[int]([2])
 
 [node name="ItemPoints" parent="DragElement" unique_id=915242198 instance=ExtResource("3_hl75e")]
 position = Vector2(-1, 0)
+item_name = 1
 key = "Pinecorn"
 
 [node name="ObjectNaturePinecone" type="Sprite2D" parent="DragElement" unique_id=862498963]

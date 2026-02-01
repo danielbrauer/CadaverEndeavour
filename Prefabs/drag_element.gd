@@ -25,10 +25,12 @@ var death_tween : Tween
 
 # --- New: Store Start Position ---
 var start_position: Vector2
+var start_scale: Vector2
 
 func _ready() -> void:
-	start_position = global_position
-	max_spawn_protection = spawn_protection
+	self.start_position = global_position
+	self.start_scale = self.scale
+	self.max_spawn_protection = spawn_protection
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exit)
@@ -74,7 +76,7 @@ func darkenAndShrink() -> void:
 	
 	# Animate to dark grey and half scale
 	death_tween.tween_property(self, "modulate", Color(0.1, 0.1, 0.1, 1.0), grace_period)
-	death_tween.tween_property(self, "scale", Vector2(0.5, 0.5), grace_period)
+	death_tween.tween_property(self, "scale", self.scale * 0.5, grace_period)
 	
 	death_tween.finished.connect(_perform_disable)
 
@@ -86,7 +88,7 @@ func revive_object() -> void:
 	
 	# Snap visual properties back to normal
 	modulate = Color(1, 1, 1, 1)
-	scale = Vector2(1, 1)
+	scale = self.start_scale
 	
 	# Reset interaction states
 	input_pickable = true
@@ -113,7 +115,7 @@ func _respawn_at_start() -> void:
 	
 	# 5. Reset Visuals
 	modulate = Color(1, 1, 1, 1)
-	scale = Vector2(1, 1)
+	scale = self.start_scale
 	
 	# 6. Reset State Flags
 	is_dying = false

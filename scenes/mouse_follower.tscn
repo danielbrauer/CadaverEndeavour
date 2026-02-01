@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://85p0cinoa4ay"]
 
-[ext_resource type="Script" path="res://scenes/mouse_follower.gd" id="1_tpeuq"]
+[ext_resource type="Script" uid="uid://ceyvbch6rj1nr" path="res://scenes/mouse_follower.gd" id="1_tpeuq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tpeuq"]
 radius = 25.0
@@ -14,3 +14,4 @@ script = ExtResource("1_tpeuq")
 shape = SubResource("CircleShape2D_tpeuq")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1069490388]
+update_scale = false

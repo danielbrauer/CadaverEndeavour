@@ -7,14 +7,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctvo4"]
 radius = 130.0
 
-[node name="Antlers" type="Node2D" unique_id=1673550227]
-scale = Vector2(0.1, 0.1)
+[node name="Eyes" type="Node2D" unique_id=1673550227]
 
 [node name="DragElement" parent="." unique_id=102585376 instance=ExtResource("1_xay2i")]
+scale = Vector2(0.32, 0.32)
 types = Array[int]([5, 1])
 
 [node name="ItemPoints" parent="DragElement" unique_id=580697366 instance=ExtResource("2_ctvo4")]
 position = Vector2(-1, 0)
+item_name = 2
 
 [node name="ObjectBodypartsEyeballFront" type="Sprite2D" parent="DragElement" unique_id=909096272]
 position = Vector2(-3, 0)

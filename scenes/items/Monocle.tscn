@@ -10,10 +10,10 @@ radius = 128.14055
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3skw"]
 size = Vector2(72, 336.5)
 
-[node name="Antlers" type="Node2D" unique_id=1879850579]
-scale = Vector2(0.1, 0.1)
+[node name="Monocle" type="Node2D" unique_id=1879850579]
 
 [node name="DragElement" parent="." unique_id=873044551 instance=ExtResource("1_k3skw")]
+scale = Vector2(0.4, 0.4)
 types = Array[int]([5])
 
 [node name="ObjectAccessoriesMonocleRight" type="Sprite2D" parent="DragElement" unique_id=2141027096]
@@ -22,6 +22,7 @@ texture = ExtResource("2_k3skw")
 
 [node name="ItemPoints" parent="DragElement" unique_id=952153377 instance=ExtResource("3_r1mws")]
 position = Vector2(-1, 0)
+item_name = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=121997073]
 position = Vector2(0, 1)

@@ -6,25 +6,30 @@ var draggedRB : Node2D
 # Visual Settings
 var original_z : int = 0
 var original_scale : Vector2 = Vector2.ONE
-var lift_scale : Vector2 = Vector2(1.1, 1.1)
+var lift_scale_factor : float = 1.1
 var rotation_speed : float = 0.15
 
 # Physics
 var current_velocity : Vector2 = Vector2.ZERO
 
 func _on_begin_drag(otherObject : Node2D):
-	global_transform = otherObject.global_transform
+	var local_offset = otherObject.global_position - self.global_position
+	#self.global_transform = otherObject.global_transform
 	
+	# Local Offset to avoid snapping the dragged object to the root.
+	$RemoteTransform2D.position = local_offset
+	$RemoteTransform2D.rotation = otherObject.rotation
 	$RemoteTransform2D.remote_path = otherObject.get_path()
 	draggedRB = otherObject
+
 	
 	_stop_animations(draggedRB)
 	
-	original_z = draggedRB.z_index
-	original_scale = draggedRB.scale
+	self.original_z = draggedRB.z_index
+	self.original_scale = draggedRB.scale
 	
-	draggedRB.z_index = 100
-	draggedRB.scale = lift_scale
+	self.draggedRB.z_index = 100
+	draggedRB.scale *= self.lift_scale_factor
 	
 	if "velocity" in draggedRB:
 		draggedRB.velocity = Vector2.ZERO
@@ -40,9 +45,9 @@ func _input(event: InputEvent) -> void:
 	if draggedRB and DraggingManager.is_dragging:
 		if event is InputEventMouseButton and event.pressed:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				rotation += rotation_speed
+				$RemoteTransform2D.rotation += rotation_speed
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				rotation -= rotation_speed
+				$RemoteTransform2D.rotation -= rotation_speed
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -65,11 +70,11 @@ func _process(delta: float) -> void:
 			_on_release()
 
 func check_below_mouse():
+	self.global_position = get_global_mouse_position()
 	var space_state = get_world_2d().direct_space_state
-	var mouse_pos = get_global_mouse_position()
 	
 	var query = PhysicsPointQueryParameters2D.new()
-	query.position = mouse_pos
+	query.position = self.global_position
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
 	
@@ -109,8 +114,8 @@ func _on_release():
 	if parent:
 		parent.move_child(draggedRB, -1)
 
-	# Apply final transform
-	draggedRB.global_transform = $RemoteTransform2D.global_transform
+	# Apply final position
+	draggedRB.global_position = $RemoteTransform2D.global_position
 	
 	if draggedRB.has_method("force_update_containment"):
 		draggedRB.force_update_containment()
