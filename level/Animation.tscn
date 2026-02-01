@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c36svjna68hkv"]
 
-[ext_resource type="Material" path="res://Materials/shadow.tres" id="1_5njmj"]
-[ext_resource type="Texture2D" path="res://images/Characters/cadaver.png" id="1_spol3"]
-[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="2_474y1"]
-[ext_resource type="Texture2D" path="res://images/Environment/environment_morgue.png" id="2_g4w0v"]
-[ext_resource type="Texture2D" path="res://images/Environment/environment_table.png" id="3_41twx"]
-[ext_resource type="Texture2D" path="res://images/objects/obect_bodypart_teeth_yellow.png" id="5_g45jy"]
-[ext_resource type="Texture2D" path="res://images/objects/object_accessories_bow_red.png" id="6_fwud4"]
+[ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="1_5njmj"]
+[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="1_spol3"]
+[ext_resource type="AudioStream" uid="uid://nuslbp0tv4pt" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="2_474y1"]
+[ext_resource type="Texture2D" uid="uid://dki7bik43e7d3" path="res://images/Environment/environment_morgue.png" id="2_g4w0v"]
+[ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="3_41twx"]
+[ext_resource type="Texture2D" uid="uid://nlct37h66la5" path="res://images/objects/obect_bodypart_teeth_yellow.png" id="5_g45jy"]
+[ext_resource type="Texture2D" uid="uid://ct87wna4pqe8b" path="res://images/objects/object_accessories_bow_red.png" id="6_fwud4"]
 
 [sub_resource type="Animation" id="Animation_fa068"]
 length = 0.001
@@ -81,7 +81,7 @@ _data = {
 &"gameplay_cutscene": SubResource("Animation_7dwaf")
 }
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=286354477]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=875672336]
 libraries/ = SubResource("AnimationLibrary_j2tkq")
@@ -134,3 +134,4 @@ polygon = PackedVector2Array(-308.2755, -342.04346, -121.65662, -325.50757, -46.
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1708058806]
 stream = ExtResource("2_474y1")
+volume_db = -80.0
