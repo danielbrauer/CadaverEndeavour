@@ -10,6 +10,7 @@ func _ready() -> void:
 	if valid_states.is_empty():
 		valid_states = [AppStateManager.States.ENDSCREEN]
 	super._ready()
+	AudioManager.fade_to_neutral()
 
 func _on_game_state_changed() -> void:
 	super._on_game_state_changed()
@@ -62,15 +63,12 @@ func next_person():
 	
 	var happy_score = 0.0
 	var sad_score = 0.0
-	var neutral_score = 0.0
 	
 	if score > 1.0:
 		happy_score = 1.0
-	elif score < 0:
-		sad_score = 1.0
 	else:
-		neutral_score = 1.0
+		sad_score = 1.0
 	
 	label_node.text = person_name + ": " + str(score)
-	AudioManager.update_ending_music(happy_score, sad_score, neutral_score, persons[current_person].person)
+	AudioManager.update_ending_music(happy_score, sad_score, 0, persons[current_person].person)
 	current_person += 1
