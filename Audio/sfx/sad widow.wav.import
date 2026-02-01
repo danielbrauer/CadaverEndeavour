@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckqtbw15146on"
+path="res://.godot/imported/sad widow.wav-7443936e390d5f28f8e8baeb2675a810.sample"
+
+[deps]
+
+source_file="res://Audio/sfx/sad widow.wav"
+dest_files=["res://.godot/imported/sad widow.wav-7443936e390d5f28f8e8baeb2675a810.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -34,7 +34,6 @@ func _ready() -> void:
 	else:
 		item_key = _enum_to_string[item_name]
 	if !csv.has(item_key):
-		print("Missing key ", item_key, " in CSV: ", csv)
 		return
 	var csv_points = csv[item_key]
 	

@@ -60,32 +60,60 @@ func _ready() -> void:
 	
 	ending_player_1.stream = happy_ending
 	ending_player_2.stream = sad_ending
-	
-	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
+
+func transition_to_menu() -> void:
+	if not is_node_ready():
+		await ready
+	if loop_player == null:
+		return
+	if title_music == null:
+		return
 	_play_title_music()
 
+func transition_to_intro() -> void:
+	if not is_node_ready():
+		await ready
+	
+	if main_audio_player == null:
+		return
+	
+	_play_game_audio()
 
-func _on_game_state_changed() -> void:
-	match AppStateManager.currentState:
-		AppStateManager.States.MENU:
-			_play_title_music()
-		AppStateManager.States.INTRO:
-			_play_game_audio()
-		AppStateManager.States.GAME:
-			pass
-		AppStateManager.States.GAMEOVER:
-			pass
-		AppStateManager.States.ENDSCREEN:
-			_stop_game_audio()
-			_start_ending_music()
+func transition_to_game() -> void:
+	pass
+
+func transition_to_gameover() -> void:
+	pass
+
+func transition_to_endscreen() -> void:
+	if not is_node_ready():
+		await ready
+	_stop_game_audio()
+	_start_ending_music()
 
 func _play_title_music() -> void:
+	if loop_player == null:
+		return
+	if title_music == null:
+		return
+	
 	_stop_all_audio()
+	
+	if loop_player.finished.is_connected(_on_title_music_finished):
+		loop_player.finished.disconnect(_on_title_music_finished)
+	
 	loop_player.stream = title_music
 	loop_player.volume_db = 0.0
-	if title_music is AudioStreamWAV:
-		title_music.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	loop_player.finished.connect(_on_title_music_finished)
 	loop_player.play()
+	
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+func _on_title_music_finished() -> void:
+	if AppStateManager.currentState == AppStateManager.States.MENU:
+		if loop_player.stream == title_music:
+			loop_player.play()
 
 func _play_game_audio() -> void:
 	_stop_all_audio()
@@ -111,9 +139,15 @@ func _start_ending_music() -> void:
 	current_dominant_ending = EndingType.NONE
 	ending_player_1.stop()
 	ending_player_1.volume_db = -80.0
+	if ending_player_1.finished.is_connected(_on_ending_player_1_finished):
+		ending_player_1.finished.disconnect(_on_ending_player_1_finished)
+	ending_player_1.finished.connect(_on_ending_player_1_finished)
 	ending_player_1.play()
 	ending_player_2.stop()
 	ending_player_2.volume_db = -80.0
+	if ending_player_2.finished.is_connected(_on_ending_player_2_finished):
+		ending_player_2.finished.disconnect(_on_ending_player_2_finished)
+	ending_player_2.finished.connect(_on_ending_player_2_finished)
 	ending_player_2.play()
 
 func _input(event: InputEvent) -> void:
@@ -145,9 +179,22 @@ func _process(_delta: float) -> void:
 func _on_main_track_finished() -> void:
 	OnMainAudioFinished.emit()
 
-func update_ending_music(happy_score: float, sad_score: float, neutral_score: float, person_type: Person.PersonType = Person.PersonType.BABY) -> void:
+func _on_ending_player_1_finished() -> void:
+	if ending_player_1.stream == happy_ending:
+		ending_player_1.play()
+
+func _on_ending_player_2_finished() -> void:
+	if ending_player_2.stream == sad_ending:
+		ending_player_2.play()
+
+func update_ending_music(happy_score: float, sad_score: float, neutral_score: float, person_type: Person.PersonType = Person.PersonType.BABY, custom_crossfade_duration: float = -1.0) -> void:
 	var new_dominant = _calculate_dominant_ending(happy_score, sad_score, neutral_score)
+	var old_crossfade = crossfade_duration
+	if custom_crossfade_duration > 0.0:
+		crossfade_duration = custom_crossfade_duration
 	_crossfade_to_ending(new_dominant)
+	if custom_crossfade_duration > 0.0:
+		crossfade_duration = old_crossfade
 	_play_character_sfx(person_type, new_dominant)
 
 func fade_to_neutral() -> void:
@@ -206,8 +253,16 @@ func _play_character_sfx(person_type: Person.PersonType, ending_type: EndingType
 	var sfx_stream = _get_character_sfx_stream(person_type, ending_type)
 	assert(sfx_stream != null, "SFX stream must be set for person_type and ending_type")
 	await get_tree().create_timer(crossfade_duration).timeout
+	if sfx_player.finished.is_connected(_on_sfx_finished):
+		sfx_player.finished.disconnect(_on_sfx_finished)
 	sfx_player.stream = sfx_stream
+	if sfx_stream is AudioStream:
+		if sfx_stream.has_method("set_loop"):
+			sfx_stream.set_loop(false)
 	sfx_player.play()
+
+func _on_sfx_finished() -> void:
+	pass
 
 func _get_character_sfx_stream(person_type: Person.PersonType, ending_type: EndingType) -> AudioStream:
 	match person_type:

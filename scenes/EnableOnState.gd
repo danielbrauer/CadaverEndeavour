@@ -4,7 +4,6 @@ extends CanvasItem
 @export var valid_states : Array[AppStateManager.States]
 
 func _ready() -> void:
-	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
 	
 	# Initialize state immediately
 	_on_game_state_changed()

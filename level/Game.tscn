@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://ljlqsbbsnp6s" path="res://scenes/items/CatEarR.tscn" id="11_d2pce"]
 [ext_resource type="Texture2D" uid="uid://dki7bik43e7d3" path="res://images/Environment/environment_morgue.png" id="11_y34tt"]
 [ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="12_ff4d2"]
-[ext_resource type="AudioStream" uid="uid://nuslbp0tv4pt" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="15_1ymms"]
 [ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="15_c5vso"]
 [ext_resource type="Script" uid="uid://ci830o60xoidd" path="res://scenes/cameraMover.gd" id="16_6ynke"]
 [ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="16_ruqv7"]
@@ -41,34 +40,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Music:playing")
+tracks/0/path = NodePath("Camera2D:zoom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/path = NodePath("..:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -333,10 +320,6 @@ max_lean_distance = 150.0
 smoothing = 3.0
 
 [node name="SubtitlePlayer" parent="Node2D/Animation/Camera2D/Node2D" unique_id=123456789 instance=ExtResource("22_2pa0e")]
-
-[node name="Music" type="AudioStreamPlayer2D" parent="Node2D/Animation" unique_id=1708058806]
-stream = ExtResource("15_1ymms")
-volume_db = -80.0
 
 [editable path="Node2D/Tables2/Eye2"]
 [editable path="Node2D/Tables2/Button"]

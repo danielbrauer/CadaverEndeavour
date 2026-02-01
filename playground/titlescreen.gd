@@ -1,9 +1,12 @@
 extends Control
 
 func on_finished() -> void:
-	AppStateManager.currentState = AppStateManager.States.INTRO
+	AppStateManager.request_state_change(AppStateManager.States.INTRO)
 
 func _on_button_pressed() -> void:
+	if not $AudioStreamPlayer.finished.is_connected(on_finished):
+		$AudioStreamPlayer.finished.connect(on_finished)
+	
 	$AudioStreamPlayer.play()
 
 	var shake_duration = 0.05
@@ -18,5 +21,3 @@ func _on_button_pressed() -> void:
 		
 		if (i + 1 == shake_amount):
 			tween.tween_property($Telephone, "rotation", 0, shake_duration)
-
-	$AudioStreamPlayer.finished.connect(on_finished)

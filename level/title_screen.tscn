@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cjp4br8504goq" path="res://playground/titlescreen.tscn" id="2_t746g"]
 
 [node name="Control" type="Control" unique_id=1961954017]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -960.0

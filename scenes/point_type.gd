@@ -25,7 +25,6 @@ static var _string_to_enum: Dictionary = {
 static func from_string(key: String) -> Type:
 	if _string_to_enum.has(key):
 		return _string_to_enum[key]
-	push_error("Unknown PointType string: " + key)
 	return Type.Hunting
 
 static func is_valid_key(key: String) -> bool:

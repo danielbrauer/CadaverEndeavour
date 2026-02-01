@@ -20,8 +20,7 @@ func _ready() -> void:
 	if parent is Camera2D:
 		camera = parent
 	else:
-		push_error("This script must be a CHILD of a Camera2D node!")
-		set_process(false) # Stop the script if setup is wrong
+		set_process(false)
 
 func _process(delta: float) -> void:
 	if not camera: return

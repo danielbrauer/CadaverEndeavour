@@ -28,7 +28,6 @@ func _ready() -> void:
 	var csv = CSVReader.read_csv_to_dict("res://resources/people.csv")
 	var key = _enum_to_string[person]
 	if !csv.has(key):
-		print("Missing key ", key, " in CSV: ", csv)
 		return
 	var preferences = csv[key]
 	
@@ -42,7 +41,7 @@ func _ready() -> void:
 		node.preference_type = PointType.from_string(csv_key)
 		self.add_child(node)
 	if !preferences.has("BASELINE"):
-		print("Missing BASELINE: ", preferences)
+		return
 	self.baseline_points = preferences["BASELINE"]
 
 

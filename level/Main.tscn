@@ -8,6 +8,7 @@
 [node name="Main" type="Node2D" unique_id=148638150]
 
 [node name="TitleScreen" parent="." unique_id=1979097789 instance=ExtResource("1_j2tkq")]
+visible = false
 
 [node name="Main Game" parent="." unique_id=409406437 instance=ExtResource("5_amgv6")]
 visible = false

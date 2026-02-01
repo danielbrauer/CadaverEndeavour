@@ -12,10 +12,8 @@ var camera: Camera2D
 
 func _ready() -> void:
 	if not audio_player:
-		push_error("AudioStreamPlayer node not found")
 		return
 	if not subtitle_label:
-		push_error("SubtitleLabel node not found")
 		return
 		
 	var new_sb = StyleBoxFlat.new()
@@ -53,7 +51,6 @@ func _ready() -> void:
 func load_transcription(json_path: String) -> bool:
 	var file = FileAccess.open(json_path, FileAccess.READ)
 	if file == null:
-		push_error("Failed to open transcription file: " + json_path)
 		return false
 	
 	var json_string = file.get_as_text()
@@ -62,12 +59,10 @@ func load_transcription(json_path: String) -> bool:
 	var json = JSON.new()
 	var parse_result = json.parse(json_string)
 	if parse_result != OK:
-		push_error("Failed to parse JSON: " + json.get_error_message())
 		return false
 	
 	var data = json.get_data()
 	if not data.has("segments"):
-		push_error("JSON does not contain 'segments' key")
 		return false
 	
 	segments = data["segments"]
@@ -78,7 +73,6 @@ func load_audio(file_path: String) -> bool:
 	audio_file_path = file_path
 	var audio_stream = load(file_path)
 	if audio_stream == null:
-		push_error("Failed to load audio file: " + file_path)
 		return false
 	
 	audio_player.stream = audio_stream
@@ -86,7 +80,6 @@ func load_audio(file_path: String) -> bool:
 
 func play_audio() -> void:
 	if audio_player.stream == null:
-		push_error("No audio stream loaded")
 		return
 	
 	current_segment_index = -1

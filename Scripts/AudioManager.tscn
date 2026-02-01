@@ -1,24 +1,24 @@
-[gd_scene format=4 uid="uid://br7pamso3ru80"]
+[gd_scene format=3 uid="uid://br7pamso3ru80"]
 
 [ext_resource type="Script" uid="uid://bjj0dhlwo6oog" path="res://Scripts/AudioManager.gd" id="1_audiomanager"]
-[ext_resource type="AudioStream" uid="uid://f8qnt6s0ba5i" path="res://Audio/Music/Cadaver CUE01v.1 Just VERY Humble.wav" id="2_awy4y"]
-[ext_resource type="AudioStream" uid="uid://bqv8oi5sw8svc" path="res://Audio/Music/Cadaver CUE03v.4 Jesus.wav" id="5_j56hb"]
-[ext_resource type="AudioStream" uid="uid://b2tq2uyu85dls" path="res://Audio/Music/Cadaver CUE03v.4 Sad.wav" id="6_iu73r"]
-[ext_resource type="AudioStream" uid="uid://m75oj7vpjqs4" path="res://Audio/Music/happy baby.wav" id="6_myfy0"]
-[ext_resource type="AudioStream" uid="uid://dxpqml7mfbwrx" path="res://Audio/Music/sad baby.wav" id="7_tjm4s"]
-[ext_resource type="AudioStream" uid="uid://b4bs3b31m8mog" path="res://Audio/Music/happy widow.wav" id="8_leexf"]
-[ext_resource type="AudioStream" uid="uid://ckqtbw15146on" path="res://Audio/Music/sad widow.wav" id="9_rr7xa"]
-[ext_resource type="AudioStream" uid="uid://i7najevu12t6" path="res://Audio/Music/happy son.wav" id="10_r2fvf"]
-[ext_resource type="AudioStream" uid="uid://c272m8v5fs5ow" path="res://Audio/Music/sad son.wav" id="11_8wi6g"]
+[ext_resource type="AudioStream" uid="uid://5oquvbvdniap" path="res://Audio/Music/full mix final main scene.wav" id="2_4qroj"]
+[ext_resource type="AudioStream" uid="uid://d05jsby4y24ab" path="res://Audio/Music/title_music.wav" id="2_myfy0"]
+[ext_resource type="AudioStream" uid="uid://bqv8oi5sw8svc" path="res://Audio/Music/HappyReactionMusic.wav" id="5_j56hb"]
+[ext_resource type="AudioStream" uid="uid://b2tq2uyu85dls" path="res://Audio/Music/SadReactionMusic.wav" id="6_iu73r"]
+[ext_resource type="AudioStream" uid="uid://m75oj7vpjqs4" path="res://Audio/sfx/happy baby.wav" id="6_myfy0"]
+[ext_resource type="AudioStream" uid="uid://dxpqml7mfbwrx" path="res://Audio/sfx/sad baby.wav" id="7_tjm4s"]
+[ext_resource type="AudioStream" uid="uid://b4bs3b31m8mog" path="res://Audio/sfx/happy widow.wav" id="8_leexf"]
+[ext_resource type="AudioStream" uid="uid://ckqtbw15146on" path="res://Audio/sfx/sad widow.wav" id="9_rr7xa"]
+[ext_resource type="AudioStream" uid="uid://i7najevu12t6" path="res://Audio/sfx/happy son.wav" id="10_r2fvf"]
+[ext_resource type="AudioStream" uid="uid://c272m8v5fs5ow" path="res://Audio/sfx/sad son.wav" id="11_8wi6g"]
 [ext_resource type="AudioStream" uid="uid://cwph78jwnw4m4" path="res://Audio/sfx/up.mp3" id="13_myfy0"]
 [ext_resource type="AudioStream" uid="uid://ljg175ahybpg" path="res://Audio/sfx/down.mp3" id="14_tjm4s"]
 [ext_resource type="AudioStream" uid="uid://bqq8242iht24b" path="res://Audio/sfx/coffin_open.mp3" id="15_tjm4s"]
-[ext_resource type="AudioStreamWAV" path="res://resources/main_combined_track.tres" id="16_main_combined"]
 
 [node name="AudioManager" type="Node" unique_id=1856396134]
 script = ExtResource("1_audiomanager")
-title_music = ExtResource("2_awy4y")
-main_combined_track = ExtResource("16_main_combined")
+title_music = ExtResource("2_myfy0")
+main_combined_track = ExtResource("2_4qroj")
 happy_ending = ExtResource("5_j56hb")
 sad_ending = ExtResource("6_iu73r")
 baby_happy_sfx = ExtResource("6_myfy0")
@@ -32,7 +32,7 @@ drop_sfx = ExtResource("14_tjm4s")
 coffin_sfx = ExtResource("15_tjm4s")
 
 [node name="LoopPlayer" type="AudioStreamPlayer" parent="." unique_id=1258895274]
-volume_db = -80.0
+bus = &"Music Bus"
 
 [node name="MainAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1538170933]
 bus = &"Music Bus"
