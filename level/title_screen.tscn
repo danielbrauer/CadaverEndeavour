@@ -17,3 +17,6 @@ valid_states = Array[int]([0])
 
 [node name="Title" parent="." unique_id=762828820 instance=ExtResource("2_t746g")]
 layout_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=620224343]
+position = Vector2(960, 540)

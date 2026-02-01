@@ -18,3 +18,4 @@ func _on_game_state_changed():
 	var deadguy = dead_guys[0]
 	deadguy.reparent(self)
 	deadguy.position = Vector2.ZERO
+	deadguy.scale = Vector2.ONE

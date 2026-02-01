@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://5u13bcwocuwt" path="res://scenes/items/Button.tscn" id="5_rbnyl"]
 [ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
 [ext_resource type="PackedScene" uid="uid://cv4angv3bd3pf" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
-[ext_resource type="Script" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
+[ext_resource type="Script" uid="uid://boip1q0v6l1p3" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
 [ext_resource type="PackedScene" uid="uid://nt6fb0ri1aay" path="res://scenes/items/Eyes.tscn" id="7_nl4cy"]
 [ext_resource type="PackedScene" uid="uid://dm8vk5s27lv13" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
 [ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="9_2pa0e"]

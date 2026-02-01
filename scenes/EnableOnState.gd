@@ -18,3 +18,6 @@ func _on_game_state_changed() -> void:
 	else:
 		process_mode = PROCESS_MODE_DISABLED
 		hide()
+	for cam in self.find_children("*", "Camera2D"):
+		var camera : Camera2D = cam
+		camera.enabled = is_valid
