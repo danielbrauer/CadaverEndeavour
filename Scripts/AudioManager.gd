@@ -151,11 +151,11 @@ func update_ending_music(happy_score: float, sad_score: float, neutral_score: fl
 	if old_dominant != EndingType.NONE:
 		var old_player = _get_ending_player(old_dominant)
 		if old_player:
-			tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration)
+			tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration).set_ease(Tween.EaseType.EASE_IN )
 	
 	var new_player = _get_ending_player(new_dominant)
 	if new_player:
-		tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration)
+		tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration).set_ease(Tween.EaseType.EASE_OUT)
 
 func _get_ending_player(ending_type: EndingType) -> AudioStreamPlayer:
 	match ending_type:

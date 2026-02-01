@@ -25,7 +25,7 @@ func _get_persons_in_order() -> Array[Person]:
 		if child is Person:
 			persons_by_type[child.person] = child
 	
-	var order = [Person.PersonType.BABY, Person.PersonType.WIFE, Person.PersonType.SON]
+	var order = [Person.PersonType.WIFE, Person.PersonType.SON, Person.PersonType.BABY]
 	var result: Array[Person] = []
 	for person_type in order:
 		if persons_by_type.has(person_type):
