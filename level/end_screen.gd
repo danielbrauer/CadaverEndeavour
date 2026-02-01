@@ -18,9 +18,7 @@ func _on_game_state_changed() -> void:
 		_sequence_family_scores()
 
 func _get_persons_in_order() -> Array[Person]:
-	var family = get_parent().get_node_or_null("Family") if get_parent() else null
-	if not family:
-		return []
+	var family = $Family
 	
 	var persons_by_type: Dictionary = {}
 	for child in family.get_children():

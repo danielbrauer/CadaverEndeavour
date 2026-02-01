@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cncwld5xl53mo" path="res://level/end_screen.gd" id="1_jxwei"]
 [ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_jxwei"]
-[ext_resource type="Script" uid="uid://b66a0b310xmv2" path="res://scenes/OnClickRestart.gd" id="3_vjk32"]
+[ext_resource type="PackedScene" uid="uid://c5qcm0mbgk2lu" path="res://level/Family.tscn" id="2_vjk32"]
+[ext_resource type="Script" path="res://scenes/OnClickRestart.gd" id="3_vjk32"]
 [ext_resource type="Script" uid="uid://cg7q8724wmvxp" path="res://level/dead_guy_container.gd" id="4_jxwei"]
 
 [node name="EndScreen" type="Node2D" unique_id=1179016300]
 script = ExtResource("1_jxwei")
 theLabel = NodePath("Label")
 valid_states = Array[int]([4])
+
+[node name="Family" parent="." unique_id=469513113 instance=ExtResource("2_vjk32")]
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="." unique_id=1969728732]
 visible = false
