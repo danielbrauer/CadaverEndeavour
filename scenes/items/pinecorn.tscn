@@ -12,6 +12,7 @@ height = 340.0
 scale = Vector2(0.1, 0.1)
 
 [node name="DragElement" parent="." unique_id=1129824742 instance=ExtResource("1_kxgud")]
+types = Array[int]([2])
 
 [node name="ItemPoints" parent="DragElement" unique_id=915242198 instance=ExtResource("3_hl75e")]
 position = Vector2(-1, 0)

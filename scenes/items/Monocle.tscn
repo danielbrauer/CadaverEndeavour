@@ -14,6 +14,7 @@ size = Vector2(72, 336.5)
 scale = Vector2(0.1, 0.1)
 
 [node name="DragElement" parent="." unique_id=873044551 instance=ExtResource("1_k3skw")]
+types = Array[int]([5])
 
 [node name="ObjectAccessoriesMonocleRight" type="Sprite2D" parent="DragElement" unique_id=2141027096]
 position = Vector2(27, 131)
@@ -21,7 +22,6 @@ texture = ExtResource("2_k3skw")
 
 [node name="ItemPoints" parent="DragElement" unique_id=952153377 instance=ExtResource("3_r1mws")]
 position = Vector2(-1, 0)
-key = "Monocle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=121997073]
 position = Vector2(0, 1)

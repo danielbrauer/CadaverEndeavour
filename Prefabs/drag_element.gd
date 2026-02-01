@@ -1,6 +1,9 @@
 extends Area2D
 class_name InteractiveObject
 
+@export var types: Array[PointType.Type] = []
+@export var amounts: Array[float] = []
+
 # --- New Physics Variables ---
 var velocity : Vector2 = Vector2.ZERO
 var friction : float = 20

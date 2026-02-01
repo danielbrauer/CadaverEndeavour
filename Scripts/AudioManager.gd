@@ -18,6 +18,7 @@ enum EndingType {
 @export var crossfade_duration: float = 2.0
 
 @onready var main_music_player: AudioStreamPlayer = $MainMusicPlayer
+@onready var title_music_player: AudioStreamPlayer = $TitleMusicPlayer
 @onready var phone_call_player: AudioStreamPlayer = $PhoneCallPlayer
 @onready var happy_ending_player: AudioStreamPlayer = $HappyEndingPlayer
 @onready var sad_ending_player: AudioStreamPlayer = $SadEndingPlayer
@@ -32,6 +33,7 @@ func _ready() -> void:
 	if not happy_ending_player or not sad_ending_player or not neutral_ending_player:
 		return
 	
+	title_music_player.stream = title_music
 	happy_ending_player.stream = happy_ending
 	sad_ending_player.stream = sad_ending
 	neutral_ending_player.stream = neutral_ending
@@ -55,9 +57,17 @@ func _on_game_state_changed() -> void:
 
 func _play_title_music() -> void:
 	_stop_all_audio()
-	if title_music and main_music_player:
-		main_music_player.stream = title_music
-		main_music_player.play()
+	if title_music and title_music_player:
+		if title_music_player.finished.is_connected(_on_title_music_finished):
+			title_music_player.finished.disconnect(_on_title_music_finished)
+		title_music_player.stream = title_music
+		title_music_player.volume_db = 0.0
+		title_music_player.finished.connect(_on_title_music_finished)
+		title_music_player.play()
+
+func _on_title_music_finished() -> void:
+	if title_music_player and AppStateManager.currentState in [AppStateManager.States.MENU, AppStateManager.States.INTRO]:
+		title_music_player.play()
 
 func _play_game_audio() -> void:
 	_stop_all_audio()
@@ -74,6 +84,13 @@ func _stop_game_audio() -> void:
 
 func _stop_all_audio() -> void:
 	_stop_game_audio()
+	
+	if main_music_player:
+		main_music_player.stop()
+	if title_music_player:
+		if title_music_player.finished.is_connected(_on_title_music_finished):
+			title_music_player.finished.disconnect(_on_title_music_finished)
+		title_music_player.stop()
 	if happy_ending_player:
 		happy_ending_player.stop()
 	if sad_ending_player:
@@ -82,12 +99,27 @@ func _stop_all_audio() -> void:
 		neutral_ending_player.stop()
 
 func _start_ending_music() -> void:
+	current_dominant_ending = EndingType.NONE
 	if happy_ending_player and happy_ending:
+		happy_ending_player.stop()
+		happy_ending_player.volume_db = -80.0
 		happy_ending_player.play()
 	if sad_ending_player and sad_ending:
+		sad_ending_player.stop()
+		sad_ending_player.volume_db = -80.0
 		sad_ending_player.play()
 	if neutral_ending_player and neutral_ending:
+		neutral_ending_player.stop()
+		neutral_ending_player.volume_db = -80.0
 		neutral_ending_player.play()
+
+func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
+	if event is InputEventKey and event.pressed and event.keycode == KEY_F and event.ctrl_pressed:
+		main_music_player.stop()
+		phone_call_player.stop()
+		OnMainAudioFinished.emit()
 
 func _on_longer_track_finished() -> void:
 	OnMainAudioFinished.emit()

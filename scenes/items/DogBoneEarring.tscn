@@ -12,6 +12,7 @@ height = 574.0
 scale = Vector2(0.1, 0.1)
 
 [node name="DragElement" parent="." unique_id=1123628354 instance=ExtResource("1_ieeph")]
+types = Array[int]([3])
 
 [node name="ObjectAccessoriesDogboneearringsRight" type="Sprite2D" parent="DragElement" unique_id=405302908]
 position = Vector2(0, -2)
@@ -19,7 +20,6 @@ texture = ExtResource("2_ieeph")
 
 [node name="ItemPoints" parent="DragElement" unique_id=241643258 instance=ExtResource("3_17fys")]
 position = Vector2(-1, 0)
-key = "dog bone earring"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=483321813]
 position = Vector2(23, 13)

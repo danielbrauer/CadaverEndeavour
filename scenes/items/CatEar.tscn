@@ -12,13 +12,13 @@ height = 357.72723
 scale = Vector2(0.1, 0.1)
 
 [node name="DragElement" parent="." unique_id=1356121539 instance=ExtResource("1_6jvn8")]
+types = Array[int]([4, 6])
 
 [node name="ObjectAnimalsCatearsBlackRight" type="Sprite2D" parent="DragElement" unique_id=539064850]
 texture = ExtResource("2_kg7qq")
 
 [node name="ItemPoints" parent="DragElement" unique_id=328025910 instance=ExtResource("3_4vep1")]
 position = Vector2(-1, 0)
-key = "cat ears"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=1064426746]
 position = Vector2(63, -22.000002)
