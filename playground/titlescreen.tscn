@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cmc7eyhkcnisw"]
+[gd_scene format=3 uid="uid://cjp4br8504goq"]
 
-[ext_resource type="Script" uid="uid://ct367e8n5dhfv" path="res://playground/titlescreen.gd" id="1_6178g"]
+[ext_resource type="Script" path="res://playground/titlescreen.gd" id="1_6178g"]
 [ext_resource type="FontFile" uid="uid://konecenesq36" path="res://fonts/Romanesco-Regular.ttf" id="2_g3jd8"]
 [ext_resource type="AudioStream" uid="uid://bsoauttatqro6" path="res://Audio/telephone_ring.wav" id="3_i3jtb"]
 [ext_resource type="Texture2D" uid="uid://c0un2th7jhl1e" path="res://images/titlescreen/telephone_placeholder.png" id="4_eyfdj"]

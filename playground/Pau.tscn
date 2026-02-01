@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
 [ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
 [ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
+[ext_resource type="Script" uid="uid://boip1q0v6l1p3" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
 size = Vector2(500, 388)
@@ -17,7 +18,7 @@ position = Vector2(2, -3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
 
-[node name="Guy" type="Node2D" parent="." unique_id=2129724939]
+[node name="Guy" type="Node2D" parent="." unique_id=2129724939 groups=["DeadGuy"]]
 
 [node name="Sprite2D2" type="Sprite2D" parent="Guy" unique_id=2009050031]
 visible = false
@@ -98,4 +99,7 @@ position = Vector2(-578, 99)
 script = ExtResource("6_h8427")
 game_duration = 10.0
 
-[node name="Ongameendanimator" type="Node2D" parent="." unique_id=649121275]
+[node name="Ongameendanimator" type="Node2D" parent="." unique_id=649121275 node_paths=PackedStringArray("deadguy")]
+script = ExtResource("7_7rxly")
+deadguy = NodePath("../Guy")
+outOfScreenPosY = -1016.0

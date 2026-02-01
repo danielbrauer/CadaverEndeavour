@@ -41,6 +41,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Reduce spawn protection timer at the start
+	if AppStateManager.currentState != AppStateManager.States.GAME:
+		return
 	if spawn_protection > 0:
 		spawn_protection -= delta
 		# We return here so we don't run death logic while protected

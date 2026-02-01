@@ -5,7 +5,12 @@ extends Node
 @export var game_duration: float = 90.0 # 1:30 minutes in seconds
 
 
-func _ready():
+func _ready() -> void:
+	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
+	
+func _on_game_state_changed():
+	if AppStateManager.currentState != AppStateManager.States.INTRO:
+		return
 	# Start the sequence as soon as the scene loads
 	_run_game_sequence()
 

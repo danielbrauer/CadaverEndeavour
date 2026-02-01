@@ -49,6 +49,7 @@ func collect_preferences() -> Array[Preference] :
 	return results
 
 func collect_points() -> Array[ScorePoint] :
+	#get guy
 	var nodes = get_tree().get_nodes_in_group("ScorePoint")
 	var results : Array[ScorePoint] = []
 	results.assign(nodes)
