@@ -8,6 +8,7 @@ extends Node2D
 var segments: Array = []
 var current_segment_index: int = -1
 var audio_file_path: String = ""
+var camera: Camera2D
 
 func _ready() -> void:
 	if not audio_player:
@@ -16,6 +17,13 @@ func _ready() -> void:
 	if not subtitle_label:
 		push_error("SubtitleLabel node not found")
 		return
+	
+	var parent_node = get_parent()
+	while parent_node:
+		if parent_node is Camera2D:
+			camera = parent_node
+			break
+		parent_node = parent_node.get_parent()
 	
 	audio_player.finished.connect(_on_audio_finished)
 	
@@ -86,6 +94,9 @@ func _process(_delta: float) -> void:
 		return
 	if not audio_player.playing:
 		return
+	
+	if camera:
+		position = camera.offset
 	
 	var current_time = audio_player.get_playback_position()
 	var segment = _get_current_segment(current_time)
