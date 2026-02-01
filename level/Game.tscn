@@ -192,11 +192,20 @@ scale = Vector2(0.15657006, -0.16059181)
 position = Vector2(542, -376)
 
 [node name="Antlers" parent="Node2D/Tables2" unique_id=1164850147 instance=ExtResource("10_h5gsp")]
-position = Vector2(723.00006, -102.000015)
+position = Vector2(887, -46)
 
 [node name="DragElement" parent="Node2D/Tables2/Antlers" index="0" unique_id=236443659]
 position = Vector2(-119.00006, 144.00002)
-scale = Vector2(-0.5, 0.5)
+
+[node name="ObjectBodypartAntlerLeft" parent="Node2D/Tables2/Antlers/DragElement" index="0" unique_id=1181375987]
+flip_h = true
+
+[node name="CollisionShape2D" parent="Node2D/Tables2/Antlers/DragElement" index="2" unique_id=238571868]
+position = Vector2(-218, -86.00001)
+rotation = 0.7594892
+
+[node name="CollisionShape2D2" parent="Node2D/Tables2/Antlers/DragElement" index="3" unique_id=79981991]
+position = Vector2(-58, -360)
 
 [node name="Antlers2" parent="Node2D/Tables2" unique_id=925699828 instance=ExtResource("10_h5gsp")]
 position = Vector2(-640, 263)
