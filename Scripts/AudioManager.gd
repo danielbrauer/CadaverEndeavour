@@ -168,6 +168,14 @@ func _on_longer_track_finished() -> void:
 	OnMainAudioFinished.emit()
 
 func update_ending_music(happy_score: float, sad_score: float, neutral_score: float, person_type: Person.PersonType = Person.PersonType.BABY) -> void:
+	var new_dominant = _calculate_dominant_ending(happy_score, sad_score, neutral_score)
+	_crossfade_to_ending(new_dominant)
+	_play_character_sfx(person_type, new_dominant)
+
+func fade_to_neutral() -> void:
+	_crossfade_to_ending(EndingType.NEUTRAL)
+
+func _calculate_dominant_ending(happy_score: float, sad_score: float, neutral_score: float) -> EndingType:
 	var scores = {
 		EndingType.HAPPY: happy_score,
 		EndingType.SAD: sad_score,
@@ -182,25 +190,31 @@ func update_ending_music(happy_score: float, sad_score: float, neutral_score: fl
 			max_score = scores[ending_type]
 			new_dominant = ending_type
 	
-	var ending_changed = new_dominant != current_dominant_ending
+	return new_dominant
+
+func _crossfade_to_ending(ending_type: EndingType) -> void:
+	var ending_changed = ending_type != current_dominant_ending
 	
-	if ending_changed:
-		var old_dominant = current_dominant_ending
-		current_dominant_ending = new_dominant
-		
-		var tween = create_tween()
-		tween.set_parallel(true)
-		
-		if old_dominant != EndingType.NONE:
-			var old_player = _get_ending_player(old_dominant)
-			if old_player:
-				tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration)
-		
-		var new_player = _get_ending_player(new_dominant)
-		if new_player:
-			tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration)
+	if not ending_changed:
+		return
 	
-	var sfx_player = _get_character_sfx_player(person_type, new_dominant)
+	var old_dominant = current_dominant_ending
+	current_dominant_ending = ending_type
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	if old_dominant != EndingType.NONE:
+		var old_player = _get_ending_player(old_dominant)
+		if old_player:
+			tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration)
+	
+	var new_player = _get_ending_player(ending_type)
+	if new_player:
+		tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration)
+
+func _play_character_sfx(person_type: Person.PersonType, ending_type: EndingType) -> void:
+	var sfx_player = _get_character_sfx_player(person_type, ending_type)
 	if sfx_player:
 		sfx_player.play()
 
