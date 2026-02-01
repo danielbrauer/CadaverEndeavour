@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://dsdjpd0e5oea" path="res://Audio/sfx/widow-sad.mp3" id="10_myfy0"]
 [ext_resource type="AudioStream" uid="uid://cqd85fofumvvx" path="res://Audio/sfx/son-happy.mp3" id="11_tjm4s"]
 [ext_resource type="AudioStream" uid="uid://fncbwhkedyg0" path="res://Audio/sfx/son-mad.mp3" id="12_leexf"]
+[ext_resource type="AudioStream" uid="uid://cwph78jwnw4m4" path="res://Audio/sfx/up.mp3" id="13_myfy0"]
+[ext_resource type="AudioStream" uid="uid://ljg175ahybpg" path="res://Audio/sfx/down.mp3" id="14_tjm4s"]
 
 [node name="AudioManager" type="Node" unique_id=1856396134]
 script = ExtResource("1_audiomanager")
@@ -27,6 +29,8 @@ wife_happy_sfx = ExtResource("10_myfy0")
 wife_sad_sfx = ExtResource("10_myfy0")
 son_happy_sfx = ExtResource("11_tjm4s")
 son_sad_sfx = ExtResource("12_leexf")
+start_drag_sfx = ExtResource("13_myfy0")
+drop_sfx = ExtResource("14_tjm4s")
 
 [node name="MainMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1538170933]
 bus = &"Music Bus"
@@ -58,3 +62,5 @@ volume_db = -80.0
 [node name="SonHappyPlayer" type="AudioStreamPlayer" parent="." unique_id=362557454]
 
 [node name="SonSadPlayer" type="AudioStreamPlayer" parent="." unique_id=1768532838]
+
+[node name="DragDropPlayer" type="AudioStreamPlayer" parent="." unique_id=1234567890]

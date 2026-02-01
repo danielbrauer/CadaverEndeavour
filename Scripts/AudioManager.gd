@@ -23,6 +23,8 @@ enum EndingType {
 @export var wife_sad_sfx: AudioStream
 @export var son_happy_sfx: AudioStream
 @export var son_sad_sfx: AudioStream
+@export var start_drag_sfx: AudioStream
+@export var drop_sfx: AudioStream
 
 @onready var main_music_player: AudioStreamPlayer = $MainMusicPlayer
 @onready var title_music_player: AudioStreamPlayer = $TitleMusicPlayer
@@ -36,6 +38,7 @@ enum EndingType {
 @onready var wife_sad_player: AudioStreamPlayer = $WifeSadPlayer
 @onready var son_happy_player: AudioStreamPlayer = $SonHappyPlayer
 @onready var son_sad_player: AudioStreamPlayer = $SonSadPlayer
+@onready var drag_drop_player: AudioStreamPlayer = $DragDropPlayer
 
 var current_dominant_ending: EndingType = EndingType.NONE
 
@@ -140,6 +143,8 @@ func _stop_all_audio() -> void:
 		son_happy_player.stop()
 	if son_sad_player:
 		son_sad_player.stop()
+	if drag_drop_player:
+		drag_drop_player.stop()
 
 func _start_ending_music() -> void:
 	current_dominant_ending = EndingType.NONE
@@ -251,3 +256,13 @@ func _get_character_sfx_player(person_type: Person.PersonType, ending_type: Endi
 				return son_happy_player
 		_:
 			return null
+
+func play_start_drag_sfx() -> void:
+	if drag_drop_player and start_drag_sfx:
+		drag_drop_player.stream = start_drag_sfx
+		drag_drop_player.play()
+
+func play_drop_sfx() -> void:
+	if drag_drop_player and drop_sfx:
+		drag_drop_player.stream = drop_sfx
+		drag_drop_player.play()

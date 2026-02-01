@@ -38,6 +38,7 @@ func _on_begin_drag(otherObject : Node2D):
 		draggedRB.beingDragged = true
 	   
 	DraggingManager.is_dragging = true
+	AudioManager.play_start_drag_sfx()
 
 func _input(event: InputEvent) -> void:
 	# Rotate the CONTROLLER (self), not the object directly.
@@ -131,6 +132,7 @@ func _on_release():
 	draggedRB = null
 	DraggingManager.is_dragging = false
 	current_velocity = Vector2.ZERO
+	AudioManager.play_drop_sfx()
 
 func _stop_animations(node: Node) -> void:
 	var animation_players = node.find_children("*", "AnimationPlayer", true, false)
