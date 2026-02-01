@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dl4y8lr0g6in4"
+path="res://.godot/imported/Voiceover main scene.wav-f52c7c1fc07096a735c547181be939ae.sample"
+
+[deps]
+
+source_file="res://subtitle_tools/resources/Voiceover main scene.wav"
+dest_files=["res://.godot/imported/Voiceover main scene.wav-f52c7c1fc07096a735c547181be939ae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

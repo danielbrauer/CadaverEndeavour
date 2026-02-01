@@ -10,8 +10,7 @@ enum EndingType {
 }
 
 @export var title_music: AudioStream
-@export var main_music: AudioStream
-@export var main_phone_call: AudioStream
+@export var main_combined_track: AudioStream
 @export var happy_ending: AudioStream
 @export var sad_ending: AudioStream
 @export var neutral_ending: AudioStream
@@ -69,7 +68,7 @@ func _ready() -> void:
 	if son_sad_player and son_sad_sfx:
 		son_sad_player.stream = son_sad_sfx
 	
-	phone_call_player.finished.connect(_on_longer_track_finished)	
+	main_music_player.finished.connect(_on_main_track_finished)	
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
 	
 	if AppStateManager.currentState == AppStateManager.States.MENU:
@@ -107,16 +106,13 @@ func _on_title_music_finished() -> void:
 
 func _play_game_audio() -> void:
 	_stop_all_audio()
-	if main_music and main_music_player:
-		main_music_player.stream = main_music
+	if main_combined_track and main_music_player:
+		main_music_player.stream = main_combined_track
 		main_music_player.play()
-	if main_phone_call and phone_call_player:
-		phone_call_player.stream = main_phone_call
-		phone_call_player.play()
 
 func _stop_game_audio() -> void:
-	if phone_call_player:
-		phone_call_player.stop()
+	if main_music_player:
+		main_music_player.stop()
 
 func _stop_all_audio() -> void:
 	_stop_game_audio()
@@ -170,10 +166,9 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F and event.ctrl_pressed:
 		main_music_player.stop()
-		phone_call_player.stop()
 		OnMainAudioFinished.emit()
 
-func _on_longer_track_finished() -> void:
+func _on_main_track_finished() -> void:
 	OnMainAudioFinished.emit()
 
 func update_ending_music(happy_score: float, sad_score: float, neutral_score: float, person_type: Person.PersonType = Person.PersonType.BABY) -> void:
