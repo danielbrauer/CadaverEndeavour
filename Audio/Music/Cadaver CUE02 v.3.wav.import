@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nuslbp0tv4pt"
+path="res://.godot/imported/Cadaver CUE02 v.3.wav-12aeafd1ca984a13384af7a9dbe58f74.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Cadaver CUE02 v.3.wav"
+dest_files=["res://.godot/imported/Cadaver CUE02 v.3.wav-12aeafd1ca984a13384af7a9dbe58f74.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
