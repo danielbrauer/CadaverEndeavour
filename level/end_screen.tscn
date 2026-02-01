@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cg7q8724wmvxp" path="res://level/dead_guy_container.gd" id="4_jxwei"]
 [ext_resource type="Texture2D" uid="uid://bl35u2qmnqmkh" path="res://images/Environment/Coffin/environment_coffin_upperlid_open.png" id="5_15f3w"]
 [ext_resource type="Texture2D" uid="uid://byty4olnb2cel" path="res://images/Environment/Parlor/environment_parlor_portrait.png" id="7_kd0oc"]
+[ext_resource type="PackedScene" uid="uid://bjso6kfn8jtfv" path="res://playground/tears_particles.tscn" id="8_hi776"]
 [ext_resource type="Script" path="res://level/family_test.gd" id="9_o8yv3"]
 [ext_resource type="Script" uid="uid://babiryye1sta4" path="res://playground/person.gd" id="10_hi776"]
 [ext_resource type="Texture2D" uid="uid://vemha4jfd182" path="res://images/Characters/Family_BabyNany.png" id="11_15f3w"]
@@ -274,6 +275,10 @@ texture = ExtResource("11_15f3w")
 script = ExtResource("10_hi776")
 metadata/_custom_type_script = "uid://babiryye1sta4"
 
+[node name="Particles" parent="Family/FamilyBabyNany" unique_id=1984504676 instance=ExtResource("8_hi776")]
+position = Vector2(47.982277, -620.3469)
+scale = Vector2(0.5, 0.5)
+
 [node name="FamilyMama" type="Sprite2D" parent="Family" unique_id=718377972]
 position = Vector2(-5296.8633, 116.02582)
 scale = Vector2(1.3786597, 6.7705956)
@@ -284,6 +289,9 @@ script = ExtResource("10_hi776")
 person = 1
 metadata/_custom_type_script = "uid://babiryye1sta4"
 
+[node name="Particles" parent="Family/FamilyMama" unique_id=1573075494 instance=ExtResource("8_hi776")]
+position = Vector2(-3.427331, -644.3382)
+
 [node name="FamilySon" type="Sprite2D" parent="Family" unique_id=1345075876]
 position = Vector2(-6166.2856, 278.46136)
 scale = Vector2(1.3786597, 6.7705956)
@@ -293,6 +301,11 @@ texture = ExtResource("13_2te2f")
 script = ExtResource("10_hi776")
 person = 2
 metadata/_custom_type_script = "uid://babiryye1sta4"
+
+[node name="Particles" parent="Family/FamilySon" unique_id=1417014216 instance=ExtResource("8_hi776")]
+position = Vector2(6.854538, -682.0388)
+rotation = 0.49896076
+scale = Vector2(0.49999997, 0.5)
 
 [node name="Coffin" type="Node2D" parent="." unique_id=330176915]
 position = Vector2(-69, 83)
