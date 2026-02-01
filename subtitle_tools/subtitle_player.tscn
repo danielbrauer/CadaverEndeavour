@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ckujbaafj31lx"]
 
-[ext_resource type="Script" path="res://subtitle_tools/subtitle_player.gd" id="1_subtitle"]
-[ext_resource type="Resource" path="res://subtitle_tools/resources/phone_call.tres" id="2_w4611"]
+[ext_resource type="Script" uid="uid://bxebefakt4v4v" path="res://subtitle_tools/subtitle_player.gd" id="1_subtitle"]
+[ext_resource type="Resource" path="res://subtitle_tools/resources/Voiceover main scene.tres" id="2_w4611"]
 
 [node name="SubtitlePlayer" type="Node2D" unique_id=123456789]
 script = ExtResource("1_subtitle")
 config = ExtResource("2_w4611")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=987654321]
-volume_db = -6.0
+volume_db = -80.0
 
 [node name="Container" type="Control" parent="." unique_id=1088021233]
 layout_mode = 3
@@ -27,12 +27,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = 40.0
-offset_right = 511.0
-offset_bottom = 107.0
+offset_left = 54.0
+offset_top = 150.0
+offset_right = 543.0
+offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.48235294)
+theme_override_font_sizes/font_size = 24
 text = "Subtitles will appear here"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -2,6 +2,7 @@
 
 @export var end_screen_delay: float = 3.0
 @export var deadguy: Node2D
+@export var blackNode: Node2D
 @export var outOfScreenPosY: float
 func _ready() -> void:
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
@@ -25,6 +26,10 @@ func _on_game_state_changed():
 	
 	# 2. Wait for the specified delay after the movement (or during)
 	tween.tween_interval(end_screen_delay)
+	#get parent node2d and modulate to dark
+	var parent =get_parent()
+	if parent is CanvasItem:
+		tween.tween_property(parent, "modulate", Color.BLACK, 1.5)
 	
 	# 3. Set to ENDSCREEN state once the tween finishes
 	tween.finished.connect(_on_tween_finished)

@@ -10,8 +10,7 @@ enum EndingType {
 }
 
 @export var title_music: AudioStream
-@export var main_music: AudioStream
-@export var main_phone_call: AudioStream
+@export var main_combined_track: AudioStream
 @export var happy_ending: AudioStream
 @export var sad_ending: AudioStream
 @export var neutral_ending: AudioStream
@@ -23,6 +22,9 @@ enum EndingType {
 @export var wife_sad_sfx: AudioStream
 @export var son_happy_sfx: AudioStream
 @export var son_sad_sfx: AudioStream
+@export var start_drag_sfx: AudioStream
+@export var drop_sfx: AudioStream
+@export var coffin_sfx: AudioStream
 
 @onready var main_music_player: AudioStreamPlayer = $MainMusicPlayer
 @onready var title_music_player: AudioStreamPlayer = $TitleMusicPlayer
@@ -36,6 +38,8 @@ enum EndingType {
 @onready var wife_sad_player: AudioStreamPlayer = $WifeSadPlayer
 @onready var son_happy_player: AudioStreamPlayer = $SonHappyPlayer
 @onready var son_sad_player: AudioStreamPlayer = $SonSadPlayer
+@onready var drag_drop_player: AudioStreamPlayer = $DragDropPlayer
+@onready var coffin_player: AudioStreamPlayer = $CoffinPlayer
 
 var current_dominant_ending: EndingType = EndingType.NONE
 
@@ -64,7 +68,7 @@ func _ready() -> void:
 	if son_sad_player and son_sad_sfx:
 		son_sad_player.stream = son_sad_sfx
 	
-	phone_call_player.finished.connect(_on_longer_track_finished)	
+	main_music_player.finished.connect(_on_main_track_finished)	
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
 	
 	if AppStateManager.currentState == AppStateManager.States.MENU:
@@ -102,16 +106,13 @@ func _on_title_music_finished() -> void:
 
 func _play_game_audio() -> void:
 	_stop_all_audio()
-	if main_music and main_music_player:
-		main_music_player.stream = main_music
+	if main_combined_track and main_music_player:
+		main_music_player.stream = main_combined_track
 		main_music_player.play()
-	if main_phone_call and phone_call_player:
-		phone_call_player.stream = main_phone_call
-		phone_call_player.play()
 
 func _stop_game_audio() -> void:
-	if phone_call_player:
-		phone_call_player.stop()
+	if main_music_player:
+		main_music_player.stop()
 
 func _stop_all_audio() -> void:
 	_stop_game_audio()
@@ -140,6 +141,10 @@ func _stop_all_audio() -> void:
 		son_happy_player.stop()
 	if son_sad_player:
 		son_sad_player.stop()
+	if drag_drop_player:
+		drag_drop_player.stop()
+	if coffin_player:
+		coffin_player.stop()
 
 func _start_ending_music() -> void:
 	current_dominant_ending = EndingType.NONE
@@ -161,10 +166,9 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F and event.ctrl_pressed:
 		main_music_player.stop()
-		phone_call_player.stop()
 		OnMainAudioFinished.emit()
 
-func _on_longer_track_finished() -> void:
+func _on_main_track_finished() -> void:
 	OnMainAudioFinished.emit()
 
 func update_ending_music(happy_score: float, sad_score: float, neutral_score: float, person_type: Person.PersonType = Person.PersonType.BABY) -> void:
@@ -251,3 +255,18 @@ func _get_character_sfx_player(person_type: Person.PersonType, ending_type: Endi
 				return son_happy_player
 		_:
 			return null
+
+func play_start_drag_sfx() -> void:
+	if drag_drop_player and start_drag_sfx:
+		drag_drop_player.stream = start_drag_sfx
+		drag_drop_player.play()
+
+func play_drop_sfx() -> void:
+	if drag_drop_player and drop_sfx:
+		drag_drop_player.stream = drop_sfx
+		drag_drop_player.play()
+
+func play_coffin_sfx() -> void:
+	if coffin_player and coffin_sfx:
+		coffin_player.stream = coffin_sfx
+		coffin_player.play()
