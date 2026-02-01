@@ -88,7 +88,7 @@ func _process(_delta: float) -> void:
 	var current_time = audio_player.get_playback_position()
 	var segment = _get_current_segment(current_time)
 	
-	if segment != null:
+	if not segment.is_empty():
 		var segment_index = segments.find(segment)
 		if segment_index != current_segment_index:
 			current_segment_index = segment_index
