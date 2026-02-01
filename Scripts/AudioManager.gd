@@ -5,16 +5,15 @@ signal OnMainAudioFinished
 enum EndingType {
 	NONE,
 	HAPPY,
-	SAD,
-	NEUTRAL
+	SAD
 }
 
 @export var title_music: AudioStream
 @export var main_combined_track: AudioStream
 @export var happy_ending: AudioStream
 @export var sad_ending: AudioStream
-@export var neutral_ending: AudioStream
 @export var crossfade_duration: float = 0.5
+@export var T: float = 10.0
 
 @export var baby_happy_sfx: AudioStream
 @export var baby_sad_sfx: AudioStream
@@ -26,53 +25,45 @@ enum EndingType {
 @export var drop_sfx: AudioStream
 @export var coffin_sfx: AudioStream
 
-@onready var main_music_player: AudioStreamPlayer = $MainMusicPlayer
-@onready var title_music_player: AudioStreamPlayer = $TitleMusicPlayer
-@onready var phone_call_player: AudioStreamPlayer = $PhoneCallPlayer
-@onready var happy_ending_player: AudioStreamPlayer = $HappyEndingPlayer
-@onready var sad_ending_player: AudioStreamPlayer = $SadEndingPlayer
-@onready var neutral_ending_player: AudioStreamPlayer = $NeutralEndingPlayer
-@onready var baby_happy_player: AudioStreamPlayer = $BabyHappyPlayer
-@onready var baby_sad_player: AudioStreamPlayer = $BabySadPlayer
-@onready var wife_happy_player: AudioStreamPlayer = $WifeHappyPlayer
-@onready var wife_sad_player: AudioStreamPlayer = $WifeSadPlayer
-@onready var son_happy_player: AudioStreamPlayer = $SonHappyPlayer
-@onready var son_sad_player: AudioStreamPlayer = $SonSadPlayer
-@onready var drag_drop_player: AudioStreamPlayer = $DragDropPlayer
-@onready var coffin_player: AudioStreamPlayer = $CoffinPlayer
+@onready var loop_player: AudioStreamPlayer = $LoopPlayer
+@onready var main_audio_player: AudioStreamPlayer = $MainAudioPlayer
+@onready var sfx_player: AudioStreamPlayer = $SfxPlayer
+@onready var ending_player_1: AudioStreamPlayer = $EndingPlayer1
+@onready var ending_player_2: AudioStreamPlayer = $EndingPlayer2
 
 var current_dominant_ending: EndingType = EndingType.NONE
+var early_signal_emitted: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	if not happy_ending_player or not sad_ending_player or not neutral_ending_player:
-		return
+	assert(loop_player != null, "LoopPlayer must be set in scene")
+	assert(main_audio_player != null, "MainAudioPlayer must be set in scene")
+	assert(sfx_player != null, "SfxPlayer must be set in scene")
+	assert(ending_player_1 != null, "EndingPlayer1 must be set in scene")
+	assert(ending_player_2 != null, "EndingPlayer2 must be set in scene")
 	
-	title_music_player.stream = title_music
-	happy_ending_player.stream = happy_ending
-	sad_ending_player.stream = sad_ending
-	neutral_ending_player.stream = neutral_ending
+	assert(title_music != null, "title_music must be set")
+	assert(main_combined_track != null, "main_combined_track must be set")
+	assert(happy_ending != null, "happy_ending must be set")
+	assert(sad_ending != null, "sad_ending must be set")
+	assert(baby_happy_sfx != null, "baby_happy_sfx must be set")
+	assert(baby_sad_sfx != null, "baby_sad_sfx must be set")
+	assert(wife_happy_sfx != null, "wife_happy_sfx must be set")
+	assert(wife_sad_sfx != null, "wife_sad_sfx must be set")
+	assert(son_happy_sfx != null, "son_happy_sfx must be set")
+	assert(son_sad_sfx != null, "son_sad_sfx must be set")
+	assert(start_drag_sfx != null, "start_drag_sfx must be set")
+	assert(drop_sfx != null, "drop_sfx must be set")
+	assert(coffin_sfx != null, "coffin_sfx must be set")
 	
-	if baby_happy_player and baby_happy_sfx:
-		baby_happy_player.stream = baby_happy_sfx
-	if baby_sad_player and baby_sad_sfx:
-		baby_sad_player.stream = baby_sad_sfx
-	if wife_happy_player and wife_happy_sfx:
-		wife_happy_player.stream = wife_happy_sfx
-	if wife_sad_player and wife_sad_sfx:
-		wife_sad_player.stream = wife_sad_sfx
-	if son_happy_player and son_happy_sfx:
-		son_happy_player.stream = son_happy_sfx
-	if son_sad_player and son_sad_sfx:
-		son_sad_player.stream = son_sad_sfx
+	ending_player_1.stream = happy_ending
+	ending_player_2.stream = sad_ending
 	
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
-	if AppStateManager.currentState == AppStateManager.States.MENU:
-		_play_title_music()
-	elif AppStateManager.currentState == AppStateManager.States.INTRO:
-		_play_game_audio()
+	_play_title_music()
+
 
 func _on_game_state_changed() -> void:
 	match AppStateManager.currentState:
@@ -90,79 +81,66 @@ func _on_game_state_changed() -> void:
 
 func _play_title_music() -> void:
 	_stop_all_audio()
-	if title_music and title_music_player:
-		if title_music_player.finished.is_connected(_on_title_music_finished):
-			title_music_player.finished.disconnect(_on_title_music_finished)
-		title_music_player.stream = title_music
-		title_music_player.volume_db = 0.0
-		title_music_player.finished.connect(_on_title_music_finished)
-		title_music_player.play()
-
-func _on_title_music_finished() -> void:
-	if title_music_player and AppStateManager.currentState in [AppStateManager.States.MENU, AppStateManager.States.INTRO]:
-		title_music_player.play()
+	loop_player.stream = title_music
+	loop_player.volume_db = 0.0
+	if title_music is AudioStreamWAV:
+		title_music.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	loop_player.play()
 
 func _play_game_audio() -> void:
 	_stop_all_audio()
-	if main_combined_track and main_music_player:
-		main_music_player.stream = main_combined_track
-		main_music_player.play()
-		main_music_player.finished.connect(_on_main_track_finished)
+	early_signal_emitted = false
+	main_audio_player.stream = main_combined_track
+	main_audio_player.play()
+	main_audio_player.finished.connect(_on_main_track_finished)
 
 func _stop_game_audio() -> void:
-	if main_music_player:
-		main_music_player.stop()
+	early_signal_emitted = false
+	main_audio_player.stop()
 
 func _stop_all_audio() -> void:
 	_stop_game_audio()
 	
-	if main_music_player:
-		main_music_player.stop()
-	if title_music_player:
-		if title_music_player.finished.is_connected(_on_title_music_finished):
-			title_music_player.finished.disconnect(_on_title_music_finished)
-		title_music_player.stop()
-	if happy_ending_player:
-		happy_ending_player.stop()
-	if sad_ending_player:
-		sad_ending_player.stop()
-	if neutral_ending_player:
-		neutral_ending_player.stop()
-	if baby_happy_player:
-		baby_happy_player.stop()
-	if baby_sad_player:
-		baby_sad_player.stop()
-	if wife_happy_player:
-		wife_happy_player.stop()
-	if wife_sad_player:
-		wife_sad_player.stop()
-	if son_happy_player:
-		son_happy_player.stop()
-	if son_sad_player:
-		son_sad_player.stop()
-	if drag_drop_player:
-		drag_drop_player.stop()
-	if coffin_player:
-		coffin_player.stop()
+	main_audio_player.stop()
+	loop_player.stop()
+	ending_player_1.stop()
+	ending_player_2.stop()
+	sfx_player.stop()
 
 func _start_ending_music() -> void:
 	current_dominant_ending = EndingType.NONE
-	if happy_ending_player and happy_ending:
-		happy_ending_player.stop()
-		happy_ending_player.volume_db = -80.0
-		happy_ending_player.play()
-	if sad_ending_player and sad_ending:
-		sad_ending_player.stop()
-		sad_ending_player.volume_db = -80.0
-		sad_ending_player.play()
-	if neutral_ending_player and neutral_ending:
-		neutral_ending_player.stop()
-		neutral_ending_player.volume_db = -80.0
-		neutral_ending_player.play()
+	ending_player_1.stop()
+	ending_player_1.volume_db = -80.0
+	ending_player_1.play()
+	ending_player_2.stop()
+	ending_player_2.volume_db = -80.0
+	ending_player_2.play()
 
 func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint():
 		return
+	
+	if event is InputEventKey and event.keycode == KEY_P and event.is_released():
+		if main_audio_player.playing and main_audio_player.stream:
+			var stream_length = main_audio_player.stream.get_length()
+			var target_position = stream_length - (5.0 + T)
+			if target_position >= 0:
+				main_audio_player.seek(target_position)
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	if main_audio_player.playing and main_audio_player.stream:
+		var stream_length = main_audio_player.stream.get_length()
+		var current_position = main_audio_player.get_playback_position()
+		var time_remaining = stream_length - current_position
+		
+		if time_remaining <= T and not early_signal_emitted:
+			early_signal_emitted = true
+			if main_audio_player.finished.is_connected(_on_main_track_finished):
+				main_audio_player.finished.disconnect(_on_main_track_finished)
+			OnMainAudioFinished.emit()
 
 func _on_main_track_finished() -> void:
 	OnMainAudioFinished.emit()
@@ -173,24 +151,30 @@ func update_ending_music(happy_score: float, sad_score: float, neutral_score: fl
 	_play_character_sfx(person_type, new_dominant)
 
 func fade_to_neutral() -> void:
-	_crossfade_to_ending(EndingType.NEUTRAL)
+	_crossfade_to_ending(EndingType.SAD)
 
 func _calculate_dominant_ending(happy_score: float, sad_score: float, neutral_score: float) -> EndingType:
-	var scores = {
-		EndingType.HAPPY: happy_score,
-		EndingType.SAD: sad_score,
-		EndingType.NEUTRAL: neutral_score
-	}
-	
-	var new_dominant: EndingType = EndingType.NONE
-	var max_score = -INF
-	
-	for ending_type in scores:
-		if scores[ending_type] > max_score:
-			max_score = scores[ending_type]
-			new_dominant = ending_type
-	
-	return new_dominant
+	if happy_score > sad_score:
+		return EndingType.HAPPY
+	else:
+		return EndingType.SAD
+
+func _db_to_linear(db: float) -> float:
+	return pow(10.0, db / 20.0)
+
+func _linear_to_db(linear: float) -> float:
+	if linear <= 0.0:
+		return -80.0
+	return 20.0 * log(linear) / log(10.0)
+
+func _set_player_volume_linear(player: AudioStreamPlayer, linear: float) -> void:
+	player.volume_db = _linear_to_db(linear)
+
+func _set_ending_player_1_volume_linear(linear: float) -> void:
+	ending_player_1.volume_db = _linear_to_db(linear)
+
+func _set_ending_player_2_volume_linear(linear: float) -> void:
+	ending_player_2.volume_db = _linear_to_db(linear)
 
 func _crossfade_to_ending(ending_type: EndingType) -> void:
 	var ending_changed = ending_type != current_dominant_ending
@@ -198,73 +182,61 @@ func _crossfade_to_ending(ending_type: EndingType) -> void:
 	if not ending_changed:
 		return
 	
-	var old_dominant = current_dominant_ending
 	current_dominant_ending = ending_type
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
-	for ending in [EndingType.HAPPY, EndingType.SAD, EndingType.NEUTRAL]:
-		var player = _get_ending_player(ending)
-		if not player:
-			continue
-		
-		if ending == ending_type:
-			if not player.playing:
-				player.play()
-			tween.tween_property(player, "volume_db", 0.0, crossfade_duration)
-		else:
-			tween.tween_property(player, "volume_db", -80.0, crossfade_duration)
+	var player_1_start_linear = _db_to_linear(ending_player_1.volume_db)
+	var player_2_start_linear = _db_to_linear(ending_player_2.volume_db)
+	
+	if ending_type == EndingType.HAPPY:
+		if not ending_player_1.playing:
+			ending_player_1.play()
+		tween.tween_method(_set_ending_player_1_volume_linear, player_1_start_linear, 1.0, crossfade_duration)
+		tween.tween_method(_set_ending_player_2_volume_linear, player_2_start_linear, 0.0, crossfade_duration)
+	else:
+		if not ending_player_2.playing:
+			ending_player_2.play()
+		tween.tween_method(_set_ending_player_2_volume_linear, player_2_start_linear, 1.0, crossfade_duration)
+		tween.tween_method(_set_ending_player_1_volume_linear, player_1_start_linear, 0.0, crossfade_duration)
 
 
 func _play_character_sfx(person_type: Person.PersonType, ending_type: EndingType) -> void:
-	var sfx_player = _get_character_sfx_player(person_type, ending_type)
-	if sfx_player:
-		await get_tree().create_timer(crossfade_duration).timeout
-		sfx_player.play()
+	var sfx_stream = _get_character_sfx_stream(person_type, ending_type)
+	assert(sfx_stream != null, "SFX stream must be set for person_type and ending_type")
+	await get_tree().create_timer(crossfade_duration).timeout
+	sfx_player.stream = sfx_stream
+	sfx_player.play()
 
-func _get_ending_player(ending_type: EndingType) -> AudioStreamPlayer:
-	match ending_type:
-		EndingType.HAPPY:
-			return happy_ending_player
-		EndingType.SAD:
-			return sad_ending_player
-		EndingType.NEUTRAL:
-			return neutral_ending_player
-		_:
-			return null
-
-func _get_character_sfx_player(person_type: Person.PersonType, ending_type: EndingType) -> AudioStreamPlayer:
+func _get_character_sfx_stream(person_type: Person.PersonType, ending_type: EndingType) -> AudioStream:
 	match person_type:
 		Person.PersonType.BABY:
 			if ending_type == EndingType.SAD:
-				return baby_sad_player
+				return baby_sad_sfx
 			else:
-				return baby_happy_player
+				return baby_happy_sfx
 		Person.PersonType.WIFE:
 			if ending_type == EndingType.SAD:
-				return wife_sad_player
+				return wife_sad_sfx
 			else:
-				return wife_happy_player
+				return wife_happy_sfx
 		Person.PersonType.SON:
 			if ending_type == EndingType.SAD:
-				return son_sad_player
+				return son_sad_sfx
 			else:
-				return son_happy_player
+				return son_happy_sfx
 		_:
 			return null
 
 func play_start_drag_sfx() -> void:
-	if drag_drop_player and start_drag_sfx:
-		drag_drop_player.stream = start_drag_sfx
-		drag_drop_player.play()
+	sfx_player.stream = start_drag_sfx
+	sfx_player.play()
 
 func play_drop_sfx() -> void:
-	if drag_drop_player and drop_sfx:
-		drag_drop_player.stream = drop_sfx
-		drag_drop_player.play()
+	sfx_player.stream = drop_sfx
+	sfx_player.play()
 
 func play_coffin_sfx() -> void:
-	if coffin_player and coffin_sfx:
-		coffin_player.stream = coffin_sfx
-		coffin_player.play()
+	sfx_player.stream = coffin_sfx
+	sfx_player.play()
