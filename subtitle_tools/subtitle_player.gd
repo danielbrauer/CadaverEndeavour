@@ -17,6 +17,10 @@ func _ready() -> void:
 	if not subtitle_label:
 		push_error("SubtitleLabel node not found")
 		return
+		
+	var new_sb = StyleBoxFlat.new()
+	new_sb.bg_color = Color.DARK_GRAY
+	subtitle_label.add_theme_stylebox_override("normal", new_sb)
 	
 	var parent_node = get_parent()
 	while parent_node:
