@@ -1,7 +1,6 @@
 extends Control
 
 func on_finished() -> void:
-	print("Triggerd!")
 	AppStateManager.currentState = AppStateManager.States.INTRO
 	
 func _input(_event):
