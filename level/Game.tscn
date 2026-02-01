@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8vk5s27lv13" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
 [ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="9_2pa0e"]
 [ext_resource type="PackedScene" uid="uid://mjhym178mijs" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
+[ext_resource type="Texture2D" uid="uid://bk15cdjud1ydp" path="res://images/Environment/environment_morguetop.jpg" id="10_04yrl"]
 [ext_resource type="PackedScene" uid="uid://b373w1pwb5ecy" path="res://scenes/items/antlers.tscn" id="10_h5gsp"]
 [ext_resource type="PackedScene" uid="uid://dhcsrqvyr3a4t" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
 [ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="10_uoilq"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="12_ff4d2"]
 [ext_resource type="AudioStream" uid="uid://nuslbp0tv4pt" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="15_1ymms"]
 [ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="15_c5vso"]
+[ext_resource type="Script" uid="uid://ci830o60xoidd" path="res://scenes/cameraMover.gd" id="16_6ynke"]
 [ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="16_ruqv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04yrl"]
@@ -240,6 +242,12 @@ playback_auto_capture = false
 
 [node name="Node2D2" type="Node2D" parent="Node2D/Animation" unique_id=963418050]
 
+[node name="EnvironmentMorgue2" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=149925552]
+z_index = -10
+position = Vector2(0, -592)
+scale = Vector2(0.25, 0.339289)
+texture = ExtResource("10_04yrl")
+
 [node name="EnvironmentMorgue" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=635512563]
 z_index = -10
 position = Vector2(0.00014686584, -1.9999504)
@@ -292,6 +300,11 @@ visible = false
 texture = ExtResource("16_ruqv7")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Animation" unique_id=2014514002]
+
+[node name="Node2D" type="Node2D" parent="Node2D/Animation/Camera2D" unique_id=2081903645]
+script = ExtResource("16_6ynke")
+max_lean_distance = 150.0
+smoothing = 3.0
 
 [node name="Music" type="AudioStreamPlayer2D" parent="Node2D/Animation" unique_id=1708058806]
 stream = ExtResource("15_1ymms")
