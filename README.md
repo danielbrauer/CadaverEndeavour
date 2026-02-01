@@ -152,14 +152,14 @@ Displays scores and manages ending music.
 - **[EndScreen](level/end_screen.gd)** / **[end_screen.tscn](level/end_screen.tscn)**: 
   - Activates when ENDSCREEN state is entered
   - **Score Sequence**:
-    - Gets family members in order: Baby, Wife, Son
-    - For each person:
-      - Calculates their score
-      - Displays name and score on screen
-      - Determines if score is happy (>1.0), sad (<0), or neutral (0-1)
-      - Updates AudioManager with scores to crossfade music
-      - Waits for crossfade duration + 3 seconds
-    - Loops continuously while in ENDSCREEN state
+	- Gets family members in order: Baby, Wife, Son
+	- For each person:
+	  - Calculates their score
+	  - Displays name and score on screen
+	  - Determines if score is happy (>1.0), sad (<0), or neutral (0-1)
+	  - Updates AudioManager with scores to crossfade music
+	  - Waits for crossfade duration + 3 seconds
+	- Loops continuously while in ENDSCREEN state
 
 ## Scene Structure
 
@@ -178,11 +178,11 @@ The game is organized into a main scene that contains all sub-scenes, which are 
 
 - **[Main Game](playground/Pau.tscn)**: 
   - The gameplay scene with:
-    - Dead body (Guy node)
-    - MouseFollower for dragging
-    - AttachmentScene for attachment points
-    - Various item instances
-    - ContainmentArea for keeping items on screen
+	- Dead body (Guy node)
+	- MouseFollower for dragging
+	- AttachmentScene for attachment points
+	- Various item instances
+	- ContainmentArea for keeping items on screen
   - Uses EnableOnState to show during INTRO, GAME, and GAMEOVER states
 
 - **[EndScreen](level/end_screen.tscn)**: 
@@ -209,43 +209,43 @@ The following diagram shows how systems interact and the flow of states:
 
 ```mermaid
 flowchart TD
-    Start[Game Starts] --> Menu[MENU State]
-    Menu -->|User Clicks| Intro[INTRO State]
-    Intro -->|GameManager Delay| Game[GAME State]
-    Game -->|Audio Finishes| GameOver[GAMEOVER State]
-    GameOver -->|OnGameOver Animation| EndScreen[ENDSCREEN State]
-    EndScreen -->|Loops| EndScreen
-    
-    AppStateManager[AppStateManager] -.->|Controls| Menu
-    AppStateManager -.->|Controls| Intro
-    AppStateManager -.->|Controls| Game
-    AppStateManager -.->|Controls| GameOver
-    AppStateManager -.->|Controls| EndScreen
-    
-    AudioManager[AudioManager] -.->|Responds to| AppStateManager
-    AudioManager -.->|Title Music| Menu
-    AudioManager -.->|Game Music + Phone| Game
-    AudioManager -.->|Ending Music| EndScreen
-    AudioManager -.->|OnMainAudioFinished| GameManager
-    
-    GameManager -.->|Triggers| AppStateManager
-    
-    MouseFollower[MouseFollower] -.->|Drags| DragElement[DragElement Items]
-    DragElement -.->|Attach to| AttachmentScene[AttachmentScene]
-    
-    Items[Items with ScorePoints] -.->|Scored by| Person[Person]
-    Person -.->|Uses| Preferences[Preferences from CSV]
-    Person -.->|Calculates| Scores[Scores]
-    
-    Scores -.->|Sent to| EndScreen
-    EndScreen -.->|Updates| AudioManager
-    AudioManager -.->|Crossfades| EndingMusic[Happy/Sad/Neutral Music]
-    
-    style Menu fill:#e1f5ff
-    style Game fill:#fff4e1
-    style EndScreen fill:#ffe1f5
-    style AppStateManager fill:#e1ffe1
-    style AudioManager fill:#f5e1ff
+	Start[Game Starts] --> Menu[MENU State]
+	Menu -->|User Clicks| Intro[INTRO State]
+	Intro -->|GameManager Delay| Game[GAME State]
+	Game -->|Audio Finishes| GameOver[GAMEOVER State]
+	GameOver -->|OnGameOver Animation| EndScreen[ENDSCREEN State]
+	EndScreen -->|Loops| EndScreen
+	
+	AppStateManager[AppStateManager] -.->|Controls| Menu
+	AppStateManager -.->|Controls| Intro
+	AppStateManager -.->|Controls| Game
+	AppStateManager -.->|Controls| GameOver
+	AppStateManager -.->|Controls| EndScreen
+	
+	AudioManager[AudioManager] -.->|Responds to| AppStateManager
+	AudioManager -.->|Title Music| Menu
+	AudioManager -.->|Game Music + Phone| Game
+	AudioManager -.->|Ending Music| EndScreen
+	AudioManager -.->|OnMainAudioFinished| GameManager
+	
+	GameManager -.->|Triggers| AppStateManager
+	
+	MouseFollower[MouseFollower] -.->|Drags| DragElement[DragElement Items]
+	DragElement -.->|Attach to| AttachmentScene[AttachmentScene]
+	
+	Items[Items with ScorePoints] -.->|Scored by| Person[Person]
+	Person -.->|Uses| Preferences[Preferences from CSV]
+	Person -.->|Calculates| Scores[Scores]
+	
+	Scores -.->|Sent to| EndScreen
+	EndScreen -.->|Updates| AudioManager
+	AudioManager -.->|Crossfades| EndingMusic[Happy/Sad/Neutral Music]
+	
+	style Menu fill:#e1f5ff
+	style Game fill:#fff4e1
+	style EndScreen fill:#ffe1f5
+	style AppStateManager fill:#e1ffe1
+	style AudioManager fill:#f5e1ff
 ```
 
 ### Key Interactions
