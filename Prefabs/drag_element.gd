@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	# Reduce spawn protection timer at the start
-	if AppStateManager.currentState != AppStateManager.States.GAME:
+	if AppStateManager.currentState != AppStateManager.States.GAME and AppStateManager.currentState != AppStateManager.States.CREATIVE:
 		return
 	if spawn_protection > 0:
 		spawn_protection -= delta

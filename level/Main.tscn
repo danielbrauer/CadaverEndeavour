@@ -12,7 +12,7 @@
 [node name="Main Game" parent="." unique_id=409406437 instance=ExtResource("5_amgv6")]
 visible = false
 script = ExtResource("4_svb3r")
-valid_states = Array[int]([1, 2, 3])
+valid_states = Array[int]([1, 2, 3, 5])
 
 [node name="EndScreen" parent="." unique_id=1121136311 instance=ExtResource("7_e5prl")]
 visible = false
