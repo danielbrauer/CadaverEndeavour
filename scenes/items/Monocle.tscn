@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://mjhym178mijs"]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_k3skw"]
+[ext_resource type="Texture2D" uid="uid://drootvjduj1mn" path="res://images/objects/object_accessories_monocle_right.png" id="2_k3skw"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_r1mws"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgjyn"]
+radius = 128.14055
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3skw"]
+size = Vector2(72, 336.5)
+
+[node name="Antlers" type="Node2D" unique_id=572760130]
+
+[node name="DragElement" parent="." unique_id=590028688 instance=ExtResource("1_k3skw")]
+
+[node name="ObjectAccessoriesMonocleRight" type="Sprite2D" parent="DragElement" unique_id=2141027096]
+position = Vector2(27, 131)
+texture = ExtResource("2_k3skw")
+
+[node name="ItemPoints" parent="DragElement" unique_id=844568332 instance=ExtResource("3_r1mws")]
+position = Vector2(-1, 0)
+key = "Monocle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=903235803]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_vgjyn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DragElement" unique_id=1941418622]
+position = Vector2(100, 224.75)
+shape = SubResource("RectangleShape2D_k3skw")

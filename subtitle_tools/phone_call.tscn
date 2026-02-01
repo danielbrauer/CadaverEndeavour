@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://8nync6o8d3ry"]
+
+[ext_resource type="PackedScene" uid="uid://ckujbaafj31lx" path="res://subtitle_tools/subtitle_player.tscn" id="1_l18af"]
+[ext_resource type="AudioStream" uid="uid://nuslbp0tv4pt" path="res://Audio/Music/Cadaver CUE02 v.3.wav" id="2_kpu0g"]
+
+[node name="PhoneCall" type="Node2D" unique_id=230151636]
+
+[node name="SubtitlePlayer" parent="." unique_id=123456789 instance=ExtResource("1_l18af")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=434123260]
+stream = ExtResource("2_kpu0g")
+volume_db = -3.0
+autoplay = true
