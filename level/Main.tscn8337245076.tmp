@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://d3uhybbiifuqg"]
+
+[ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="1_7dwaf"]
+[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="1_hjlm1"]
+[ext_resource type="Texture2D" uid="uid://cn8a4iiq33odq" path="res://images/objects/object_bodyparts_ear_left.png" id="3_j2tkq"]
+[ext_resource type="PackedScene" path="res://playground/titlescreen.tscn" id="4_j2tkq"]
+[ext_resource type="Script" uid="uid://bka75bpuuynvm" path="res://scenes/EnableOnState.gd" id="4_svb3r"]
+[ext_resource type="PackedScene" uid="uid://0k5floenqelt" path="res://playground/Pau.tscn" id="5_amgv6"]
+[ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="7_e5prl"]
+
+[sub_resource type="Animation" id="Animation_fa068"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_7dwaf"]
+resource_name = "gameplay_cutscene"
+length = 90.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2tkq"]
+_data = {
+&"RESET": SubResource("Animation_fa068"),
+&"gameplay_cutscene": SubResource("Animation_7dwaf")
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_hjlm1"]
+
+[node name="Main" type="Node2D" unique_id=148638150]
+
+[node name="OldNoIdea" type="Node2D" parent="." unique_id=1441696816]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="OldNoIdea" unique_id=875672336]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_j2tkq")
+playback_auto_capture = false
+
+[node name="Node2D" type="Node2D" parent="OldNoIdea" unique_id=1217653713]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Icon" type="Sprite2D" parent="OldNoIdea/Node2D" unique_id=657892400]
+material = ExtResource("1_7dwaf")
+position = Vector2(368.99997, 287)
+scale = Vector2(2.3359375, 2.4296875)
+texture = ExtResource("1_hjlm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="OldNoIdea/Node2D" unique_id=1305502464]
+texture = SubResource("ImageTexture_hjlm1")
+
+[node name="ObjectBodypartsEarLeft" type="Sprite2D" parent="OldNoIdea/Node2D" unique_id=501724349]
+material = ExtResource("1_7dwaf")
+position = Vector2(-157, 317)
+texture = ExtResource("3_j2tkq")
+
+[node name="Camera2D" type="Camera2D" parent="OldNoIdea" unique_id=2014514002]
+
+[node name="Control" type="Control" parent="." unique_id=478624436]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_svb3r")
+valid_states = Array[int]([0])
+
+[node name="Title" parent="Control" unique_id=140595449 instance=ExtResource("4_j2tkq")]
+layout_mode = 1
+
+[node name="Pau" parent="." unique_id=1404171942 instance=ExtResource("5_amgv6")]
+visible = false
+script = ExtResource("4_svb3r")
+valid_states = Array[int]([1, 2, 3])
+
+[node name="EndScreen" type="Node2D" parent="." unique_id=1266093717]
+visible = false
+script = ExtResource("4_svb3r")
+valid_states = Array[int]([4])
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="EndScreen" unique_id=1263180986]
+texture_filter = 1
+position = Vector2(1491, 434)
+scale = Vector2(11.84, 8.000002)
+texture = ExtResource("7_e5prl")
+
+[node name="Label" type="Label" parent="EndScreen" unique_id=771383096]
+offset_left = 946.0
+offset_top = 325.0
+offset_right = 1025.0
+offset_bottom = 348.0
+text = "its so over"

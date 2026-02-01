@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dfdt43e0yn4sr"]
+
+[ext_resource type="Script" uid="uid://bka75bpuuynvm" path="res://scenes/EnableOnState.gd" id="1_37cf4"]
+[ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_jxwei"]
+[ext_resource type="Script" uid="uid://c7lsl8g8nrr44" path="res://scenes/OnClickRestart.gd" id="3_vjk32"]
+[ext_resource type="Script" uid="uid://cg7q8724wmvxp" path="res://level/dead_guy_container.gd" id="4_jxwei"]
+
+[node name="EndScreen" type="Node2D" unique_id=1179016300]
+script = ExtResource("1_37cf4")
+valid_states = Array[int]([4])
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="." unique_id=1969728732]
+visible = false
+texture_filter = 1
+position = Vector2(334, 20.000061)
+scale = Vector2(11.84, 8.000002)
+texture = ExtResource("2_jxwei")
+
+[node name="Label" type="Label" parent="." unique_id=1324349870]
+offset_left = -211.0
+offset_top = -88.99994
+offset_right = -132.0
+offset_bottom = -65.99994
+text = "its so over"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1544256468]
+
+[node name="Button" type="Button" parent="." unique_id=1342598771]
+offset_left = -236.00002
+offset_top = 35.0
+offset_right = -161.00002
+offset_bottom = 66.0
+scale = Vector2(4.8452725, 6.7200017)
+text = "RESTART"
+script = ExtResource("3_vjk32")
+
+[node name="DeadGuyContainer" type="Node2D" parent="." unique_id=456638911 groups=["DeadGuy"]]
+position = Vector2(425, 0)
+script = ExtResource("4_jxwei")
