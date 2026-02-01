@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b7dvt8joviqgj"]
 
-[ext_resource type="Script" uid="uid://bxebefakt4v4v" path="res://subtitle_tools/subtitle_player.gd" id="1_2g50v"]
+[ext_resource type="Script" path="res://subtitle_tools/subtitle_player.gd" id="1_2g50v"]
 [ext_resource type="Resource" path="res://subtitle_tools/resources/843551__klankbeeld__weather-report-snow-storm-new-england-noaa-7-260127.tres" id="2_8ax77"]
 
 [node name="Subtitles" type="Node2D" unique_id=1837995542]

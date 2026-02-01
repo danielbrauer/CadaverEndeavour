@@ -12,16 +12,17 @@ height = 339.41977
 radius = 91.0
 height = 454.0
 
-[node name="Antlers" type="Node2D" unique_id=572760130]
+[node name="Antlers" type="Node2D" unique_id=35227713]
+scale = Vector2(0.1, 0.1)
 
-[node name="DragElement" parent="." unique_id=590028688 instance=ExtResource("1_c2nlb")]
+[node name="DragElement" parent="." unique_id=236443659 instance=ExtResource("1_c2nlb")]
+types = Array[int]([0, 2])
 
 [node name="ObjectBodypartAntlerLeft" type="Sprite2D" parent="DragElement" unique_id=1181375987]
 position = Vector2(-155, -266)
 texture = ExtResource("2_58o3u")
 
-[node name="ItemPoints" parent="DragElement" unique_id=844568332 instance=ExtResource("3_6uuwh")]
-key = "Antlers"
+[node name="ItemPoints" parent="DragElement" unique_id=723080510 instance=ExtResource("3_6uuwh")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=238571868]
 position = Vector2(-87.99999, -83.99999)

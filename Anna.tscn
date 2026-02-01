@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccpp5g6gdspep"]
 
-[ext_resource type="AudioStream" uid="uid://cx2v7oinnwokv" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="1_syeq0"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="1_syeq0"]
 
 [node name="Node2D" type="Node2D" unique_id=1355036106]
 

@@ -1,7 +1,8 @@
 extends Area2D
 class_name InteractiveObject
 
-@export var data: DragObjectData
+@export var types: Array[PointType.Type] = []
+@export var amounts: Array[float] = []
 
 # --- New Physics Variables ---
 var velocity : Vector2 = Vector2.ZERO
@@ -10,7 +11,7 @@ var min_stop_speed : float = 10
 
 # --- State Variables ---
 var beingDragged : bool = false
-var is_inside_dropable : bool = false
+var is_inside_dropable : bool = true
 var is_dying : bool = false 
 var grace_period : float = 0.75 
 
@@ -26,20 +27,15 @@ var death_tween : Tween
 var start_position: Vector2
 
 func _ready() -> void:
-	# 1. Capture the starting position
 	start_position = global_position
-	max_spawn_protection = spawn_protection # Remember the config value
+	max_spawn_protection = spawn_protection
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exit)
-	
-	# Wait for one physics frame so get_overlapping_bodies() is accurate
-	await get_tree().physics_frame
-	
-	# Check initial overlap
-	force_update_containment()
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	# Reduce spawn protection timer at the start
 	if AppStateManager.currentState != AppStateManager.States.GAME:
 		return
@@ -106,10 +102,6 @@ func _perform_disable() -> void:
 	
 	collision_layer = 0
 	collision_mask = 0
-	
-	
-	
-	
 	
 	# 3. Wait 0.5 seconds, then Respawn
 	get_tree().create_timer(0.5).timeout.connect(_respawn_at_start)

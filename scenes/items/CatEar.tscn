@@ -8,18 +8,19 @@
 radius = 142.86484
 height = 357.72723
 
-[node name="Antlers" type="Node2D" unique_id=572760130]
+[node name="Antlers" type="Node2D" unique_id=13818087]
+scale = Vector2(0.1, 0.1)
 
-[node name="DragElement" parent="." unique_id=590028688 instance=ExtResource("1_6jvn8")]
+[node name="DragElement" parent="." unique_id=1356121539 instance=ExtResource("1_6jvn8")]
+types = Array[int]([4, 6])
 
 [node name="ObjectAnimalsCatearsBlackRight" type="Sprite2D" parent="DragElement" unique_id=539064850]
 texture = ExtResource("2_kg7qq")
 
-[node name="ItemPoints" parent="DragElement" unique_id=844568332 instance=ExtResource("3_4vep1")]
+[node name="ItemPoints" parent="DragElement" unique_id=328025910 instance=ExtResource("3_4vep1")]
 position = Vector2(-1, 0)
-key = "cat ears"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=903235803]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=1064426746]
 position = Vector2(63, -22.000002)
 rotation = -0.6907948
 shape = SubResource("CapsuleShape2D_1i43i")

@@ -2,19 +2,31 @@ extends Node
 
 class_name PointType
 
-enum PointType {
-	# Liked Hunting and going Outside
-	# Wife hated the hunting, son loved it
+enum Type {
 	Hunting = 0,
 	BodyPart = 1,
 	Nature = 2,
-	# Family has a dog - net positive
 	Dog = 3,
-	# Family are not cat-people
 	Cat = 4,
-	
-	# Wife says: Had an eye for detail
 	Eyes = 5,
-	# "Was a good listener"
 	Ears = 6
 }
+
+static var _string_to_enum: Dictionary = {
+	"Hunting": Type.Hunting,
+	"BodyPart": Type.BodyPart,
+	"Nature": Type.Nature,
+	"Dog": Type.Dog,
+	"Cat": Type.Cat,
+	"Eyes": Type.Eyes,
+	"Ears": Type.Ears
+}
+
+static func from_string(key: String) -> Type:
+	if _string_to_enum.has(key):
+		return _string_to_enum[key]
+	push_error("Unknown PointType string: " + key)
+	return Type.Hunting
+
+static func is_valid_key(key: String) -> bool:
+	return _string_to_enum.has(key)

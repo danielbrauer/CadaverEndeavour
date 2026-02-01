@@ -8,11 +8,13 @@
 radius = 143.0
 height = 340.0
 
-[node name="Antlers" type="Node2D" unique_id=572760130]
+[node name="Antlers" type="Node2D" unique_id=1552097]
+scale = Vector2(0.1, 0.1)
 
-[node name="DragElement" parent="." unique_id=590028688 instance=ExtResource("1_kxgud")]
+[node name="DragElement" parent="." unique_id=1129824742 instance=ExtResource("1_kxgud")]
+types = Array[int]([2])
 
-[node name="ItemPoints" parent="DragElement" unique_id=844568332 instance=ExtResource("3_hl75e")]
+[node name="ItemPoints" parent="DragElement" unique_id=915242198 instance=ExtResource("3_hl75e")]
 position = Vector2(-1, 0)
 key = "Pinecorn"
 
@@ -20,6 +22,6 @@ key = "Pinecorn"
 position = Vector2(1, -129)
 texture = ExtResource("3_kxgud")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=903235803]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=1822286516]
 position = Vector2(-1, -91)
 shape = SubResource("CapsuleShape2D_32o1i")

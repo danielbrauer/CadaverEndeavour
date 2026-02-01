@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckujbaafj31lx"]
 
-[ext_resource type="Script" uid="uid://bxebefakt4v4v" path="res://subtitle_tools/subtitle_player.gd" id="1_subtitle"]
+[ext_resource type="Script" path="res://subtitle_tools/subtitle_player.gd" id="1_subtitle"]
 [ext_resource type="Resource" path="res://subtitle_tools/resources/phone_call.tres" id="2_w4611"]
 
 [node name="SubtitlePlayer" type="Node2D" unique_id=123456789]

@@ -1,30 +1,47 @@
 extends Node2D
 
-@export var key: String
-
-var enum_map = { 
-	"Hunting": PointType.PointType.Hunting,
-	"BodyPart": PointType.PointType.BodyPart,
-	"Nature": PointType.PointType.Nature,
-	"Dog": PointType.PointType.Dog,
-	"Cat": PointType.PointType.Cat,
-	"Eyes": PointType.PointType.Eyes,
-	"Ears": PointType.PointType.Ears
+enum ItemName {
+	ANTLERS,
+	PINECORN,
+	EYES,
+	BUTTONS,
+	MONOCLE,
+	DOG_BONE_EARRING,
+	CAT_EARS
 }
 
-# Called when the node enters the scene tree for the first time.
+static var _enum_to_string: Dictionary = {
+	ItemName.ANTLERS: "Antlers",
+	ItemName.PINECORN: "Pinecorn",
+	ItemName.EYES: "Eyes",
+	ItemName.BUTTONS: "Buttons",
+	ItemName.MONOCLE: "Monocle",
+	ItemName.DOG_BONE_EARRING: "dog bone earring",
+	ItemName.CAT_EARS: "cat ears"
+}
+
+@export var item_name: ItemName = ItemName.ANTLERS
+@export var key: String
+
 func _ready() -> void:
-	var csv = CSVReader.read_csv_to_dict("res://resources/items.csv")
-	if !csv.has(self.key):
-		print("Missing key ", self.key, " in CSV: ", csv)
+	if Engine.is_editor_hint():
 		return
-	var points = csv[self.key]
 	
-	for key in enum_map.keys():
-		if !points.has(key):
-			print("Missing key ", key, " in CSV entry: ", points)
+	var csv = CSVReader.read_csv_to_dict("res://resources/items.csv")
+	var item_key: String
+	if key != "":
+		item_key = key
+	else:
+		item_key = _enum_to_string[item_name]
+	if !csv.has(item_key):
+		print("Missing key ", item_key, " in CSV: ", csv)
+		return
+	var csv_points = csv[item_key]
+	
+	for csv_key in csv_points:
+		if !PointType.is_valid_key(csv_key):
 			continue
-		var node : ScorePoint = preload("res://scenes/point.tscn").instantiate()
-		node.point_amount = points[key]
-		node.point_type = enum_map[key]
+		var node: ScorePoint = preload("res://scenes/point.tscn").instantiate()
+		node.point_amount = csv_points[csv_key]
+		node.point_type = PointType.from_string(csv_key)
 		self.add_child(node)

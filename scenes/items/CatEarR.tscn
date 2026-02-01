@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ljlqsbbsnp6s"]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_4ljyw"]
+[ext_resource type="Texture2D" uid="uid://n4qrgiev6bxs" path="res://images/objects/object_animals_catears_black_right.png" id="2_p3cc2"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_lf5bb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1i43i"]
+radius = 142.86484
+height = 357.72723
+
+[node name="Antlers" type="Node2D" unique_id=13818087]
+scale = Vector2(0.1, 0.1)
+
+[node name="DragElement" parent="." unique_id=1356121539 instance=ExtResource("1_4ljyw")]
+types = Array[int]([4, 6])
+
+[node name="ObjectAnimalsCatearsBlackRight" type="Sprite2D" parent="DragElement" unique_id=539064850]
+texture = ExtResource("2_p3cc2")
+flip_h = true
+
+[node name="ItemPoints" parent="DragElement" unique_id=328025910 instance=ExtResource("3_lf5bb")]
+position = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=1064426746]
+position = Vector2(-40, -20.000004)
+rotation = -0.6907948
+shape = SubResource("CapsuleShape2D_1i43i")

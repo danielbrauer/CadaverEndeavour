@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c5qcm0mbgk2lu"]
+
+[ext_resource type="Script" uid="uid://babiryye1sta4" path="res://playground/person.gd" id="1_r36d3"]
+[ext_resource type="Script" uid="uid://cb2on0ravvagv" path="res://level/family_test.gd" id="2_test"]
+
+[node name="Family" type="Node2D" unique_id=469513113]
+script = ExtResource("2_test")
+
+[node name="Baby" type="Node" parent="." unique_id=1617802531]
+script = ExtResource("1_r36d3")
+metadata/_custom_type_script = "uid://babiryye1sta4"
+
+[node name="Wife" type="Node" parent="." unique_id=2147015459]
+script = ExtResource("1_r36d3")
+person = 1
+metadata/_custom_type_script = "uid://babiryye1sta4"
+
+[node name="Son" type="Node" parent="." unique_id=2108153145]
+script = ExtResource("1_r36d3")
+person = 2
+metadata/_custom_type_script = "uid://babiryye1sta4"

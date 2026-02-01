@@ -1,19 +1,25 @@
-[gd_scene format=3 uid="uid://0k5floenqelt"]
+[gd_scene format=3 uid="uid://c1urh4wa8jbi5"]
 
 [ext_resource type="PackedScene" uid="uid://d218xgswraw3o" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
 [ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
 [ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_h8427"]
-[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
 [ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
 [ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
+[ext_resource type="PackedScene" uid="uid://cv4angv3bd3pf" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
 [ext_resource type="Script" uid="uid://boip1q0v6l1p3" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
+[ext_resource type="PackedScene" uid="uid://nt6fb0ri1aay" path="res://scenes/items/Eyes.tscn" id="7_nl4cy"]
+[ext_resource type="PackedScene" uid="uid://dm8vk5s27lv13" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
+[ext_resource type="PackedScene" uid="uid://mjhym178mijs" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
+[ext_resource type="PackedScene" uid="uid://b373w1pwb5ecy" path="res://scenes/items/antlers.tscn" id="10_h5gsp"]
+[ext_resource type="PackedScene" uid="uid://dhcsrqvyr3a4t" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
+[ext_resource type="PackedScene" uid="uid://ljlqsbbsnp6s" path="res://scenes/items/CatEarR.tscn" id="11_d2pce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
 size = Vector2(500, 388)
 
-[node name="Pau" type="Node2D" unique_id=1404171942]
+[node name="MainGameLoop" type="Node2D" unique_id=1404171942]
 
-[node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
+[node name="MouseFollower" parent="." unique_id=1880016701 instance=ExtResource("1_vi51d")]
 position = Vector2(2, -3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
@@ -39,65 +45,82 @@ grow_horizontal = 2
 texture = ExtResource("2_h8427")
 stretch_mode = 4
 
-[node name="AttachmentScene2" parent="Guy" unique_id=212488838 instance=ExtResource("1_kype0")]
+[node name="AttachmentScene2" parent="Guy" unique_id=207547248 instance=ExtResource("1_kype0")]
 position = Vector2(35, -10)
 scale = Vector2(-3.7340317, 6.378488)
 
-[node name="Containementarea" type="Node2D" parent="." unique_id=180779257]
+[node name="Tables" type="Node2D" parent="." unique_id=180779257]
 position = Vector2(3, 0)
 
-[node name="Depth5" type="StaticBody2D" parent="Containementarea" unique_id=482617014 groups=["ContainmentArea"]]
+[node name="Table 1" type="StaticBody2D" parent="Tables" unique_id=482617014 groups=["ContainmentArea"]]
 position = Vector2(674, 295)
 
-[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth5" unique_id=1921466088]
+[node name="Sprite2D" type="Sprite2D" parent="Tables/Table 1" unique_id=1921466088]
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth5" unique_id=1823810928]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tables/Table 1" unique_id=1823810928]
 shape = SubResource("RectangleShape2D_vi51d")
 
-[node name="Depth4" type="StaticBody2D" parent="Containementarea" unique_id=708215493 groups=["ContainmentArea"]]
+[node name="Table 2" type="StaticBody2D" parent="Tables" unique_id=708215493 groups=["ContainmentArea"]]
 position = Vector2(674, -251)
 
-[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth4" unique_id=1344038644]
+[node name="Sprite2D" type="Sprite2D" parent="Tables/Table 2" unique_id=1344038644]
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth4" unique_id=1996677151]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tables/Table 2" unique_id=1996677151]
 shape = SubResource("RectangleShape2D_vi51d")
 
-[node name="Depth6" type="StaticBody2D" parent="Containementarea" unique_id=1495456604 groups=["ContainmentArea"]]
+[node name="Table 3" type="StaticBody2D" parent="Tables" unique_id=1495456604 groups=["ContainmentArea"]]
 position = Vector2(-626, -27)
 scale = Vector2(1, 2.3200006)
 
-[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth6" unique_id=1118881368]
+[node name="Sprite2D" type="Sprite2D" parent="Tables/Table 3" unique_id=1118881368]
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth6" unique_id=1070789756]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tables/Table 3" unique_id=1070789756]
 shape = SubResource("RectangleShape2D_vi51d")
 
-[node name="DragElement3" parent="Containementarea" unique_id=810712407 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(615, -249)
+[node name="Eye" parent="Tables" unique_id=1673550227 instance=ExtResource("7_nl4cy")]
+position = Vector2(-548.99994, -148.99998)
 
-[node name="DragElement4" parent="Containementarea" unique_id=590028688 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(828, -306)
+[node name="Eye2" parent="Tables" unique_id=50655866 instance=ExtResource("7_nl4cy")]
+position = Vector2(-501.00006, -154.00002)
 
-[node name="DragElement5" parent="Containementarea" unique_id=594111844 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(626, 332)
+[node name="Cat Ear L" parent="Tables" unique_id=1176130850 instance=ExtResource("7_6ejfv")]
+position = Vector2(-709, -200)
 
-[node name="DragElement6" parent="Containementarea" unique_id=226898675 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(-762, -52)
+[node name="Cat Ear R" parent="Tables" unique_id=13818087 instance=ExtResource("11_d2pce")]
+position = Vector2(-751, -196)
 
-[node name="DragElement7" parent="Containementarea" unique_id=210254576 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(-625, -262)
+[node name="Antlers" parent="Tables" unique_id=35227713 instance=ExtResource("10_h5gsp")]
+position = Vector2(-453.99997, 73.99999)
 
-[node name="DragElement8" parent="Containementarea" unique_id=1094334970 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(-578, 99)
+[node name="Antlers2" parent="Tables" unique_id=457146849 instance=ExtResource("10_h5gsp")]
+position = Vector2(-546.99994, 74.00001)
+
+[node name="Dog Bone Earring" parent="Tables" unique_id=1673744633 instance=ExtResource("8_hmplt")]
+position = Vector2(-643, 136)
+
+[node name="Dog Bone Earring2" parent="Tables" unique_id=1109045017 instance=ExtResource("8_hmplt")]
+position = Vector2(-586, 137)
+
+[node name="Monocle" parent="Tables" unique_id=2036129028 instance=ExtResource("9_d2pce")]
+position = Vector2(659, -308)
+
+[node name="Pinecone 1" parent="Tables" unique_id=977459451 instance=ExtResource("10_hmplt")]
+position = Vector2(-535, -276)
+
+[node name="Pinecone 2" parent="Tables" unique_id=1552097 instance=ExtResource("10_hmplt")]
+position = Vector2(-576, -276)
+
+[node name="Pinecone 3" parent="Tables" unique_id=2137026169 instance=ExtResource("10_hmplt")]
+position = Vector2(-499, -275)
 
 [node name="GameMaanger" type="Node2D" parent="." unique_id=339843467]
 script = ExtResource("6_h8427")
-game_duration = 10.0
 
 [node name="Ongameendanimator" type="Node2D" parent="." unique_id=649121275 node_paths=PackedStringArray("deadguy")]
 script = ExtResource("7_7rxly")

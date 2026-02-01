@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgqdgpkwc5ymy"]
 
-[ext_resource type="Script" uid="uid://c1t61jrvtkohl" path="res://playground/preference.gd" id="1_gxu03"]
+[ext_resource type="Script" path="res://playground/preference.gd" id="1_gxu03"]
 
 [node name="Preference" type="Node" unique_id=1929150009]
 script = ExtResource("1_gxu03")
