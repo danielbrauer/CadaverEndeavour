@@ -278,7 +278,7 @@ scale = Vector2(0.94791675, 0.94791675)
 texture = ExtResource("11_y34tt")
 offset = Vector2(-644.5711, -14.769176)
 
-[node name="Guyy" type="Node2D" parent="Node2D/Animation/Node2D2" unique_id=1186473637 groups=["DeadGuy"]]
+[node name="Guyy" type="Node2D" parent="Node2D/Animation/Node2D2" unique_id=1186473637]
 
 [node name="EnvironmentTable" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy" unique_id=984813290]
 z_index = -7
@@ -286,7 +286,7 @@ position = Vector2(-79.49997, 246.39946)
 scale = Vector2(1.0950414, 1.0950414)
 texture = ExtResource("12_ff4d2")
 
-[node name="Guyyyyyyy" type="Node2D" parent="Node2D/Animation/Node2D2/Guyy" unique_id=409722090]
+[node name="Guyyyyyyy" type="Node2D" parent="Node2D/Animation/Node2D2/Guyy" unique_id=409722090 groups=["DeadGuy"]]
 
 [node name="Cadaver" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1351781870]
 z_index = -4
