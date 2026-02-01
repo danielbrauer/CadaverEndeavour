@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_jxwei"]
 [ext_resource type="Texture2D" uid="uid://jwvkenks4n70" path="res://images/Environment/Parlor/environment_parlor.png" id="2_lecd4"]
 [ext_resource type="Script" path="res://scenes/OnClickRestart.gd" id="3_vjk32"]
+[ext_resource type="Texture2D" uid="uid://dld1mxf50jj2t" path="res://images/Environment/Parlor/environment_parlor_choir.png" id="4_2te2f"]
 [ext_resource type="Texture2D" uid="uid://ddprdjxfwvojh" path="res://images/Environment/Coffin/environment_coffin.png" id="4_hi776"]
 [ext_resource type="Script" uid="uid://cg7q8724wmvxp" path="res://level/dead_guy_container.gd" id="4_jxwei"]
 [ext_resource type="Texture2D" uid="uid://bl35u2qmnqmkh" path="res://images/Environment/Coffin/environment_coffin_upperlid_open.png" id="5_15f3w"]
 [ext_resource type="Texture2D" uid="uid://byty4olnb2cel" path="res://images/Environment/Parlor/environment_parlor_portrait.png" id="7_kd0oc"]
 [ext_resource type="PackedScene" uid="uid://bjso6kfn8jtfv" path="res://playground/tears_particles.tscn" id="8_hi776"]
+[ext_resource type="PackedScene" uid="uid://do01b6oigm4q1" path="res://playground/hearts_particles.tscn" id="9_15f3w"]
 [ext_resource type="Script" path="res://level/family_test.gd" id="9_o8yv3"]
 [ext_resource type="Script" uid="uid://babiryye1sta4" path="res://playground/person.gd" id="10_hi776"]
 [ext_resource type="Texture2D" uid="uid://vemha4jfd182" path="res://images/Characters/Family_BabyNany.png" id="11_15f3w"]
@@ -16,6 +18,65 @@
 [ext_resource type="Texture2D" uid="uid://cpew165ppi6o1" path="res://images/Characters/Family_son.png" id="13_2te2f"]
 [ext_resource type="Texture2D" uid="uid://t1ufqj8sp8n2" path="res://images/Environment/Coffin/environment_coffin_lowerlid.png" id="15_ndpvb"]
 [ext_resource type="Texture2D" uid="uid://b4smgx6acfk43" path="res://images/Environment/Coffin/environment_coffin_upperlid_closed.png" id="16_qkedd"]
+[ext_resource type="Texture2D" uid="uid://b5mkuw3olwvyo" path="res://images/Environment/Parlor/environment_parlor_people.png" id="18_1mt13"]
+
+[sub_resource type="Animation" id="Animation_2te2f"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChoirMain/EnvironmentParlorChoir:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChoirMain/EnvironmentParlorChoir:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_2mvjn"]
+resource_name = "choir"
+length = 5.133333
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChoirMain/EnvironmentParlorChoir:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0, 2, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 42, -0.18888889, -10.166667, 0, 0, 42, -0.19140041, 1, 0, 0, 79, -0.25806713, 1, 0, 0, 79, -0.25, 0, 0.25, 0, 40, -0.18888889, -10.166667, 0.1362443, -1, 40, -0.19140041, 1, 0, 0, 0, -0.21108389, 0, 0, 0, 0, -0.19140041, 1, 0, 0),
+"times": PackedFloat32Array(0.033333335, 0.9333333, 1.4333333, 2.2333333, 2.7333333, 3.4666665, 3.9666665, 4.633333, 5.133333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChoirMain/EnvironmentParlorChoir:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1, -0.00016666639, 0.16666667, 0, 0, -16, -0.27734917, -3.5682244, 0.155455, 2, 0, -0.00016666639, 0.16666667, 0, 0, 1, -0.083333336, -0.16666667, 0, 0, -16, -0.27734917, -3.5682244, 0.155455, 2, 0, -0.00016666639, 0.16666667, 0, 0, 1, -0.083333336, -0.16666667, 0, 0, -18.999994, -0.27734917, -3.5682244, 0.155455, 2, -0.17647028, -0.00016666639, 0.16666667, 0, 0, 1, -0.083333336, -0.16666667, 0, 0, -19.999994, -0.27734917, -3.5682244, 0.155455, 2, -1.1764703, -0.00016666639, 0.16666667, 0, 0, 0, -0.083333336, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0.033333335, 0.034333333, 0.6333333, 0.9333333, 1.4333333, 1.9333332, 2.2333333, 2.7333333, 3.1666665, 3.4666667, 3.966667, 4.3333335, 4.6333337, 5.1333337)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ew1dc"]
+_data = {
+&"RESET": SubResource("Animation_2te2f"),
+&"choir": SubResource("Animation_2mvjn")
+}
 
 [sub_resource type="Animation" id="Animation_hi776"]
 length = 0.001
@@ -187,6 +248,66 @@ tracks/13/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Family/FamilyMama/MamaHearts/Hearts:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Family/FamilyBabyNany/BabyHearts/Hearts:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Family/FamilySon/SonHearts/Hearts:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Button:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_15f3w"]
 resource_name = "end_scene"
@@ -194,95 +315,95 @@ length = 50.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 9.266666, 9.27507),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 2.2840452),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.8, 1.8), Vector2(1.8, 1.8)]
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:position")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 9.27507),
+"times": PackedFloat32Array(2.7, 7.3325815),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -173)]
+"values": [Vector2(1, 1), Vector2(2.035, 2.035)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Coffin/DeadGuyContainer:visible")
+tracks/2/path = NodePath("Camera2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(10.100932, 10.609156),
+"times": PackedFloat32Array(2.7, 7.3325815),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -247.325)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Coffin/EnvironmentCoffinUpperlidClosed:visible")
+tracks/3/path = NodePath("Coffin/DeadGuyContainer:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(10.100932, 10.609156),
+"times": PackedFloat32Array(8.158443, 8.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Coffin/EnvironmentCoffinUpperlidOpen:visible")
+tracks/4/path = NodePath("Coffin/EnvironmentCoffinUpperlidClosed:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(10.100932, 10.609156),
+"times": PackedFloat32Array(8.158443, 8.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Family/FamilyMama:position")
+tracks/5/path = NodePath("Coffin/EnvironmentCoffinUpperlidOpen:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(11.625601, 12.896159),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-5296.8633, 116.02582), Vector2(-529.2138, 835.383)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Family/FamilyMama/MamaTears/TearsLeftEye:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 13.033334),
+"times": PackedFloat32Array(8.158443, 8.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Family/FamilyMama:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.5, 12.896159),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5296.8633, 116.02582), Vector2(-641.924, 1300)]
+}
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Family/FamilyMama/MamaTears/TearsRightEye:emitting")
+tracks/7/path = NodePath("Family/FamilyMama/MamaTears/TearsLeftEye:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 13.033334),
+"times": PackedFloat32Array(0, 13.366667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -290,23 +411,23 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Family/FamilySon:position")
+tracks/8/path = NodePath("Family/FamilyMama/MamaTears/TearsRightEye:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(16.834887, 18.041916),
+"times": PackedFloat32Array(0, 13.4),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-6166.2856, 278.46136), Vector2(-1304.134, 835.38306)]
+"update": 1,
+"values": [false, true]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Family/FamilySon/SonTears/TearsRightEye:emitting")
+tracks/9/path = NodePath("Family/FamilyMama/MamaHearts/Hearts:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 17.966667),
+"times": PackedFloat32Array(0, 13.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -314,35 +435,35 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Family/FamilySon/SonTears/TearsLeftEye:emitting")
+tracks/10/path = NodePath("Family/FamilySon:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 18.233334),
+"times": PackedFloat32Array(13.933333, 18.041916),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"update": 0,
+"values": [Vector2(-6166.2856, 278.46136), Vector2(-1304.134, 835.38306)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Family/FamilyBabyNany:position")
+tracks/11/path = NodePath("Family/FamilySon/SonTears/TearsRightEye:emitting")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(21.154783, 22.1077),
+"times": PackedFloat32Array(0, 19.533333),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(5140.9346, 672.9474), Vector2(278.7823, 1206.6641)]
+"update": 1,
+"values": [false, true]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsLeftEye:emitting")
+tracks/12/path = NodePath("Family/FamilySon/SonTears/TearsLeftEye:emitting")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 22.166666),
+"times": PackedFloat32Array(0, 19.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -350,22 +471,70 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsRightEye:emitting")
+tracks/13/path = NodePath("Family/FamilySon/SonHearts/Hearts:emitting")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 22.233334),
+"times": PackedFloat32Array(0, 19.733334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/14/type = "method"
+tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath(".")
+tracks/14/path = NodePath("Family/FamilyBabyNany:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
+"times": PackedFloat32Array(17.933332, 22.1077),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5140.9346, 672.9474), Vector2(278.7823, 1206.6641)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsLeftEye:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 23.266668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsRightEye:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 23.333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Family/FamilyBabyNany/BabyHearts/Hearts:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 23.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/18/type = "method"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
 "times": PackedFloat32Array(11.333333, 16.533333, 21.333334, 26.61818),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
@@ -382,6 +551,18 @@ tracks/14/keys = {
 "method": &"next_person"
 }]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Button:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 27.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1mt13"]
 _data = {
@@ -395,7 +576,7 @@ theLabel = NodePath("Label")
 valid_states = Array[int]([4])
 
 [node name="EnvironmentParlor" type="Sprite2D" parent="." unique_id=767814078]
-z_index = -10
+z_index = -20
 position = Vector2(-1, -16)
 texture = ExtResource("2_lecd4")
 
@@ -403,6 +584,17 @@ texture = ExtResource("2_lecd4")
 z_index = -8
 position = Vector2(0, -18)
 texture = ExtResource("7_kd0oc")
+
+[node name="ChoirMain" type="Node2D" parent="." unique_id=417325130]
+position = Vector2(-760, -166)
+
+[node name="EnvironmentParlorChoir" type="Sprite2D" parent="ChoirMain" unique_id=1499562931]
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("4_2te2f")
+
+[node name="ChoirAnim" type="AnimationPlayer" parent="." unique_id=1655413516]
+libraries/ = SubResource("AnimationLibrary_ew1dc")
+autoplay = &"choir"
 
 [node name="Family" type="Node2D" parent="." unique_id=469513113]
 z_index = -10
@@ -415,10 +607,19 @@ position = Vector2(5140.9346, 672.9474)
 scale = Vector2(1.3786597, 6.7705956)
 texture = ExtResource("11_15f3w")
 
-[node name="Baby" type="Node" parent="Family/FamilyBabyNany" unique_id=1617802531 node_paths=PackedStringArray("tears")]
+[node name="Baby" type="Node" parent="Family/FamilyBabyNany" unique_id=1617802531 node_paths=PackedStringArray("tears", "hearts")]
 script = ExtResource("10_hi776")
 tears = NodePath("../BabyTears")
+hearts = NodePath("../BabyHearts")
 metadata/_custom_type_script = "uid://babiryye1sta4"
+
+[node name="BabyHearts" parent="Family/FamilyBabyNany" unique_id=1362696215 instance=ExtResource("9_15f3w")]
+position = Vector2(65.11932, -658.0475)
+scale = Vector2(0.9999999, 1)
+
+[node name="Hearts" parent="Family/FamilyBabyNany/BabyHearts" index="0" unique_id=1165956148]
+z_index = -1
+emitting = false
 
 [node name="BabyTears" parent="Family/FamilyBabyNany" unique_id=1984504676 instance=ExtResource("8_hi776")]
 position = Vector2(47.982277, -620.3469)
@@ -435,11 +636,20 @@ position = Vector2(-5296.8633, 116.02582)
 scale = Vector2(1.3786597, 6.7705956)
 texture = ExtResource("12_1mt13")
 
-[node name="Wife" type="Node" parent="Family/FamilyMama" unique_id=2147015459 node_paths=PackedStringArray("tears")]
+[node name="Wife" type="Node" parent="Family/FamilyMama" unique_id=2147015459 node_paths=PackedStringArray("tears", "hearts")]
 script = ExtResource("10_hi776")
 tears = NodePath("../MamaTears")
+hearts = NodePath("../MamaHearts")
 person = 1
 metadata/_custom_type_script = "uid://babiryye1sta4"
+
+[node name="MamaHearts" parent="Family/FamilyMama" unique_id=1264679882 instance=ExtResource("9_15f3w")]
+position = Vector2(0, -575.7912)
+scale = Vector2(0.9999999, 1)
+
+[node name="Hearts" parent="Family/FamilyMama/MamaHearts" index="0" unique_id=1165956148]
+z_index = -1
+emitting = false
 
 [node name="MamaTears" parent="Family/FamilyMama" unique_id=1573075494 instance=ExtResource("8_hi776")]
 position = Vector2(-3.427331, -644.3382)
@@ -455,11 +665,20 @@ position = Vector2(-6166.2856, 278.46136)
 scale = Vector2(1.3786597, 6.7705956)
 texture = ExtResource("13_2te2f")
 
-[node name="Son" type="Node" parent="Family/FamilySon" unique_id=2108153145 node_paths=PackedStringArray("tears")]
+[node name="Son" type="Node" parent="Family/FamilySon" unique_id=2108153145 node_paths=PackedStringArray("tears", "hearts")]
 script = ExtResource("10_hi776")
 tears = NodePath("../SonTears")
+hearts = NodePath("../SonHearts")
 person = 2
 metadata/_custom_type_script = "uid://babiryye1sta4"
+
+[node name="SonHearts" parent="Family/FamilySon" unique_id=1503385642 instance=ExtResource("9_15f3w")]
+position = Vector2(-27.418396, -654.6201)
+scale = Vector2(0.9999999, 1)
+
+[node name="Hearts" parent="Family/FamilySon/SonHearts" index="0" unique_id=1165956148]
+z_index = -1
+emitting = false
 
 [node name="SonTears" parent="Family/FamilySon" unique_id=1417014216 instance=ExtResource("8_hi776")]
 position = Vector2(6.854538, -682.0388)
@@ -503,6 +722,7 @@ scale = Vector2(11.84, 8.000002)
 texture = ExtResource("2_jxwei")
 
 [node name="Label" type="Label" parent="." unique_id=1324349870]
+visible = false
 offset_left = -202.0
 offset_top = -131.0
 offset_right = -25.0
@@ -512,6 +732,7 @@ text = "its so over"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1544256468]
 
 [node name="Button" type="Button" parent="." unique_id=1342598771]
+visible = false
 offset_left = 294.0
 offset_top = -463.0
 offset_right = 369.0
@@ -520,10 +741,17 @@ scale = Vector2(1.6815377, 2.3321571)
 text = "RESTART"
 script = ExtResource("3_vjk32")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=702601203]
+[node name="MainAnimation" type="AnimationPlayer" parent="." unique_id=702601203]
 libraries/ = SubResource("AnimationLibrary_1mt13")
 autoplay = &"end_scene"
 
+[node name="EnvironmentParlorPeople" type="Sprite2D" parent="." unique_id=664021304]
+position = Vector2(-45, 52)
+texture = ExtResource("18_1mt13")
+
+[editable path="Family/FamilyBabyNany/BabyHearts"]
 [editable path="Family/FamilyBabyNany/BabyTears"]
+[editable path="Family/FamilyMama/MamaHearts"]
 [editable path="Family/FamilyMama/MamaTears"]
+[editable path="Family/FamilySon/SonHearts"]
 [editable path="Family/FamilySon/SonTears"]

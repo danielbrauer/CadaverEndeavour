@@ -42,6 +42,7 @@ func _sequence_family_scores() -> void:
 	for person in persons:
 		var score = person.calculate_score()
 		scores.append(score)
+	AudioManager.fade_to_neutral()
 
 func next_person():
 	if AppStateManager.currentState != AppStateManager.States.ENDSCREEN:
@@ -52,8 +53,8 @@ func next_person():
 		return
 	
 	if self.persons.size() <= current_person:
-		AudioManager.update_ending_music(0.0, 0.0, 1.0)
 		label_node.text = "Neutral"
+		AudioManager.fade_to_neutral()
 		return
 	
 	var person_name = Person._enum_to_string[persons[current_person].person]
