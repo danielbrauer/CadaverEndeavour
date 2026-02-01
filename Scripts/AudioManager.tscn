@@ -7,8 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://bqv8oi5sw8svc" path="res://Audio/Music/Cadaver CUE03v.4 Jesus.wav" id="5_j56hb"]
 [ext_resource type="AudioStream" uid="uid://b2tq2uyu85dls" path="res://Audio/Music/Cadaver CUE03v.4 Sad.wav" id="6_iu73r"]
 [ext_resource type="AudioStream" uid="uid://d05jsby4y24ab" path="res://Audio/Music/Cadaver CUE03v.4 Just very Humble.wav" id="7_yocfq"]
+[ext_resource type="AudioStream" uid="uid://ctvuvxkghwyuh" path="res://Audio/sfx/baby-happy.mp3" id="8_yocfq"]
+[ext_resource type="AudioStream" uid="uid://cm6hr5iecee08" path="res://Audio/sfx/baby-sad.mp3" id="9_4qroj"]
+[ext_resource type="AudioStream" uid="uid://dsdjpd0e5oea" path="res://Audio/sfx/widow-sad.mp3" id="10_myfy0"]
+[ext_resource type="AudioStream" uid="uid://cqd85fofumvvx" path="res://Audio/sfx/son-happy.mp3" id="11_tjm4s"]
+[ext_resource type="AudioStream" uid="uid://fncbwhkedyg0" path="res://Audio/sfx/son-mad.mp3" id="12_leexf"]
 
-[node name="AudioManager" type="Node" unique_id=831990718]
+[node name="AudioManager" type="Node" unique_id=1856396134]
 script = ExtResource("1_audiomanager")
 title_music = ExtResource("2_awy4y")
 main_music = ExtResource("3_i1r4f")
@@ -16,6 +21,12 @@ main_phone_call = ExtResource("4_mbw3n")
 happy_ending = ExtResource("5_j56hb")
 sad_ending = ExtResource("6_iu73r")
 neutral_ending = ExtResource("7_yocfq")
+baby_happy_sfx = ExtResource("8_yocfq")
+baby_sad_sfx = ExtResource("9_4qroj")
+wife_happy_sfx = ExtResource("10_myfy0")
+wife_sad_sfx = ExtResource("10_myfy0")
+son_happy_sfx = ExtResource("11_tjm4s")
+son_sad_sfx = ExtResource("12_leexf")
 
 [node name="MainMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1538170933]
 bus = &"Music Bus"
@@ -35,3 +46,15 @@ volume_db = -80.0
 
 [node name="NeutralEndingPlayer" type="AudioStreamPlayer" parent="." unique_id=664355269]
 volume_db = -80.0
+
+[node name="BabyHappyPlayer" type="AudioStreamPlayer" parent="." unique_id=2129150733]
+
+[node name="BabySadPlayer" type="AudioStreamPlayer" parent="." unique_id=1161595186]
+
+[node name="WifeHappyPlayer" type="AudioStreamPlayer" parent="." unique_id=1458730567]
+
+[node name="WifeSadPlayer" type="AudioStreamPlayer" parent="." unique_id=1755759043]
+
+[node name="SonHappyPlayer" type="AudioStreamPlayer" parent="." unique_id=362557454]
+
+[node name="SonSadPlayer" type="AudioStreamPlayer" parent="." unique_id=1768532838]
