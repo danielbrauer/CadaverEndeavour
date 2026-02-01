@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b1mn2pcnka8y0"]
+
+[ext_resource type="Texture2D" uid="uid://bwxbl2uj06fj4" path="res://images/particles/heart.png" id="1_qjxv8"]
+[ext_resource type="Material" uid="uid://be3v1gniw2a26" path="res://particles/hearts.tres" id="2_tkvut"]
+
+[node name="HeartsParticles" type="Node2D" unique_id=1362696215]
+
+[node name="Hearts" type="GPUParticles2D" parent="." unique_id=1165956148]
+position = Vector2(975, 432)
+amount = 35
+texture = ExtResource("1_qjxv8")
+lifetime = 10.0
+randomness = 0.6
+process_material = ExtResource("2_tkvut")

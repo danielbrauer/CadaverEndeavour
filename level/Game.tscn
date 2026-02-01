@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8vk5s27lv13" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
 [ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="9_2pa0e"]
 [ext_resource type="PackedScene" uid="uid://mjhym178mijs" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
+[ext_resource type="Texture2D" uid="uid://bk15cdjud1ydp" path="res://images/Environment/environment_morguetop.jpg" id="10_04yrl"]
 [ext_resource type="PackedScene" uid="uid://b373w1pwb5ecy" path="res://scenes/items/antlers.tscn" id="10_h5gsp"]
 [ext_resource type="PackedScene" uid="uid://dhcsrqvyr3a4t" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
 [ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="10_uoilq"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="12_ff4d2"]
 [ext_resource type="AudioStream" uid="uid://nuslbp0tv4pt" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="15_1ymms"]
 [ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="15_c5vso"]
+[ext_resource type="Script" uid="uid://ci830o60xoidd" path="res://scenes/cameraMover.gd" id="16_6ynke"]
 [ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="16_ruqv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04yrl"]
@@ -170,26 +172,17 @@ shape = SubResource("RectangleShape2D_uoilq")
 [node name="Eye" parent="Node2D/Tables2" unique_id=402577541 instance=ExtResource("7_nl4cy")]
 position = Vector2(-643, -29)
 
-[node name="DragElement" parent="Node2D/Tables2/Eye" index="0" unique_id=102585376]
-scale = Vector2(2.4, 2.4)
-
 [node name="Eye2" parent="Node2D/Tables2" unique_id=2015719017 instance=ExtResource("7_nl4cy")]
 position = Vector2(-643, 92)
 
 [node name="DragElement" parent="Node2D/Tables2/Eye2" index="0" unique_id=102585376]
-scale = Vector2(2.46, 2.46)
+scale = Vector2(0.27999878, 0.27999878)
 
 [node name="Cat Ear L" parent="Node2D/Tables2" unique_id=795147393 instance=ExtResource("7_6ejfv")]
 position = Vector2(705, -331)
 
-[node name="DragElement" parent="Node2D/Tables2/Cat Ear L" index="0" unique_id=1356121539]
-scale = Vector2(4.695, 4.695)
-
 [node name="Cat Ear R" parent="Node2D/Tables2" unique_id=1982705673 instance=ExtResource("11_d2pce")]
 position = Vector2(-728, -141)
-
-[node name="DragElement" parent="Node2D/Tables2/Cat Ear R" index="0" unique_id=1356121539]
-scale = Vector2(5.27, 5.27)
 
 [node name="Button" parent="Node2D/Tables2" unique_id=946069664 instance=ExtResource("5_rbnyl")]
 position = Vector2(656, 417)
@@ -201,11 +194,20 @@ scale = Vector2(0.15657006, -0.16059181)
 position = Vector2(542, -376)
 
 [node name="Antlers" parent="Node2D/Tables2" unique_id=1164850147 instance=ExtResource("10_h5gsp")]
-position = Vector2(723.00006, -102.000015)
+position = Vector2(887, -46)
 
 [node name="DragElement" parent="Node2D/Tables2/Antlers" index="0" unique_id=236443659]
 position = Vector2(-119.00006, 144.00002)
-scale = Vector2(-0.5, 0.5)
+
+[node name="ObjectBodypartAntlerLeft" parent="Node2D/Tables2/Antlers/DragElement" index="0" unique_id=1181375987]
+flip_h = true
+
+[node name="CollisionShape2D" parent="Node2D/Tables2/Antlers/DragElement" index="2" unique_id=238571868]
+position = Vector2(-218, -86.00001)
+rotation = 0.7594892
+
+[node name="CollisionShape2D2" parent="Node2D/Tables2/Antlers/DragElement" index="3" unique_id=79981991]
+position = Vector2(-58, -360)
 
 [node name="Antlers2" parent="Node2D/Tables2" unique_id=925699828 instance=ExtResource("10_h5gsp")]
 position = Vector2(-640, 263)
@@ -213,14 +215,8 @@ position = Vector2(-640, 263)
 [node name="Dog Bone Earring" parent="Node2D/Tables2" unique_id=853598057 instance=ExtResource("8_hmplt")]
 position = Vector2(-766, 261)
 
-[node name="DragElement" parent="Node2D/Tables2/Dog Bone Earring" index="0" unique_id=1123628354]
-scale = Vector2(0.215, 0.215)
-
 [node name="Dog Bone Earring2" parent="Node2D/Tables2" unique_id=771213530 instance=ExtResource("8_hmplt")]
 position = Vector2(722, 357)
-
-[node name="DragElement" parent="Node2D/Tables2/Dog Bone Earring2" index="0" unique_id=1123628354]
-scale = Vector2(0.215, 0.215)
 
 [node name="Monocle" parent="Node2D/Tables2" unique_id=1879850579 instance=ExtResource("9_d2pce")]
 position = Vector2(610, -222)
@@ -229,19 +225,13 @@ position = Vector2(610, -222)
 position = Vector2(530, -64)
 
 [node name="DragElement" parent="Node2D/Tables2/Pinecone 1" index="0" unique_id=1129824742]
-scale = Vector2(2.755, 2.755)
+scale = Vector2(0.21000001, 0.21000001)
 
 [node name="Pinecone 2" parent="Node2D/Tables2" unique_id=2135268771 instance=ExtResource("10_hmplt")]
 position = Vector2(576, 406)
 
-[node name="DragElement" parent="Node2D/Tables2/Pinecone 2" index="0" unique_id=1129824742]
-scale = Vector2(3.1, 3.1)
-
 [node name="Pinecone 3" parent="Node2D/Tables2" unique_id=1514260614 instance=ExtResource("10_hmplt")]
 position = Vector2(-637, -174)
-
-[node name="DragElement" parent="Node2D/Tables2/Pinecone 3" index="0" unique_id=1129824742]
-scale = Vector2(3.16, 3.16)
 
 [node name="Animation" type="Node2D" parent="Node2D" unique_id=286354477]
 
@@ -251,6 +241,12 @@ autoplay = &"gameplay_cutscene"
 playback_auto_capture = false
 
 [node name="Node2D2" type="Node2D" parent="Node2D/Animation" unique_id=963418050]
+
+[node name="EnvironmentMorgue2" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=149925552]
+z_index = -10
+position = Vector2(0, -592)
+scale = Vector2(0.25, 0.339289)
+texture = ExtResource("10_04yrl")
 
 [node name="EnvironmentMorgue" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=635512563]
 z_index = -10
@@ -305,20 +301,16 @@ texture = ExtResource("16_ruqv7")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/Animation" unique_id=2014514002]
 
+[node name="Node2D" type="Node2D" parent="Node2D/Animation/Camera2D" unique_id=2081903645]
+script = ExtResource("16_6ynke")
+max_lean_distance = 150.0
+smoothing = 3.0
+
 [node name="Music" type="AudioStreamPlayer2D" parent="Node2D/Animation" unique_id=1708058806]
 stream = ExtResource("15_1ymms")
 volume_db = -80.0
 
-[editable path="Node2D/Tables2/Eye"]
 [editable path="Node2D/Tables2/Eye2"]
-[editable path="Node2D/Tables2/Cat Ear L"]
-[editable path="Node2D/Tables2/Cat Ear R"]
 [editable path="Node2D/Tables2/Button"]
 [editable path="Node2D/Tables2/Antlers"]
-[editable path="Node2D/Tables2/Antlers2"]
-[editable path="Node2D/Tables2/Dog Bone Earring"]
-[editable path="Node2D/Tables2/Dog Bone Earring2"]
-[editable path="Node2D/Tables2/Monocle"]
 [editable path="Node2D/Tables2/Pinecone 1"]
-[editable path="Node2D/Tables2/Pinecone 2"]
-[editable path="Node2D/Tables2/Pinecone 3"]
