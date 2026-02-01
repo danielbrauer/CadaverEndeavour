@@ -14,7 +14,7 @@ enum EndingType {
 @export var happy_ending: AudioStream
 @export var sad_ending: AudioStream
 @export var neutral_ending: AudioStream
-@export var crossfade_duration: float = 2.0
+@export var crossfade_duration: float = 0.5
 
 @export var baby_happy_sfx: AudioStream
 @export var baby_sad_sfx: AudioStream
@@ -220,9 +220,11 @@ func _crossfade_to_ending(ending_type: EndingType) -> void:
 		else:
 			tween.tween_property(player, "volume_db", -80.0, crossfade_duration)
 
+
 func _play_character_sfx(person_type: Person.PersonType, ending_type: EndingType) -> void:
 	var sfx_player = _get_character_sfx_player(person_type, ending_type)
 	if sfx_player:
+		await get_tree().create_timer(crossfade_duration).timeout
 		sfx_player.play()
 
 func _get_ending_player(ending_type: EndingType) -> AudioStreamPlayer:
