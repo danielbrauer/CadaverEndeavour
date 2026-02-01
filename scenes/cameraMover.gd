@@ -15,11 +15,9 @@ extends Node2D
 var camera: Camera2D
 
 func _ready() -> void:
-	# 1. Grab the parent node and make sure it's a Camera
-	var parent = get_parent()
-	if parent is Camera2D:
-		camera = parent
-	else:
+	await get_tree().process_frame
+	camera = get_viewport().get_camera_2d()
+	if not camera:
 		set_process(false)
 
 func _process(delta: float) -> void:

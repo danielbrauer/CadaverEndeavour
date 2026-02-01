@@ -13,11 +13,9 @@ var rotation_speed : float = 0.15
 var current_velocity : Vector2 = Vector2.ZERO
 
 func _on_begin_drag(otherObject : Node2D):
-	var local_offset = otherObject.global_position - self.global_position
-	#self.global_transform = otherObject.global_transform
+	self.global_position = otherObject.global_position
 	
-	# Local Offset to avoid snapping the dragged object to the root.
-	$RemoteTransform2D.position = local_offset
+	$RemoteTransform2D.position = Vector2.ZERO
 	$RemoteTransform2D.rotation = otherObject.rotation
 	$RemoteTransform2D.remote_path = otherObject.get_path()
 	draggedRB = otherObject
@@ -105,18 +103,20 @@ func _on_release():
 
 	_stop_animations(draggedRB)
 
+	var final_position = draggedRB.global_position
+	
+	$RemoteTransform2D.remote_path = NodePath("")
+
 	# --- RESET VISUALS ---
 	draggedRB.scale = original_scale
 	draggedRB.z_index = original_z
 	
 	# --- REORDER SIBLINGS ---
-	# Move to bottom of parent's list to draw on top of siblings
 	var parent = draggedRB.get_parent()
 	if parent:
 		parent.move_child(draggedRB, -1)
 
-	# Apply final position
-	draggedRB.global_position = $RemoteTransform2D.global_position
+	draggedRB.global_position = final_position
 	
 	if draggedRB.has_method("force_update_containment"):
 		draggedRB.force_update_containment()
@@ -127,8 +127,6 @@ func _on_release():
 	if "beingDragged" in draggedRB:
 		draggedRB.beingDragged = false
 
-	# Disconnect
-	$RemoteTransform2D.remote_path = NodePath("")
 	draggedRB = null
 	DraggingManager.is_dragging = false
 	current_velocity = Vector2.ZERO
