@@ -1,0 +1,27 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://be3v1gniw2a26"]
+
+[sub_resource type="Curve" id="Curve_xyfrj"]
+_data = [Vector2(0, 0.49528795), 0.0, 3.8585317, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y2phh"]
+curve = SubResource("Curve_xyfrj")
+
+[resource]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -44.99999
+angle_max = 45.00001
+inherit_velocity_ratio = 0.5
+velocity_pivot = Vector3(5, 10, 0)
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+orbit_velocity_min = -0.049999908
+orbit_velocity_max = 0.050000098
+gravity = Vector3(0, -60, 0)
+damping_min = 20.0
+damping_max = 20.0
+scale_curve = SubResource("CurveTexture_y2phh")
+turbulence_noise_strength = 0.0
