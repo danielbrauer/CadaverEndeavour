@@ -204,14 +204,17 @@ func _crossfade_to_ending(ending_type: EndingType) -> void:
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
-	if old_dominant != EndingType.NONE:
-		var old_player = _get_ending_player(old_dominant)
-		if old_player:
-			tween.tween_property(old_player, "volume_db", -80.0, crossfade_duration)
-	
-	var new_player = _get_ending_player(ending_type)
-	if new_player:
-		tween.tween_property(new_player, "volume_db", 0.0, crossfade_duration)
+	for ending in [EndingType.HAPPY, EndingType.SAD, EndingType.NEUTRAL]:
+		var player = _get_ending_player(ending)
+		if not player:
+			continue
+		
+		if ending == ending_type:
+			if not player.playing:
+				player.play()
+			tween.tween_property(player, "volume_db", 0.0, crossfade_duration)
+		else:
+			tween.tween_property(player, "volume_db", -80.0, crossfade_duration)
 
 func _play_character_sfx(person_type: Person.PersonType, ending_type: EndingType) -> void:
 	var sfx_player = _get_character_sfx_player(person_type, ending_type)
