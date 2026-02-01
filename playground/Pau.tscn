@@ -5,16 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_h8427"]
 [ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
 [ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
-[ext_resource type="Script" uid="uid://dcdxkelr7if10" path="res://scenes/CSVreaddd.gd" id="5_br0o5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_br0o5"]
-size = Vector2(700, 900)
+[ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
 size = Vector2(500, 388)
 
 [node name="Pau" type="Node2D" unique_id=1404171942]
-position = Vector2(0, -2)
 
 [node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
 position = Vector2(2, -3)
@@ -29,10 +25,6 @@ position = Vector2(35, -7)
 scale = Vector2(14.640001, 12.6)
 texture = ExtResource("2_h8427")
 
-[node name="AttachmentScene2" parent="Guy" unique_id=212488838 instance=ExtResource("1_kype0")]
-position = Vector2(35, -10)
-scale = Vector2(-3.7340317, 6.378488)
-
 [node name="TextureRect" type="TextureRect" parent="Guy" unique_id=247055286]
 texture_filter = 1
 anchors_preset = 5
@@ -46,14 +38,9 @@ grow_horizontal = 2
 texture = ExtResource("2_h8427")
 stretch_mode = 4
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1951764879]
-
-[node name="Depth3" type="Area2D" parent="Node2D" unique_id=2027257295 groups=["Depth3"]]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Depth3" unique_id=1220052597]
-position = Vector2(0, 107)
-shape = SubResource("RectangleShape2D_br0o5")
+[node name="AttachmentScene2" parent="Guy" unique_id=212488838 instance=ExtResource("1_kype0")]
+position = Vector2(35, -10)
+scale = Vector2(-3.7340317, 6.378488)
 
 [node name="Containementarea" type="Node2D" parent="." unique_id=180779257]
 position = Vector2(3, 0)
@@ -107,5 +94,8 @@ position = Vector2(-625, -262)
 [node name="DragElement8" parent="Containementarea" unique_id=1094334970 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
 position = Vector2(-578, 99)
 
-[node name="Node2D2" type="Node2D" parent="." unique_id=1330591153]
-script = ExtResource("5_br0o5")
+[node name="GameMaanger" type="Node2D" parent="." unique_id=339843467]
+script = ExtResource("6_h8427")
+game_duration = 10.0
+
+[node name="Ongameendanimator" type="Node2D" parent="." unique_id=649121275]

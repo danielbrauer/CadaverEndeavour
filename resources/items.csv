@@ -1,0 +1,8 @@
+Item,Hunting,BodyPart,Nature,Dog,Cat,Eyes,Ears
+Antlers,1,0.5,0.75,0,0,0,0.2
+Pinecorn,0,-0.2,1,0,0,0,0
+Eyes,0,1,0.5,0,0,1,-0.5
+Buttons,0,-0.2,-0.25,0,0,0.5,-0.2
+Monocle,-0.5,-0.2,-0.5,0,0,1.2,-0.2
+dog bone earring,0.5,0.5,0,1,-1,0,0.5
+cat ears,0,0,0,-1,1,0,1

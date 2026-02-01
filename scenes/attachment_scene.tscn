@@ -6,13 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7spvp"]
 size = Vector2(128, 127)
 
-[node name="AttachmentScene" type="StaticBody2D" unique_id=2060454781 groups=["Attachment", "ContainmentArea"]]
+[node name="AttachmentScene" type="StaticBody2D" unique_id=27302112 groups=["Attachment", "ContainmentArea"]]
 script = ExtResource("1_7spvp")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1320409730]
-visible = false
-texture = ExtResource("1_fiuk2")
+[node name="Area2D" type="Area2D" parent="." unique_id=277881790]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=440389912]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_7spvp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=574105476]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_7spvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1320409730]
+visible = false
+texture = ExtResource("1_fiuk2")

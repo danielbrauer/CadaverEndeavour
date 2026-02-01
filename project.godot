@@ -18,10 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 DraggingManager="*uid://csb3ybyjs0hnc"
-
-[autoload]
-
 PointTypeInst="*uid://glew0325iwyd"
+AppStateManager="*uid://c8xw1pb5vquw0"
 
 [display]
 
