@@ -48,7 +48,7 @@ scale = Vector2(4.8452725, 6.7200017)
 text = "RESTART"
 script = ExtResource("3_vjk32")
 
-[node name="DeadGuyContainer" type="Node2D" parent="." unique_id=456638911 groups=["DeadGuy"]]
+[node name="DeadGuyContainer" type="Node2D" parent="." unique_id=456638911]
 position = Vector2(425, 0)
 script = ExtResource("4_jxwei")
 
