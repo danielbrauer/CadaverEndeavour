@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cjp4br8504goq"]
 
-[ext_resource type="Script" path="res://playground/titlescreen.gd" id="1_6178g"]
-[ext_resource type="FontFile" path="res://fonts/Romanesco-Regular.ttf" id="2_g3jd8"]
-[ext_resource type="AudioStream" path="res://Audio/telephone_ring.wav" id="3_i3jtb"]
-[ext_resource type="Texture2D" path="res://images/titlescreen/telephone_placeholder.png" id="4_eyfdj"]
-[ext_resource type="Texture2D" path="res://images/titlescreen/oboe.png" id="5_115t2"]
+[ext_resource type="Script" uid="uid://ct367e8n5dhfv" path="res://playground/titlescreen.gd" id="1_6178g"]
+[ext_resource type="FontFile" uid="uid://konecenesq36" path="res://fonts/Romanesco-Regular.ttf" id="2_g3jd8"]
+[ext_resource type="AudioStream" uid="uid://bsoauttatqro6" path="res://Audio/telephone_ring.wav" id="3_i3jtb"]
+[ext_resource type="Texture2D" uid="uid://c0un2th7jhl1e" path="res://images/titlescreen/telephone_placeholder.png" id="4_eyfdj"]
+[ext_resource type="Texture2D" uid="uid://bvfkkvod7438n" path="res://images/titlescreen/oboe.png" id="5_115t2"]
 
 [node name="Control" type="Control" unique_id=140595449]
 layout_mode = 3
@@ -43,29 +43,17 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Label" type="Label" parent="MarginContainer/CenterContainer/TitleContainer" unique_id=273554365]
+[node name="Title" type="Label" parent="MarginContainer/CenterContainer/TitleContainer" unique_id=273554365]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_g3jd8")
 theme_override_font_sizes/font_size = 180
 text = "Cadaver Endeavour"
 
-[node name="BtnContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/TitleContainer" unique_id=1314708370]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-
-[node name="Start Game" type="Button" parent="MarginContainer/CenterContainer/TitleContainer/BtnContainer" unique_id=2005999385]
-custom_minimum_size = Vector2(300, 100)
+[node name="StartText" type="Label" parent="MarginContainer/CenterContainer/TitleContainer" unique_id=1116960323]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Start Game"
-
-[node name="Creative Mode" type="Button" parent="MarginContainer/CenterContainer/TitleContainer/BtnContainer" unique_id=629155190]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Creative Mode"
+text = "Press Space to start"
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1651345336]
 stream = ExtResource("3_i3jtb")
@@ -81,11 +69,8 @@ texture = ExtResource("4_eyfdj")
 
 [node name="Oboe" type="TextureRect" parent="." unique_id=780908682]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 692.0
-offset_right = 857.8251
-offset_bottom = 1028.0
+offset_left = 107.0
+offset_top = 818.0
+offset_right = 907.0
+offset_bottom = 989.0
 texture = ExtResource("5_115t2")
-expand_mode = 1
-
-[connection signal="pressed" from="MarginContainer/CenterContainer/TitleContainer/BtnContainer/Start Game" to="." method="_on_start_game_pressed"]
