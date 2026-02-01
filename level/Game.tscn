@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
 [ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
+[ext_resource type="PackedScene" uid="uid://5u13bcwocuwt" path="res://scenes/items/Button.tscn" id="5_rbnyl"]
 [ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
 [ext_resource type="PackedScene" uid="uid://cv4angv3bd3pf" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
 [ext_resource type="Script" uid="uid://boip1q0v6l1p3" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
@@ -152,37 +153,56 @@ position = Vector2(70, 5.1724153)
 shape = SubResource("RectangleShape2D_uoilq")
 
 [node name="Eye" parent="Tables2" unique_id=402577541 instance=ExtResource("7_nl4cy")]
-position = Vector2(-686.99994, -47.999992)
+position = Vector2(-643, -29)
 
 [node name="Eye2" parent="Tables2" unique_id=2015719017 instance=ExtResource("7_nl4cy")]
-position = Vector2(-639.00006, -53.000023)
+position = Vector2(-643, 92)
+
+[node name="DragElement" parent="Tables2/Eye2" index="0" unique_id=102585376]
+scale = Vector2(0.27999878, 0.27999878)
 
 [node name="Cat Ear L" parent="Tables2" unique_id=795147393 instance=ExtResource("7_6ejfv")]
-position = Vector2(-726, -104)
+position = Vector2(705, -331)
 
 [node name="Cat Ear R" parent="Tables2" unique_id=1982705673 instance=ExtResource("11_d2pce")]
-position = Vector2(-768, -100)
+position = Vector2(-728, -141)
+
+[node name="Button" parent="Tables2" unique_id=946069664 instance=ExtResource("5_rbnyl")]
+position = Vector2(656, 417)
+
+[node name="DragElement" parent="Tables2/Button" index="0" unique_id=1611187916]
+scale = Vector2(0.15657006, -0.16059181)
+
+[node name="Button2" parent="Tables2" unique_id=1803165722 instance=ExtResource("5_rbnyl")]
+position = Vector2(542, -376)
 
 [node name="Antlers" parent="Tables2" unique_id=1164850147 instance=ExtResource("10_h5gsp")]
-position = Vector2(-591.99994, 174.99998)
+position = Vector2(723.00006, -102.000015)
+
+[node name="DragElement" parent="Tables2/Antlers" index="0" unique_id=236443659]
+position = Vector2(-119.00006, 144.00002)
+scale = Vector2(-0.5, 0.5)
 
 [node name="Antlers2" parent="Tables2" unique_id=925699828 instance=ExtResource("10_h5gsp")]
-position = Vector2(-684.99994, 175)
+position = Vector2(-640, 263)
 
 [node name="Dog Bone Earring" parent="Tables2" unique_id=853598057 instance=ExtResource("8_hmplt")]
-position = Vector2(-781, 237)
+position = Vector2(-766, 261)
 
 [node name="Dog Bone Earring2" parent="Tables2" unique_id=771213530 instance=ExtResource("8_hmplt")]
-position = Vector2(-724, 238)
+position = Vector2(722, 357)
 
 [node name="Monocle" parent="Tables2" unique_id=1879850579 instance=ExtResource("9_d2pce")]
-position = Vector2(521, -207)
+position = Vector2(610, -222)
 
 [node name="Pinecone 1" parent="Tables2" unique_id=1670206423 instance=ExtResource("10_hmplt")]
-position = Vector2(-673, -175)
+position = Vector2(530, -64)
+
+[node name="DragElement" parent="Tables2/Pinecone 1" index="0" unique_id=1129824742]
+scale = Vector2(0.21000001, 0.21000001)
 
 [node name="Pinecone 2" parent="Tables2" unique_id=2135268771 instance=ExtResource("10_hmplt")]
-position = Vector2(-714, -175)
+position = Vector2(576, 406)
 
 [node name="Pinecone 3" parent="Tables2" unique_id=1514260614 instance=ExtResource("10_hmplt")]
 position = Vector2(-637, -174)
@@ -257,6 +277,7 @@ volume_db = -80.0
 position = Vector2(2, -3)
 
 [node name="GameMaanger" type="Node2D" parent="." unique_id=339843467]
+position = Vector2(-2, 2)
 script = ExtResource("6_h8427")
 animation_delay = 15.0
 
@@ -266,8 +287,14 @@ deadguy = NodePath("../Animation/Node2D2/Guyy")
 outOfScreenPosY = 1000.0
 
 [node name="BlackFade" type="Sprite2D" parent="." unique_id=1944865899]
+visible = false
 z_index = 218
 material = ExtResource("9_2pa0e")
 position = Vector2(-2, 2)
 scale = Vector2(2000, 2000)
 texture = ExtResource("3_kn1q5")
+
+[editable path="Tables2/Eye2"]
+[editable path="Tables2/Button"]
+[editable path="Tables2/Antlers"]
+[editable path="Tables2/Pinecone 1"]
