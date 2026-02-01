@@ -1,22 +1,32 @@
 [gd_scene format=3 uid="uid://c8f2avuyprwqm"]
 
-[ext_resource type="PackedScene" path="res://scenes/point.tscn" id="1_8gfu1"]
-[ext_resource type="PackedScene" path="res://scenes/person.tscn" id="2_2oki5"]
-[ext_resource type="PackedScene" path="res://scenes/preference.tscn" id="3_2oki5"]
+[ext_resource type="PackedScene" uid="uid://ckakafvu714tn" path="res://scenes/point.tscn" id="1_8gfu1"]
+[ext_resource type="PackedScene" uid="uid://bb88v7d8pjx3b" path="res://scenes/person.tscn" id="2_2oki5"]
+[ext_resource type="PackedScene" uid="uid://bgqdgpkwc5ymy" path="res://scenes/preference.tscn" id="3_2oki5"]
+[ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="4_q2sf6"]
+[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="5_45pbx"]
 
 [node name="Danny" type="Node2D" unique_id=1512365990]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1704737575]
 
-[node name="Point" parent="." instance=ExtResource("1_8gfu1")]
+[node name="Point" parent="." unique_id=1508114488 instance=ExtResource("1_8gfu1")]
 point_amount = -0.18
 
-[node name="Jeremy" parent="." instance=ExtResource("2_2oki5")]
+[node name="Jeremy" parent="." unique_id=1476760450 instance=ExtResource("2_2oki5")]
 
-[node name="HatesDogs" parent="Jeremy" instance=ExtResource("3_2oki5")]
+[node name="HatesDogs" parent="Jeremy" unique_id=1683765900 instance=ExtResource("3_2oki5")]
 preference_multiplier = -0.795
 
-[node name="Jeremy2" parent="." instance=ExtResource("2_2oki5")]
+[node name="Jeremy2" parent="." unique_id=1337658937 instance=ExtResource("2_2oki5")]
 
-[node name="LovesDogs" parent="Jeremy2" instance=ExtResource("3_2oki5")]
+[node name="LovesDogs" parent="Jeremy2" unique_id=2011820029 instance=ExtResource("3_2oki5")]
 preference_multiplier = 0.795
+
+[node name="Node2D" type="Node2D" parent="." unique_id=473391697]
+modulate = Color(0.23874435, 0.23874438, 0.23874435, 1)
+
+[node name="Cadaver" type="Sprite2D" parent="Node2D" unique_id=821857302]
+material = ExtResource("4_q2sf6")
+position = Vector2(-96, 256)
+texture = ExtResource("5_45pbx")
