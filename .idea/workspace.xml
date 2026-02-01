@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84d45ac7-dc87-43c1-befd-10772d51ddeb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scenes/cameraMover.gd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/default_bus_layout.tres" beforeDir="false" afterPath="$PROJECT_DIR$/default_bus_layout.tres" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level/Game.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/level/Game.tscn" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -227,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769945902058</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat - added camera slightly moves">
+      <option name="closed" value="true" />
+      <created>1769953057816</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1769953057816</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +255,8 @@
     <MESSAGE value="feat - rotation, appstates, prepare stuff" />
     <MESSAGE value="feat - mainloop scaled and added art" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="feat - added camera slightly moves" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat - added camera slightly moves" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
