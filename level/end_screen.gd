@@ -21,7 +21,7 @@ func _get_persons_in_order() -> Array[Person]:
 	var family = $Family
 	
 	var persons_by_type: Dictionary = {}
-	for child in family.get_children():
+	for child in family.find_children("*", "Person"):
 		if child is Person:
 			persons_by_type[child.person] = child
 	
@@ -32,41 +32,44 @@ func _get_persons_in_order() -> Array[Person]:
 			result.append(persons_by_type[person_type])
 	return result
 
+var current_person = 0
+var persons = []
+var scores: Array[float] = []
+
 func _sequence_family_scores() -> void:
-	var persons = _get_persons_in_order()
-	if persons.is_empty():
+	self.persons = _get_persons_in_order()
+	self.scores = []
+	for person in persons:
+		var score = person.calculate_score()
+		scores.append(score)
+
+func next_person():
+	if AppStateManager.currentState != AppStateManager.States.ENDSCREEN:
 		return
 	
 	var label_node = get_node(theLabel) as Label
 	if not label_node:
 		return
 	
-	while AppStateManager.currentState == AppStateManager.States.ENDSCREEN:
-		var scores: Array[float] = []
-		
-		for person in persons:
-			var score = person.calculate_score()
-			scores.append(score)
-		
-		for i in range(persons.size()):
-			if AppStateManager.currentState != AppStateManager.States.ENDSCREEN:
-				break
-			
-			var person_name = Person._enum_to_string[persons[i].person]
-			var score = scores[i]
-			
-			var happy_score = 0.0
-			var sad_score = 0.0
-			var neutral_score = 0.0
-			
-			if score > 1.0:
-				happy_score = 1.0
-			elif score < 0:
-				sad_score = 1.0
-			else:
-				neutral_score = 1.0
-			
-			label_node.text = person_name + ": " + str(score)
-			AudioManager.update_ending_music(happy_score, sad_score, neutral_score, persons[i].person)
-			await get_tree().create_timer(AudioManager.crossfade_duration).timeout
-			await get_tree().create_timer(3.0).timeout
+	if self.persons.size() <= current_person:
+		AudioManager.update_ending_music(0.0, 0.0, 1.0)
+		label_node.text = "Neutral"
+		return
+	
+	var person_name = Person._enum_to_string[persons[current_person].person]
+	var score = scores[current_person]
+	
+	var happy_score = 0.0
+	var sad_score = 0.0
+	var neutral_score = 0.0
+	
+	if score > 1.0:
+		happy_score = 1.0
+	elif score < 0:
+		sad_score = 1.0
+	else:
+		neutral_score = 1.0
+	
+	label_node.text = person_name + ": " + str(score)
+	AudioManager.update_ending_music(happy_score, sad_score, neutral_score, persons[current_person].person)
+	current_person += 1
