@@ -403,7 +403,7 @@ tracks/7/path = NodePath("Family/FamilyMama/MamaTears/TearsLeftEye:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 13.366667),
+"times": PackedFloat32Array(0, 13.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -415,7 +415,7 @@ tracks/8/path = NodePath("Family/FamilyMama/MamaTears/TearsRightEye:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 13.4),
+"times": PackedFloat32Array(0, 13.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -427,7 +427,7 @@ tracks/9/path = NodePath("Family/FamilyMama/MamaHearts/Hearts:emitting")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 13.5),
+"times": PackedFloat32Array(0, 13.066667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -451,7 +451,7 @@ tracks/11/path = NodePath("Family/FamilySon/SonTears/TearsRightEye:emitting")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 19.533333),
+"times": PackedFloat32Array(0, 18.633333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -463,7 +463,7 @@ tracks/12/path = NodePath("Family/FamilySon/SonTears/TearsLeftEye:emitting")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 19.6),
+"times": PackedFloat32Array(0, 18.633333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -475,7 +475,7 @@ tracks/13/path = NodePath("Family/FamilySon/SonHearts/Hearts:emitting")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 19.733334),
+"times": PackedFloat32Array(0, 18.066668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -499,7 +499,7 @@ tracks/15/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsLeftEye:emitting
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 23.266668),
+"times": PackedFloat32Array(0, 22.366667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -511,7 +511,7 @@ tracks/16/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsRightEye:emittin
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 23.333334),
+"times": PackedFloat32Array(0, 22.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -523,7 +523,7 @@ tracks/17/path = NodePath("Family/FamilyBabyNany/BabyHearts/Hearts:emitting")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 23.2),
+"times": PackedFloat32Array(0, 22.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -535,7 +535,7 @@ tracks/18/path = NodePath(".")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(11.333333, 16.533333, 21.333334, 26.61818),
+"times": PackedFloat32Array(11.6, 17, 21.333334, 26.61818),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
