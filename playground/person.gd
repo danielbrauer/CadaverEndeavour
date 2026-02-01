@@ -20,6 +20,8 @@ var enum_map = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	var csv = CSVReader.read_csv_to_dict("res://resources/people.csv")
 	if !csv.has(self.key):
 		print("Missing key ", self.key, " in CSV: ", csv)
@@ -40,6 +42,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if Input.is_action_just_pressed("drag"):
 		print("score: ", calculate_score())
 

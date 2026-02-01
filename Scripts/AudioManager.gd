@@ -20,6 +20,12 @@ var current_dominant_ending: String = ""
 var longer_track_player: AudioStreamPlayer
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	
+	if not happy_ending_player or not sad_ending_player or not neutral_ending_player:
+		return
+	
 	happy_ending_player.stream = happy_ending
 	sad_ending_player.stream = sad_ending
 	neutral_ending_player.stream = neutral_ending

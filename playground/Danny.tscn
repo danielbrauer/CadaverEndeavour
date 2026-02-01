@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://c8f2avuyprwqm"]
 
-[ext_resource type="PackedScene" uid="uid://ckakafvu714tn" path="res://scenes/point.tscn" id="1_8gfu1"]
-[ext_resource type="PackedScene" uid="uid://bb88v7d8pjx3b" path="res://scenes/person.tscn" id="2_2oki5"]
-[ext_resource type="PackedScene" uid="uid://bgqdgpkwc5ymy" path="res://scenes/preference.tscn" id="3_2oki5"]
+[ext_resource type="PackedScene" path="res://scenes/point.tscn" id="1_8gfu1"]
+[ext_resource type="PackedScene" path="res://scenes/person.tscn" id="2_2oki5"]
+[ext_resource type="PackedScene" path="res://scenes/preference.tscn" id="3_2oki5"]
 
 [node name="Danny" type="Node2D" unique_id=1512365990]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1704737575]
 
-[node name="Point" parent="." unique_id=213986383 instance=ExtResource("1_8gfu1")]
+[node name="Point" parent="." instance=ExtResource("1_8gfu1")]
 point_amount = -0.18
 
-[node name="Jeremy" parent="." unique_id=622991439 instance=ExtResource("2_2oki5")]
+[node name="Jeremy" parent="." instance=ExtResource("2_2oki5")]
 
-[node name="HatesDogs" parent="Jeremy" unique_id=1929150009 instance=ExtResource("3_2oki5")]
+[node name="HatesDogs" parent="Jeremy" instance=ExtResource("3_2oki5")]
 preference_multiplier = -0.795
 
-[node name="Jeremy2" parent="." unique_id=248551819 instance=ExtResource("2_2oki5")]
+[node name="Jeremy2" parent="." instance=ExtResource("2_2oki5")]
 
-[node name="LovesDogs" parent="Jeremy2" unique_id=402584224 instance=ExtResource("3_2oki5")]
+[node name="LovesDogs" parent="Jeremy2" instance=ExtResource("3_2oki5")]
 preference_multiplier = 0.795

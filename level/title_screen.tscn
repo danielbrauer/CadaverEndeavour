@@ -15,7 +15,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("1_s4wj5")
 valid_states = [0]
 
-[node name="Title" parent="." unique_id=140595449 instance=ExtResource("2_t746g")]
+[node name="Title" parent="." instance=ExtResource("2_t746g")]
 layout_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1309316569]

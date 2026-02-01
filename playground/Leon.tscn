@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://deqvsnj3237vo"]
 
-[ext_resource type="PackedScene" uid="uid://bb88v7d8pjx3b" path="res://scenes/person.tscn" id="1_qducr"]
-[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_bnluu"]
-[ext_resource type="AudioStream" uid="uid://cx2v7oinnwokv" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="4_bnluu"]
+[ext_resource type="PackedScene" path="res://scenes/person.tscn" id="1_qducr"]
+[ext_resource type="PackedScene" path="res://scenes/item_points.tscn" id="3_bnluu"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="4_bnluu"]
 
 [sub_resource type="Animation" id="Animation_faril"]
 length = 0.001
@@ -47,18 +47,18 @@ _data = {
 
 [node name="Family" type="Node" parent="." unique_id=462732308]
 
-[node name="Wife" parent="Family" unique_id=622991439 instance=ExtResource("1_qducr")]
+[node name="Wife" parent="Family" instance=ExtResource("1_qducr")]
 key = "Wife"
 
-[node name="Son" parent="Family" unique_id=491089885 instance=ExtResource("1_qducr")]
+[node name="Son" parent="Family" instance=ExtResource("1_qducr")]
 key = "Son"
 
-[node name="Baby" parent="Family" unique_id=1436008471 instance=ExtResource("1_qducr")]
+[node name="Baby" parent="Family" instance=ExtResource("1_qducr")]
 key = "Baby"
 
 [node name="Available" type="Node" parent="." unique_id=195255452]
 
-[node name="Antlers" parent="Available" unique_id=844568332 instance=ExtResource("3_bnluu")]
+[node name="Antlers" parent="Available" instance=ExtResource("3_bnluu")]
 key = "Antlers"
 
 [node name="Selected" type="Node" parent="." unique_id=541610652]

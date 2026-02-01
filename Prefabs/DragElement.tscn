@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://10u3iwnvbokh"]
 
-[ext_resource type="Script" uid="uid://dpbenajxc6fr0" path="res://Prefabs/drag_element.gd" id="2_r2htx"]
+[ext_resource type="Script" path="res://Prefabs/drag_element.gd" id="2_r2htx"]
 
 [node name="DragElement" type="Area2D" unique_id=590028688 groups=["Grabbable"]]
 script = ExtResource("2_r2htx")

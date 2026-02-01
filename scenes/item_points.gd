@@ -14,6 +14,8 @@ var enum_map = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	var csv = CSVReader.read_csv_to_dict("res://resources/items.csv")
 	if !csv.has(self.key):
 		print("Missing key ", self.key, " in CSV: ", csv)

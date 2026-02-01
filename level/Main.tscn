@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://d3uhybbiifuqg"]
 
 [ext_resource type="PackedScene" uid="uid://tbay6oltg11" path="res://level/title_screen.tscn" id="1_j2tkq"]
-[ext_resource type="Script" path="res://scenes/EnableOnState.gd" id="4_svb3r"]
+[ext_resource type="Script" uid="uid://bka75bpuuynvm" path="res://scenes/EnableOnState.gd" id="4_svb3r"]
 [ext_resource type="PackedScene" uid="uid://c1urh4wa8jbi5" path="res://playground/Pau.tscn" id="5_amgv6"]
 [ext_resource type="PackedScene" uid="uid://dfdt43e0yn4sr" path="res://level/end_screen.tscn" id="7_e5prl"]
 
 [node name="Main" type="Node2D" unique_id=148638150]
 
-[node name="TitleScreen" parent="." unique_id=1961954017 instance=ExtResource("1_j2tkq")]
+[node name="TitleScreen" parent="." unique_id=1979097789 instance=ExtResource("1_j2tkq")]
 
-[node name="Main Game" parent="." unique_id=1404171942 instance=ExtResource("5_amgv6")]
+[node name="Main Game" parent="." unique_id=409406437 instance=ExtResource("5_amgv6")]
 visible = false
 script = ExtResource("4_svb3r")
 valid_states = Array[int]([1, 2, 3])
 
-[node name="EndScreen" parent="." unique_id=1179016300 instance=ExtResource("7_e5prl")]
+[node name="EndScreen" parent="." unique_id=1121136311 instance=ExtResource("7_e5prl")]
 visible = false

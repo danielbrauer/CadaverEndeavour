@@ -5,7 +5,8 @@ extends Node
 
 func _ready() -> void:
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
-	AudioManager.OnMainAudioFinished.connect(_on_main_audio_finished)
+	if AudioManager:
+		AudioManager.OnMainAudioFinished.connect(_on_main_audio_finished)
 	
 func _on_game_state_changed():
 	if AppStateManager.currentState != AppStateManager.States.INTRO:

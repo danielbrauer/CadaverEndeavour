@@ -38,6 +38,8 @@ func _ready() -> void:
 	force_update_containment()
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	# Reduce spawn protection timer at the start
 	if AppStateManager.currentState != AppStateManager.States.GAME:
 		return

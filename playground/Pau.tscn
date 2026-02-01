@@ -2,21 +2,21 @@
 
 [ext_resource type="PackedScene" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
 [ext_resource type="PackedScene" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
-[ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_h8427"]
-[ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
-[ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
-[ext_resource type="PackedScene" uid="uid://cv4angv3bd3pf" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
-[ext_resource type="Script" uid="uid://boip1q0v6l1p3" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
-[ext_resource type="PackedScene" uid="uid://dm8vk5s27lv13" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
-[ext_resource type="PackedScene" uid="uid://mjhym178mijs" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
-[ext_resource type="PackedScene" uid="uid://dhcsrqvyr3a4t" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
+[ext_resource type="Texture2D" path="res://resources/dead.png" id="2_h8427"]
+[ext_resource type="Texture2D" path="res://resources/1px.png" id="3_kn1q5"]
+[ext_resource type="Script" path="res://scenes/GameManager.gd" id="6_h8427"]
+[ext_resource type="PackedScene" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
+[ext_resource type="Script" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
+[ext_resource type="PackedScene" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
+[ext_resource type="PackedScene" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
+[ext_resource type="PackedScene" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
 size = Vector2(500, 388)
 
 [node name="MainGameLoop" type="Node2D" unique_id=1404171942]
 
-[node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
+[node name="MouseFollower" parent="." instance=ExtResource("1_vi51d")]
 position = Vector2(2, -3)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=84471040]
@@ -42,7 +42,7 @@ grow_horizontal = 2
 texture = ExtResource("2_h8427")
 stretch_mode = 4
 
-[node name="AttachmentScene2" parent="Guy" unique_id=212488838 instance=ExtResource("1_kype0")]
+[node name="AttachmentScene2" parent="Guy" instance=ExtResource("1_kype0")]
 position = Vector2(35, -10)
 scale = Vector2(-3.7340317, 6.378488)
 
@@ -88,17 +88,17 @@ script = ExtResource("7_7rxly")
 deadguy = NodePath("../Guy")
 outOfScreenPosY = -1016.0
 
-[node name="Antlers" parent="." unique_id=572760130 instance=ExtResource("7_6ejfv")]
+[node name="Antlers" parent="." instance=ExtResource("7_6ejfv")]
 position = Vector2(-706, -200)
 
-[node name="Antlers2" parent="." unique_id=1335020829 instance=ExtResource("8_hmplt")]
+[node name="Antlers2" parent="." instance=ExtResource("8_hmplt")]
 position = Vector2(-640, 136)
 
-[node name="Antlers3" parent="." unique_id=1381379697 instance=ExtResource("7_6ejfv")]
+[node name="Antlers3" parent="." instance=ExtResource("7_6ejfv")]
 position = Vector2(-799, 190)
 
-[node name="Antlers4" parent="." unique_id=581382856 instance=ExtResource("9_d2pce")]
+[node name="Antlers4" parent="." instance=ExtResource("9_d2pce")]
 position = Vector2(662, -308)
 
-[node name="Antlers5" parent="." unique_id=1766997048 instance=ExtResource("10_hmplt")]
+[node name="Antlers5" parent="." instance=ExtResource("10_hmplt")]
 position = Vector2(-469, -269)

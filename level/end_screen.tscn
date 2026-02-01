@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dfdt43e0yn4sr"]
 
-[ext_resource type="Script" uid="uid://bka75bpuuynvm" path="res://scenes/EnableOnState.gd" id="1_37cf4"]
-[ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_jxwei"]
-[ext_resource type="Script" uid="uid://c7lsl8g8nrr44" path="res://scenes/OnClickRestart.gd" id="3_vjk32"]
-[ext_resource type="Script" uid="uid://cg7q8724wmvxp" path="res://level/dead_guy_container.gd" id="4_jxwei"]
+[ext_resource type="Script" path="res://scenes/EnableOnState.gd" id="1_37cf4"]
+[ext_resource type="Texture2D" path="res://resources/dead.png" id="2_jxwei"]
+[ext_resource type="Script" path="res://scenes/OnClickRestart.gd" id="3_vjk32"]
+[ext_resource type="Script" path="res://level/dead_guy_container.gd" id="4_jxwei"]
 
 [node name="EndScreen" type="Node2D" unique_id=1179016300]
 script = ExtResource("1_37cf4")

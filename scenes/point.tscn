@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ckakafvu714tn"]
 
-[ext_resource type="Script" uid="uid://dfjgqxnn5tege" path="res://scenes/score_point.gd" id="1_r0uly"]
+[ext_resource type="Script" path="res://scenes/score_point.gd" id="1_r0uly"]
 
 [node name="Point" type="Node" unique_id=213986383 groups=["ScorePoint"]]
 script = ExtResource("1_r0uly")

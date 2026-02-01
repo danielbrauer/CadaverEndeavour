@@ -82,6 +82,8 @@ func play_audio() -> void:
 	audio_player.play()
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if not audio_player.playing:
 		return
 	

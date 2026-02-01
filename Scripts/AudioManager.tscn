@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://br7pamso3ru80"]
 
-[ext_resource type="Script" uid="uid://bjj0dhlwo6oog" path="res://Scripts/AudioManager.gd" id="1_audiomanager"]
-[ext_resource type="AudioStream" uid="uid://f8qnt6s0ba5i" path="res://Audio/Music/Cadaver CUE01v.1 Just VERY Humble.wav" id="2_awy4y"]
-[ext_resource type="AudioStream" uid="uid://nuslbp0tv4pt" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="3_i1r4f"]
-[ext_resource type="AudioStream" uid="uid://e6txxm76aliy" path="res://subtitle_tools/resources/phone_call.mp3" id="4_mbw3n"]
-[ext_resource type="AudioStream" uid="uid://bqv8oi5sw8svc" path="res://Audio/Music/Cadaver CUE03v.4 Jesus.wav" id="5_j56hb"]
-[ext_resource type="AudioStream" uid="uid://b2tq2uyu85dls" path="res://Audio/Music/Cadaver CUE03v.4 Sad.wav" id="6_iu73r"]
-[ext_resource type="AudioStream" uid="uid://d05jsby4y24ab" path="res://Audio/Music/Cadaver CUE03v.4 Just very Humble.wav" id="7_yocfq"]
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="1_audiomanager"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE01v.1 Just VERY Humble.wav" id="2_awy4y"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="3_i1r4f"]
+[ext_resource type="AudioStream" path="res://subtitle_tools/resources/phone_call.mp3" id="4_mbw3n"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE03v.4 Jesus.wav" id="5_j56hb"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE03v.4 Sad.wav" id="6_iu73r"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Cadaver CUE03v.4 Just very Humble.wav" id="7_yocfq"]
 
-[node name="AudioManager" type="Node" unique_id=123456789]
+[node name="AudioManager" type="Node"]
 script = ExtResource("1_audiomanager")
 title_music = ExtResource("2_awy4y")
 main_music = ExtResource("3_i1r4f")
@@ -17,16 +17,16 @@ happy_ending = ExtResource("5_j56hb")
 sad_ending = ExtResource("6_iu73r")
 neutral_ending = ExtResource("7_yocfq")
 
-[node name="MainMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=987654321]
+[node name="MainMusicPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="PhoneCallPlayer" type="AudioStreamPlayer" parent="." unique_id=876543210]
+[node name="PhoneCallPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -6.0
 
-[node name="HappyEndingPlayer" type="AudioStreamPlayer" parent="." unique_id=765432109]
+[node name="HappyEndingPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -80.0
 
-[node name="SadEndingPlayer" type="AudioStreamPlayer" parent="." unique_id=654321098]
+[node name="SadEndingPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -80.0
 
-[node name="NeutralEndingPlayer" type="AudioStreamPlayer" parent="." unique_id=543210987]
+[node name="NeutralEndingPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -80.0

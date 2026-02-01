@@ -47,6 +47,8 @@ func _input(event: InputEvent) -> void:
 				rotation -= rotation_speed
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if Input.is_action_just_pressed("drag"):
 		check_below_mouse()
 	   

@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://5u13bcwocuwt"]
 
-[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_ndom8"]
-[ext_resource type="Texture2D" uid="uid://b8lovfeb7x50n" path="res://images/objects/object_crafts_button_blue.png" id="2_ndom8"]
+[ext_resource type="PackedScene" path="res://Prefabs/DragElement.tscn" id="1_ndom8"]
+[ext_resource type="Texture2D" path="res://images/objects/object_crafts_button_blue.png" id="2_ndom8"]
 [ext_resource type="PackedScene" path="res://scenes/item_points.tscn" id="2_vgjyn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgjyn"]
 radius = 208.03845
 
-[node name="Button" type="Node2D" unique_id=572760130]
+[node name="Button" type="Node2D"]
 
-[node name="DragElement" parent="." unique_id=590028688 instance=ExtResource("1_ndom8")]
+[node name="DragElement" parent="." instance=ExtResource("1_ndom8")]
 
 [node name="ObjectCraftsButtonBlue" type="Sprite2D" parent="DragElement" unique_id=322486884]
 position = Vector2(8, -9)
 texture = ExtResource("2_ndom8")
 
-[node name="ItemPoints" parent="DragElement" unique_id=844568332 instance=ExtResource("2_vgjyn")]
+[node name="ItemPoints" parent="DragElement" instance=ExtResource("2_vgjyn")]
 position = Vector2(-1, 0)
 key = "Buttons"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement" unique_id=903235803]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragElement"]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_vgjyn")
