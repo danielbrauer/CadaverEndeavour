@@ -3,8 +3,15 @@
 [ext_resource type="Script" uid="uid://ct367e8n5dhfv" path="res://playground/titlescreen.gd" id="1_6178g"]
 [ext_resource type="FontFile" uid="uid://konecenesq36" path="res://fonts/Romanesco-Regular.ttf" id="2_g3jd8"]
 [ext_resource type="AudioStream" uid="uid://bsoauttatqro6" path="res://Audio/telephone_ring.wav" id="3_i3jtb"]
-[ext_resource type="Texture2D" uid="uid://c0un2th7jhl1e" path="res://images/titlescreen/telephone_placeholder.png" id="4_eyfdj"]
-[ext_resource type="Texture2D" uid="uid://bvfkkvod7438n" path="res://images/titlescreen/oboe.png" id="5_115t2"]
+[ext_resource type="Texture2D" uid="uid://ba8yuaiux03ty" path="res://images/Environment/phone.png" id="4_tuund"]
+[ext_resource type="StyleBox" uid="uid://0a58uyr5uajk" path="res://themes/phone_button_fill.tres" id="5_6178g"]
+[ext_resource type="StyleBox" uid="uid://c0ykj52v1pmrc" path="res://themes/phone_button_hover.tres" id="6_g3jd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6178g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3jtb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eyfdj"]
 
 [node name="Control" type="Control" unique_id=140595449]
 layout_mode = 3
@@ -31,46 +38,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=974134642]
+[node name="Title" type="Label" parent="MarginContainer" unique_id=273554365]
 layout_mode = 2
-
-[node name="TitleContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=623781836]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="Title" type="Label" parent="MarginContainer/CenterContainer/TitleContainer" unique_id=273554365]
-layout_mode = 2
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_g3jd8")
 theme_override_font_sizes/font_size = 180
 text = "Cadaver Endeavour"
 
-[node name="StartText" type="Label" parent="MarginContainer/CenterContainer/TitleContainer" unique_id=1116960323]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Press Space to start"
-horizontal_alignment = 1
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1651345336]
 stream = ExtResource("3_i3jtb")
+volume_db = -10.0
 
 [node name="Telephone" type="TextureRect" parent="." unique_id=1955062704]
 layout_mode = 0
-offset_left = 1440.0
-offset_top = 630.0
-offset_right = 1795.0338
-offset_bottom = 969.0
+offset_left = 920.0
+offset_top = 138.0
+offset_right = 1787.0409
+offset_bottom = 980.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("4_eyfdj")
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("4_tuund")
+expand_mode = 1
 
-[node name="Oboe" type="TextureRect" parent="." unique_id=780908682]
+[node name="Button" type="Button" parent="Telephone" unique_id=796547443]
 layout_mode = 0
-offset_left = 107.0
-offset_top = 818.0
-offset_right = 907.0
-offset_bottom = 989.0
-texture = ExtResource("5_115t2")
+offset_left = 478.59598
+offset_top = 209.11272
+offset_right = 632.1201
+offset_bottom = 394.54132
+rotation = 0.3496483
+theme_override_styles/normal = ExtResource("5_6178g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6178g")
+theme_override_styles/hover = ExtResource("6_g3jd8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i3jtb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eyfdj")
+
+[connection signal="pressed" from="Telephone/Button" to="." method="_on_button_pressed"]
