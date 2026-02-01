@@ -1,17 +1,20 @@
-[gd_scene format=3 uid="uid://0k5floenqelt"]
+[gd_scene format=3 uid="uid://c1urh4wa8jbi5"]
 
-[ext_resource type="PackedScene" uid="uid://d218xgswraw3o" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
-[ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
+[ext_resource type="PackedScene" path="res://scenes/attachment_scene.tscn" id="1_kype0"]
+[ext_resource type="PackedScene" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
 [ext_resource type="Texture2D" uid="uid://bosm53s3prixy" path="res://resources/dead.png" id="2_h8427"]
-[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="2_vi51d"]
 [ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
 [ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
+[ext_resource type="PackedScene" uid="uid://cv4angv3bd3pf" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
 [ext_resource type="Script" uid="uid://boip1q0v6l1p3" path="res://scenes/OnGameOver.gd" id="7_7rxly"]
+[ext_resource type="PackedScene" uid="uid://dm8vk5s27lv13" path="res://scenes/items/DogBoneEarring.tscn" id="8_hmplt"]
+[ext_resource type="PackedScene" uid="uid://mjhym178mijs" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
+[ext_resource type="PackedScene" uid="uid://dhcsrqvyr3a4t" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi51d"]
 size = Vector2(500, 388)
 
-[node name="Pau" type="Node2D" unique_id=1404171942]
+[node name="MainGameLoop" type="Node2D" unique_id=1404171942]
 
 [node name="MouseFollower" parent="." unique_id=31863870 instance=ExtResource("1_vi51d")]
 position = Vector2(2, -3)
@@ -43,63 +46,59 @@ stretch_mode = 4
 position = Vector2(35, -10)
 scale = Vector2(-3.7340317, 6.378488)
 
-[node name="Containementarea" type="Node2D" parent="." unique_id=180779257]
+[node name="Tables" type="Node2D" parent="." unique_id=180779257]
 position = Vector2(3, 0)
 
-[node name="Depth5" type="StaticBody2D" parent="Containementarea" unique_id=482617014 groups=["ContainmentArea"]]
+[node name="Table 1" type="StaticBody2D" parent="Tables" unique_id=482617014 groups=["ContainmentArea"]]
 position = Vector2(674, 295)
 
-[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth5" unique_id=1921466088]
+[node name="Sprite2D" type="Sprite2D" parent="Tables/Table 1" unique_id=1921466088]
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth5" unique_id=1823810928]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tables/Table 1" unique_id=1823810928]
 shape = SubResource("RectangleShape2D_vi51d")
 
-[node name="Depth4" type="StaticBody2D" parent="Containementarea" unique_id=708215493 groups=["ContainmentArea"]]
+[node name="Table 2" type="StaticBody2D" parent="Tables" unique_id=708215493 groups=["ContainmentArea"]]
 position = Vector2(674, -251)
 
-[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth4" unique_id=1344038644]
+[node name="Sprite2D" type="Sprite2D" parent="Tables/Table 2" unique_id=1344038644]
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth4" unique_id=1996677151]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tables/Table 2" unique_id=1996677151]
 shape = SubResource("RectangleShape2D_vi51d")
 
-[node name="Depth6" type="StaticBody2D" parent="Containementarea" unique_id=1495456604 groups=["ContainmentArea"]]
+[node name="Table 3" type="StaticBody2D" parent="Tables" unique_id=1495456604 groups=["ContainmentArea"]]
 position = Vector2(-626, -27)
 scale = Vector2(1, 2.3200006)
 
-[node name="Sprite2D" type="Sprite2D" parent="Containementarea/Depth6" unique_id=1118881368]
+[node name="Sprite2D" type="Sprite2D" parent="Tables/Table 3" unique_id=1118881368]
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Containementarea/Depth6" unique_id=1070789756]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tables/Table 3" unique_id=1070789756]
 shape = SubResource("RectangleShape2D_vi51d")
-
-[node name="DragElement3" parent="Containementarea" unique_id=810712407 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(615, -249)
-
-[node name="DragElement4" parent="Containementarea" unique_id=590028688 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(828, -306)
-
-[node name="DragElement5" parent="Containementarea" unique_id=594111844 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(626, 332)
-
-[node name="DragElement6" parent="Containementarea" unique_id=226898675 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(-762, -52)
-
-[node name="DragElement7" parent="Containementarea" unique_id=210254576 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(-625, -262)
-
-[node name="DragElement8" parent="Containementarea" unique_id=1094334970 groups=["Grabbable"] instance=ExtResource("2_vi51d")]
-position = Vector2(-578, 99)
 
 [node name="GameMaanger" type="Node2D" parent="." unique_id=339843467]
 script = ExtResource("6_h8427")
-game_duration = 10.0
 
 [node name="Ongameendanimator" type="Node2D" parent="." unique_id=649121275 node_paths=PackedStringArray("deadguy")]
 script = ExtResource("7_7rxly")
 deadguy = NodePath("../Guy")
 outOfScreenPosY = -1016.0
+
+[node name="Antlers" parent="." unique_id=572760130 instance=ExtResource("7_6ejfv")]
+position = Vector2(-706, -200)
+
+[node name="Antlers2" parent="." unique_id=1335020829 instance=ExtResource("8_hmplt")]
+position = Vector2(-640, 136)
+
+[node name="Antlers3" parent="." unique_id=1381379697 instance=ExtResource("7_6ejfv")]
+position = Vector2(-799, 190)
+
+[node name="Antlers4" parent="." unique_id=581382856 instance=ExtResource("9_d2pce")]
+position = Vector2(662, -308)
+
+[node name="Antlers5" parent="." unique_id=1766997048 instance=ExtResource("10_hmplt")]
+position = Vector2(-469, -269)

@@ -2,5 +2,8 @@
 .godot/
 /android/
 
+.DS_Store
+Audio/.DS_Store
+
 # Whisper model cache
 subtitle_tools/.whisper_cache/

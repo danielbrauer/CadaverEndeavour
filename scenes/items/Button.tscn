@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_ndom8"]
 [ext_resource type="Texture2D" uid="uid://b8lovfeb7x50n" path="res://images/objects/object_crafts_button_blue.png" id="2_ndom8"]
-[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="2_vgjyn"]
+[ext_resource type="PackedScene" path="res://scenes/item_points.tscn" id="2_vgjyn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgjyn"]
 radius = 208.03845
 
-[node name="Antlers" type="Node2D" unique_id=572760130]
+[node name="Button" type="Node2D" unique_id=572760130]
 
 [node name="DragElement" parent="." unique_id=590028688 instance=ExtResource("1_ndom8")]
 

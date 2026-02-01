@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_c2nlb"]
 [ext_resource type="Texture2D" uid="uid://5axiqfve5ec6" path="res://images/objects/object_bodypart_antler_left.png" id="2_58o3u"]
-[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_6uuwh"]
+[ext_resource type="PackedScene" path="res://scenes/item_points.tscn" id="3_6uuwh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhdsb"]
 radius = 50.943554

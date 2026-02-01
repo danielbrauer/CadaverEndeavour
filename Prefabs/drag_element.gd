@@ -1,8 +1,6 @@
 extends Area2D
 class_name InteractiveObject
 
-@export var data: DragObjectData
-
 # --- New Physics Variables ---
 var velocity : Vector2 = Vector2.ZERO
 var friction : float = 20
@@ -106,10 +104,6 @@ func _perform_disable() -> void:
 	
 	collision_layer = 0
 	collision_mask = 0
-	
-	
-	
-	
 	
 	# 3. Wait 0.5 seconds, then Respawn
 	get_tree().create_timer(0.5).timeout.connect(_respawn_at_start)

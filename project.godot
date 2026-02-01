@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DraggingManager="*uid://csb3ybyjs0hnc"
-PointTypeInst="*uid://glew0325iwyd"
-AppStateManager="*uid://c8xw1pb5vquw0"
+DraggingManager="*res://Scripts/DraggingManager.gd"
+PointTypeInst="*res://scenes/point_type.gd"
+AppStateManager="*res://Scripts/AppStateManager.gd"
+AudioManager="*res://Scripts/AudioManager.tscn"
 
 [display]
 
