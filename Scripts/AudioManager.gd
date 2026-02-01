@@ -24,7 +24,6 @@ enum EndingType {
 @onready var neutral_ending_player: AudioStreamPlayer = $NeutralEndingPlayer
 
 var current_dominant_ending: EndingType = EndingType.NONE
-var longer_track_player: AudioStreamPlayer
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -36,23 +35,7 @@ func _ready() -> void:
 	happy_ending_player.stream = happy_ending
 	sad_ending_player.stream = sad_ending
 	neutral_ending_player.stream = neutral_ending
-	
-	var main_music_length: float = 0.0
-	var phone_call_length: float = 0.0
-	
-	if main_music:
-		main_music_length = main_music.get_length()
-	if main_phone_call:
-		phone_call_length = main_phone_call.get_length()
-	
-	if main_music_length >= phone_call_length:
-		longer_track_player = main_music_player
-	else:
-		longer_track_player = phone_call_player
-	
-	if longer_track_player:
-		longer_track_player.finished.connect(_on_longer_track_finished)
-	
+	phone_call_player.finished.connect(_on_longer_track_finished)	
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
 	
 	if AppStateManager.currentState == AppStateManager.States.MENU or AppStateManager.currentState == AppStateManager.States.INTRO:
@@ -86,8 +69,6 @@ func _play_game_audio() -> void:
 		phone_call_player.play()
 
 func _stop_game_audio() -> void:
-	if main_music_player:
-		main_music_player.stop()
 	if phone_call_player:
 		phone_call_player.stop()
 
