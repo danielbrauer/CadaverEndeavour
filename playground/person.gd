@@ -3,6 +3,9 @@
 extends Node
 class_name Person
 
+@export var tears: Node2D
+@export var hearts: Node2D
+
 enum PersonType {
 	BABY,
 	WIFE,
@@ -103,5 +106,10 @@ func calculate_score() -> float:
 			var pref: Preference = child
 			if points_by_type.has(pref.preference_type):
 				score += pref.preference_multiplier * points_by_type[pref.preference_type]
+	
+	if tears:
+		tears.visible = score < 0.0
+	if hearts:
+		hearts.visible = score > 1.0
 	
 	return score
