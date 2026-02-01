@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dn8i1b7lwny84"]
+
+[ext_resource type="Texture2D" uid="uid://ckgrvjdlkoueu" path="res://images/particles/tear.png" id="1_t00cb"]
+
+[sub_resource type="Curve" id="Curve_t00cb"]
+_limits = [0.0, 6.0, 0.0, 1.0]
+_data = [Vector2(0, 0.99150527), 0.0, 3.6402686, 0, 0, Vector2(0.053833604, 2.199391), 13.794702, 13.794702, 0, 0, Vector2(0.9983687, 5.9912777), 0.22093624, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hl888"]
+curve = SubResource("Curve_t00cb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t00cb"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = -9.9999895
+angle_max = 10.0000105
+direction = Vector3(20, 0, 0)
+spread = 15.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 400, 0)
+scale_curve = SubResource("CurveTexture_hl888")
+
+[node name="Particles" type="Node2D" unique_id=1984504676]
+
+[node name="TearsLeftEye" type="GPUParticles2D" parent="." unique_id=1013988322]
+position = Vector2(977, 489)
+emitting = false
+amount = 240
+texture = ExtResource("1_t00cb")
+lifetime = 60.0
+process_material = SubResource("ParticleProcessMaterial_t00cb")
