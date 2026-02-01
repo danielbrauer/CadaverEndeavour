@@ -19,7 +19,7 @@ func _ready() -> void:
 		return
 		
 	var new_sb = StyleBoxFlat.new()
-	new_sb.bg_color = Color.DARK_GRAY
+	new_sb.bg_color = Color.BLACK
 	subtitle_label.add_theme_stylebox_override("normal", new_sb)
 	
 	var parent_node = get_parent()
