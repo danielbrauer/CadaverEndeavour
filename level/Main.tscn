@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d3uhybbiifuqg"]
 
 [ext_resource type="PackedScene" uid="uid://tbay6oltg11" path="res://level/title_screen.tscn" id="1_j2tkq"]
-[ext_resource type="Script" uid="uid://bka75bpuuynvm" path="res://scenes/EnableOnState.gd" id="4_svb3r"]
-[ext_resource type="PackedScene" uid="uid://c1urh4wa8jbi5" path="res://playground/Pau.tscn" id="5_amgv6"]
+[ext_resource type="Script" path="res://scenes/EnableOnState.gd" id="4_svb3r"]
+[ext_resource type="PackedScene" uid="uid://c1urh4wa8jbi5" path="res://level/Game.tscn" id="5_amgv6"]
 [ext_resource type="PackedScene" uid="uid://c5qcm0mbgk2lu" path="res://level/Family.tscn" id="5_svb3r"]
 [ext_resource type="PackedScene" uid="uid://dfdt43e0yn4sr" path="res://level/end_screen.tscn" id="7_e5prl"]
 
