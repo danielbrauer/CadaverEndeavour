@@ -1,4 +1,4 @@
-﻿class_name CSVReader
+class_name CSVReader
 extends Node
 
 # Reads a CSV file and returns a Dictionary of Dictionaries.

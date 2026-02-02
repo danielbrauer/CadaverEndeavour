@@ -169,6 +169,13 @@ func _start_ending_music() -> void:
 func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint():
 		return
+	if event is InputEventKey and event.pressed and event.keycode == KEY_F and event.ctrl_pressed:
+		main_music_player.stop()
+		if self.main_timer:
+			self.main_timer.timeout.disconnect(_on_main_track_finished)
+			self.main_timer = null
+		_stop_game_audio()
+		OnMainAudioFinished.emit()
 
 func _on_main_track_finished() -> void:
 	OnMainAudioFinished.emit()

@@ -25,7 +25,7 @@ var baseline_points: float = 0.0
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	var csv = CSVReader.read_csv_to_dict("res://resources/people.csv")
+	var csv = CSVReader.read_csv_to_dict("res://resources/people.data")
 	var key = _enum_to_string[person]
 	if !csv.has(key):
 		print("Missing key ", key, " in CSV: ", csv)
@@ -107,6 +107,7 @@ func calculate_score() -> float:
 			if points_by_type.has(pref.preference_type):
 				score += pref.preference_multiplier * points_by_type[pref.preference_type]
 	
+	print("Final Score for ", _enum_to_string[self.person], ": ", score)
 	if tears:
 		tears.visible = score < 0.0
 	if hearts:

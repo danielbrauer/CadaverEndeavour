@@ -12,12 +12,12 @@ func run_all_tests() -> void:
 func test_csv_loading() -> void:
 	print("\n--- Test 1: CSV Loading ---")
 	
-	var items_csv = CSVReader.read_csv_to_dict("res://resources/items.csv")
+	var items_csv = CSVReader.read_csv_to_dict("res://resources/items.data")
 	print("Items CSV loaded: ", items_csv.size(), " items")
 	for item_name in items_csv:
 		print("  Item: ", item_name, " -> ", items_csv[item_name])
 	
-	var people_csv = CSVReader.read_csv_to_dict("res://resources/people.csv")
+	var people_csv = CSVReader.read_csv_to_dict("res://resources/people.data")
 	print("People CSV loaded: ", people_csv.size(), " people")
 	for person_name in people_csv:
 		print("  Person: ", person_name, " -> ", people_csv[person_name])
@@ -30,7 +30,7 @@ func test_csv_loading() -> void:
 func test_preferences_loading() -> void:
 	print("\n--- Test 2: Preferences Loading ---")
 	
-	var people_csv = CSVReader.read_csv_to_dict("res://resources/people.csv")
+	var people_csv = CSVReader.read_csv_to_dict("res://resources/people.data")
 	
 	for child in get_children():
 		if child is Person:
@@ -78,8 +78,8 @@ func test_preferences_loading() -> void:
 func test_scoring_algorithm() -> void:
 	print("\n--- Test 3: Scoring Algorithm Tests ---")
 	
-	var items_csv = CSVReader.read_csv_to_dict("res://resources/items.csv")
-	var people_csv = CSVReader.read_csv_to_dict("res://resources/people.csv")
+	var items_csv = CSVReader.read_csv_to_dict("res://resources/items.data")
+	var people_csv = CSVReader.read_csv_to_dict("res://resources/people.data")
 	
 	test_case_1_single_item(items_csv, people_csv)
 	test_case_2_multiple_items(items_csv, people_csv)

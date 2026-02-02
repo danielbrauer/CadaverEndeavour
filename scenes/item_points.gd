@@ -27,7 +27,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	var csv = CSVReader.read_csv_to_dict("res://resources/items.csv")
+	var csv = CSVReader.read_csv_to_dict("res://resources/items.data")
 	var item_key: String
 	if key != "":
 		item_key = key

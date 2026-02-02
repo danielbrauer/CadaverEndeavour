@@ -1,4 +1,4 @@
-﻿id,name,cost,type
+id,name,cost,type
 sword_01,Iron Sword,150,weapon
 potion_01,Health Potion,50,consumable
 shield_01,Wood Shield,80,armor
