@@ -42,6 +42,7 @@ enum EndingType {
 @onready var coffin_player: AudioStreamPlayer = $CoffinPlayer
 
 var current_dominant_ending: EndingType = EndingType.NONE
+var main_timer : SceneTreeTimer
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -107,7 +108,12 @@ func _play_game_audio() -> void:
 	if main_combined_track and main_music_player:
 		main_music_player.stream = main_combined_track
 		main_music_player.play()
-		main_music_player.finished.connect(_on_main_track_finished)
+		# main_music_player.finished.connect(_on_main_track_finished)
+		if self.main_timer:
+			self.main_timer.timeout.disconnect(_on_main_track_finished)
+			self.main_timer = null
+		self.main_timer = get_tree().create_timer(110)
+		self.main_timer.timeout.connect(_on_main_track_finished)
 
 func _stop_game_audio() -> void:
 	if main_music_player:
