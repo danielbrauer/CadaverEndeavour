@@ -1,4 +1,4 @@
-extends "res://scenes/EnableOnState.gd"
+extends Node
 
 @export var theLabel: NodePath
 @export var director: Node
@@ -11,9 +11,6 @@ var person_end_positions: Dictionary = {}
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	if valid_states.is_empty():
-		valid_states = [AppStateManager.States.ENDSCREEN]
-	super._ready()
 	
 	if not director:
 		director = get_node_or_null("EndScreenDirector")
@@ -42,11 +39,6 @@ func _setup_person_positions() -> void:
 	if baby_sprite:
 		person_start_positions[Person.PersonType.BABY] = baby_sprite.position
 		person_end_positions[Person.PersonType.BABY] = Vector2(278.7823, 1206.6641)
-
-func _on_game_state_changed() -> void:
-	super._on_game_state_changed()
-	if valid_states.has(AppStateManager.currentState):
-		call_deferred("_start_animation")
 
 func _start_animation() -> void:
 	var anim_player = get_node_or_null("MainAnimation")

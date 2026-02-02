@@ -92,9 +92,6 @@ func _process(_delta: float) -> void:
 	if not audio_player.playing:
 		return
 	
-	if camera:
-		position = camera.offset
-	
 	var current_time = audio_player.get_playback_position()
 	var segment = _get_current_segment(current_time)
 	

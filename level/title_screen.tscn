@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://tbay6oltg11"]
 
-[ext_resource type="Script" uid="uid://bka75bpuuynvm" path="res://scenes/EnableOnState.gd" id="1_s4wj5"]
 [ext_resource type="PackedScene" uid="uid://cjp4br8504goq" path="res://playground/titlescreen.tscn" id="2_t746g"]
 
 [node name="Control" type="Control" unique_id=1961954017]
@@ -11,11 +10,10 @@ offset_top = -538.0
 offset_right = 960.0
 offset_bottom = 542.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-script = ExtResource("1_s4wj5")
-valid_states = Array[int]([0])
 
 [node name="Title" parent="." unique_id=762828820 instance=ExtResource("2_t746g")]
 layout_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=620224343]
 position = Vector2(960, 540)
+zoom = Vector2(1.04, 4)

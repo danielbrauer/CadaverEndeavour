@@ -36,6 +36,8 @@ var dead_guy_container: Node = null
 var animation_delay: float = 2.0
 var end_screen_delay: float = 3.0
 
+var fade_overlay: ColorRect = null
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -108,9 +110,20 @@ func _handle_transition_to_intro(old_state: States) -> void:
 	if not main_game or not is_instance_valid(main_game):
 		_find_scene_nodes()
 	
+	await _fade_to_black(0.5)
+	
+	if title_screen:
+		var title_camera = title_screen.find_child("Camera2D", true, false)
+		if title_camera and title_camera is Camera2D:
+			title_camera.enabled = false
+	
 	_hide_scene(title_screen)
 	_show_scene(main_game)
 	_hide_scene(end_screen)
+	
+	await get_tree().process_frame
+	
+	await _fade_from_black(0.5)
 	
 	if not AudioManager:
 		return
@@ -233,3 +246,41 @@ func _hide_scene(scene: Node) -> void:
 	scene.visible = false
 	if scene is CanvasItem:
 		scene.process_mode = Node.PROCESS_MODE_DISABLED
+
+func _create_fade_overlay() -> void:
+	if fade_overlay:
+		return
+	
+	var viewport = get_viewport()
+	if not viewport:
+		return
+	
+	fade_overlay = ColorRect.new()
+	fade_overlay.name = "FadeOverlay"
+	fade_overlay.color = Color.BLACK
+	fade_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fade_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fade_overlay.modulate.a = 0.0
+	fade_overlay.z_index = 1000
+	
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.name = "FadeCanvasLayer"
+	canvas_layer.add_child(fade_overlay)
+	viewport.add_child(canvas_layer)
+
+func _fade_to_black(duration: float) -> void:
+	_create_fade_overlay()
+	if not fade_overlay:
+		return
+	
+	var tween = create_tween()
+	tween.tween_property(fade_overlay, "modulate:a", 1.0, duration)
+	await tween.finished
+
+func _fade_from_black(duration: float) -> void:
+	if not fade_overlay:
+		return
+	
+	var tween = create_tween()
+	tween.tween_property(fade_overlay, "modulate:a", 0.0, duration)
+	await tween.finished

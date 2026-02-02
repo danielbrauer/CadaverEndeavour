@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="1_vi51d"]
 [ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="3_kn1q5"]
+[ext_resource type="Texture2D" uid="uid://b35ypgmnlbffe" path="res://images/Environment/environment_morgue_fullsize.png" id="4_6ynke"]
 [ext_resource type="PackedScene" uid="uid://5u13bcwocuwt" path="res://scenes/items/Button.tscn" id="5_rbnyl"]
 [ext_resource type="Script" uid="uid://bwjlkk33q20r8" path="res://scenes/GameManager.gd" id="6_h8427"]
 [ext_resource type="PackedScene" uid="uid://cv4angv3bd3pf" path="res://scenes/items/CatEar.tscn" id="7_6ejfv"]
@@ -11,98 +12,110 @@
 [ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="9_2pa0e"]
 [ext_resource type="PackedScene" uid="uid://mjhym178mijs" path="res://scenes/items/Monocle.tscn" id="9_d2pce"]
 [ext_resource type="PackedScene" uid="uid://de3ul1wvvy41o" path="res://scenes/items/oboe.tscn" id="9_uoilq"]
-[ext_resource type="Texture2D" uid="uid://bk15cdjud1ydp" path="res://images/Environment/environment_morguetop.jpg" id="10_04yrl"]
 [ext_resource type="PackedScene" uid="uid://b373w1pwb5ecy" path="res://scenes/items/antlers.tscn" id="10_h5gsp"]
 [ext_resource type="PackedScene" uid="uid://dhcsrqvyr3a4t" path="res://scenes/items/pinecorn.tscn" id="10_hmplt"]
-[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="10_uoilq"]
 [ext_resource type="PackedScene" uid="uid://ljlqsbbsnp6s" path="res://scenes/items/CatEarR.tscn" id="11_d2pce"]
-[ext_resource type="Texture2D" uid="uid://dki7bik43e7d3" path="res://images/Environment/environment_morgue.png" id="11_y34tt"]
-[ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="12_ff4d2"]
+[ext_resource type="Texture2D" uid="uid://brx2ksmh2oxpw" path="res://images/Environment/environment_table_fullsize.png" id="15_6ynke"]
 [ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="15_c5vso"]
-[ext_resource type="Script" uid="uid://ci830o60xoidd" path="res://scenes/cameraMover.gd" id="16_6ynke"]
-[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="16_ruqv7"]
 [ext_resource type="PackedScene" uid="uid://ckujbaafj31lx" path="res://subtitle_tools/subtitle_player.tscn" id="22_2pa0e"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ynke"]
+size = Vector2(2834, 3907)
+
+[sub_resource type="GDScript" id="GDScript_ruqv7"]
+script/source = "extends Camera2D
+
+@export var playable_area: RectangleShape2D
+@export var movement_speed: float = 300.0
+@export var smoothing_speed: float = 5.0
+@export var border_threshold: float = 100.0
+
+var target_global_position: Vector2
+
+func _ready() -> void:
+	target_global_position = global_position
+
+func _process(delta: float) -> void:
+	
+	if Engine.is_editor_hint():
+		return
+	
+	if not playable_area:
+		return
+	
+	var viewport = get_viewport()
+	if not viewport:
+		return
+	
+	var mouse_pos = viewport.get_mouse_position()
+	var viewport_size = viewport.get_visible_rect().size
+	
+	var movement = Vector2.ZERO
+	
+	if mouse_pos.x < border_threshold:
+		var factor = 1.0 - (mouse_pos.x / border_threshold)
+		movement.x = -factor
+	elif mouse_pos.x > viewport_size.x - border_threshold:
+		var factor = (mouse_pos.x - (viewport_size.x - border_threshold)) / border_threshold
+		movement.x = factor
+	
+	if mouse_pos.y < border_threshold:
+		var factor = 1.0 - (mouse_pos.y / border_threshold)
+		movement.y = -factor
+	elif mouse_pos.y > viewport_size.y - border_threshold:
+		var factor = (mouse_pos.y - (viewport_size.y - border_threshold)) / border_threshold
+		movement.y = factor
+	
+	var camera_zoom = zoom
+	var world_movement = movement * delta * movement_speed / camera_zoom.x
+	target_global_position += world_movement
+	
+#var bounds = _get_playable_bounds()
+#if bounds and bounds.has_area():
+	#var half_viewport = viewport_size / 2.0 / camera_zoom.x
+	#
+	#target_global_position.x = clamp(target_global_position.x, bounds.position.x + half_viewport.x, bounds.position.x + bounds.size.x - half_viewport.x)
+	#target_global_position.y = clamp(target_global_position.y, bounds.position.y + half_viewport.y, bounds.position.y + bounds.size.y - half_viewport.y)
+	
+	global_position = global_position.lerp(target_global_position, smoothing_speed * delta)
+
+func _get_playable_bounds() -> Rect2:
+	if not playable_area or not playable_area.shape:
+		print(\"Foooo\")
+		return Rect2()
+	
+	var shape = playable_area
+	var area_global_pos = playable_area.global_position
+	
+	if shape is RectangleShape2D:
+		var rect_shape = shape as RectangleShape2D
+		var size = rect_shape.size
+		var rect = Rect2(area_global_pos - size / 2.0, size)
+		return rect
+	
+	print(\"Foooo\")
+	return Rect2()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ff4d2"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04yrl"]
-size = Vector2(368, 213)
+size = Vector2(637.5, 490.44116)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pa0e"]
-size = Vector2(431, 628)
+size = Vector2(701.47064, 500.00003)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y34tt"]
-size = Vector2(1108, 281)
+size = Vector2(1362.5001, 336.76495)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uoilq"]
-size = Vector2(373, 272.4137)
+size = Vector2(547.059, 218.0527)
 
-[sub_resource type="Animation" id="Animation_fa068"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ynke"]
+radius = 36.80383
 
-[sub_resource type="Animation" id="Animation_7dwaf"]
-resource_name = "gameplay_cutscene"
-length = 90.333336
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 13.2137985, 16.961943),
-"transitions": PackedFloat32Array(1, -1.4640853, 0.00030056943),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.17, 1.17)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 10.064732),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2tkq"]
-_data = {
-&"RESET": SubResource("Animation_fa068"),
-&"gameplay_cutscene": SubResource("Animation_7dwaf")
-}
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rbnyl"]
-radius = 34.295845
-height = 98.64314
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ynke"]
-radius = 27.002869
-height = 129.9632
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rbnyl"]
+load_path = "res://.godot/imported/cadaver_fullbody.png-28af26df75a7e28bb48ab9d0e3ca2b86.ctex"
 
 [node name="MainGameLoop" type="Node2D" unique_id=1404171942]
 
@@ -117,211 +130,201 @@ animation_delay = 15.0
 [node name="Ongameendanimator" type="Node2D" parent="." unique_id=649121275 node_paths=PackedStringArray("deadguy")]
 script = ExtResource("7_7rxly")
 end_screen_delay = 1.5
-deadguy = NodePath("../Node2D/Animation/Node2D2/Guyy")
-outOfScreenPosY = 1000.0
+deadguy = NodePath("../Scene/Corpse + Table/Corpse/Guyy")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2085510204]
+[node name="Playarea" type="Area2D" parent="." unique_id=1593415229]
 
-[node name="Tables2" type="Node2D" parent="Node2D" unique_id=1455576410]
-position = Vector2(3, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Playarea" unique_id=1542171884]
+position = Vector2(44, 195.5)
+shape = SubResource("RectangleShape2D_6ynke")
 
-[node name="Table 1" type="StaticBody2D" parent="Node2D/Tables2" unique_id=2018124877 groups=["ContainmentArea"]]
-position = Vector2(770, 495)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2014514002]
+offset = Vector2(-960, -540)
+anchor_mode = 0
+process_callback = 0
+limit_left = -1723
+limit_top = -1900
+limit_right = 1471
+limit_bottom = 2095
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = SubResource("GDScript_ruqv7")
+playable_area = SubResource("RectangleShape2D_ff4d2")
+movement_speed = 600.0
+border_threshold = 200.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Tables2/Table 1" unique_id=1017053594]
+[node name="SubtitlePlayer" parent="Camera2D" unique_id=123456789 instance=ExtResource("22_2pa0e")]
+
+[node name="Scene" type="Node2D" parent="." unique_id=2085510204]
+
+[node name="Background" type="Sprite2D" parent="Scene" unique_id=1366272382]
+z_index = -22
+texture = ExtResource("4_6ynke")
+
+[node name="Tables With Items" type="Node2D" parent="Scene" unique_id=1455576410]
+position = Vector2(-35, -915)
+scale = Vector2(1.3599999, 1.3599999)
+
+[node name="Table 1" type="StaticBody2D" parent="Scene/Tables With Items" unique_id=2018124877 groups=["ContainmentArea"]]
+position = Vector2(769.85297, 494.85297)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene/Tables With Items/Table 1" unique_id=1017053594]
 visible = false
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tables2/Table 1" unique_id=1155007115]
-position = Vector2(-64, -93.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Tables With Items/Table 1" unique_id=1155007115]
+position = Vector2(-39.338196, -72.42647)
 shape = SubResource("RectangleShape2D_04yrl")
 
-[node name="Table TopRight" type="StaticBody2D" parent="Node2D/Tables2" unique_id=1605730418 groups=["ContainmentArea"]]
+[node name="Table TopRight" type="StaticBody2D" parent="Scene/Tables With Items" unique_id=1605730418 groups=["ContainmentArea"]]
 position = Vector2(710, -370)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Tables2/Table TopRight" unique_id=1634556292]
+[node name="Sprite2D" type="Sprite2D" parent="Scene/Tables With Items/Table TopRight" unique_id=1634556292]
 visible = false
 scale = Vector2(501.315, 350)
 texture = ExtResource("3_kn1q5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tables2/Table TopRight" unique_id=931252682]
-position = Vector2(-40.5, 220)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Tables With Items/Table TopRight" unique_id=931252682]
+position = Vector2(-7.7941895, 152.35297)
 shape = SubResource("RectangleShape2D_2pa0e")
 
-[node name="Table TopRight2" type="StaticBody2D" parent="Node2D/Tables2" unique_id=818767002 groups=["ContainmentArea"]]
+[node name="Table TopRight2" type="StaticBody2D" parent="Scene/Tables With Items" unique_id=818767002 groups=["ContainmentArea"]]
 position = Vector2(-514, -758)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tables2/Table TopRight2" unique_id=330287787]
-position = Vector2(120, 275)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Tables With Items/Table TopRight2" unique_id=330287787]
+position = Vector2(-44.455994, 197.70544)
 shape = SubResource("RectangleShape2D_y34tt")
 
-[node name="Table Left" type="StaticBody2D" parent="Node2D/Tables2" unique_id=1118986154 groups=["ContainmentArea"]]
+[node name="Table Left" type="StaticBody2D" parent="Scene/Tables With Items" unique_id=1118986154 groups=["ContainmentArea"]]
 position = Vector2(-757, 16)
 scale = Vector2(1, 2.3200006)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Tables2/Table Left" unique_id=591137961]
-visible = false
-scale = Vector2(501.315, 350)
-texture = ExtResource("3_kn1q5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Tables2/Table Left" unique_id=1494944375]
-position = Vector2(20.5, 5.1724153)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Tables With Items/Table Left" unique_id=1494944375]
+position = Vector2(-63.588196, -46.196747)
+scale = Vector2(1, 0.9999999)
 shape = SubResource("RectangleShape2D_uoilq")
 
-[node name="Eye" parent="Node2D/Tables2" unique_id=402577541 instance=ExtResource("7_nl4cy")]
+[node name="Table Left2" type="StaticBody2D" parent="Scene/Tables With Items" unique_id=764377634 groups=["ContainmentArea"]]
+position = Vector2(-710.29407, 363.9706)
+scale = Vector2(1, 5.3824034)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Tables With Items/Table Left2" unique_id=350156154]
+scale = Vector2(-4.404265, 0.7882916)
+shape = SubResource("CircleShape2D_6ynke")
+
+[node name="Eye" parent="Scene/Tables With Items" unique_id=402577541 instance=ExtResource("7_nl4cy")]
 position = Vector2(-735, -125)
 
-[node name="Eye2" parent="Node2D/Tables2" unique_id=2015719017 instance=ExtResource("7_nl4cy")]
+[node name="Eye2" parent="Scene/Tables With Items" unique_id=2015719017 instance=ExtResource("7_nl4cy")]
 position = Vector2(-645, 242)
 
-[node name="DragElement" parent="Node2D/Tables2/Eye2" index="0" unique_id=102585376]
+[node name="DragElement" parent="Scene/Tables With Items/Eye2" index="0" unique_id=102585376]
 scale = Vector2(0.27999878, 0.27999878)
 
-[node name="Cat Ear L" parent="Node2D/Tables2" unique_id=795147393 instance=ExtResource("7_6ejfv")]
+[node name="Cat Ear L" parent="Scene/Tables With Items" unique_id=795147393 instance=ExtResource("7_6ejfv")]
 position = Vector2(636, -378)
 
-[node name="Cat Ear R" parent="Node2D/Tables2" unique_id=1982705673 instance=ExtResource("11_d2pce")]
+[node name="Cat Ear R" parent="Scene/Tables With Items" unique_id=1982705673 instance=ExtResource("11_d2pce")]
 position = Vector2(-642, 50)
 
-[node name="Button" parent="Node2D/Tables2" unique_id=946069664 instance=ExtResource("5_rbnyl")]
+[node name="Button" parent="Scene/Tables With Items" unique_id=946069664 instance=ExtResource("5_rbnyl")]
 position = Vector2(647, 456)
 
-[node name="DragElement" parent="Node2D/Tables2/Button" index="0" unique_id=1611187916]
+[node name="DragElement" parent="Scene/Tables With Items/Button" index="0" unique_id=1611187916]
 scale = Vector2(0.15657006, -0.16059181)
 
-[node name="Button2" parent="Node2D/Tables2" unique_id=1803165722 instance=ExtResource("5_rbnyl")]
+[node name="Button2" parent="Scene/Tables With Items" unique_id=1803165722 instance=ExtResource("5_rbnyl")]
 position = Vector2(537, -296)
 
-[node name="Button3" parent="Node2D/Tables2" unique_id=49463982 instance=ExtResource("5_rbnyl")]
-position = Vector2(-846, -221)
+[node name="Button3" parent="Scene/Tables With Items" unique_id=49463982 instance=ExtResource("5_rbnyl")]
+position = Vector2(-783.08826, 411.02942)
 
-[node name="Oboe" parent="Node2D/Tables2" unique_id=35227713 instance=ExtResource("9_uoilq")]
-position = Vector2(-544, -456)
+[node name="Oboe" parent="Scene/Tables With Items" unique_id=35227713 instance=ExtResource("9_uoilq")]
+position = Vector2(-482.35297, -650.0001)
 
-[node name="Antlers" parent="Node2D/Tables2" unique_id=1164850147 instance=ExtResource("10_h5gsp")]
+[node name="Antlers" parent="Scene/Tables With Items" unique_id=1164850147 instance=ExtResource("10_h5gsp")]
 position = Vector2(697, 46)
 
-[node name="DragElement" parent="Node2D/Tables2/Antlers" index="0" unique_id=236443659]
+[node name="DragElement" parent="Scene/Tables With Items/Antlers" index="0" unique_id=236443659]
 position = Vector2(147, 0)
 
-[node name="ObjectBodypartAntlerLeft" parent="Node2D/Tables2/Antlers/DragElement" index="0" unique_id=1181375987]
+[node name="ObjectBodypartAntlerLeft" parent="Scene/Tables With Items/Antlers/DragElement" index="0" unique_id=1181375987]
 flip_h = true
 
-[node name="CollisionShape2D" parent="Node2D/Tables2/Antlers/DragElement" index="2" unique_id=238571868]
+[node name="CollisionShape2D" parent="Scene/Tables With Items/Antlers/DragElement" index="2" unique_id=238571868]
 position = Vector2(-218, -86.00001)
 rotation = 0.7594892
 
-[node name="CollisionShape2D2" parent="Node2D/Tables2/Antlers/DragElement" index="3" unique_id=79981991]
+[node name="CollisionShape2D2" parent="Scene/Tables With Items/Antlers/DragElement" index="3" unique_id=79981991]
 position = Vector2(-58, -360)
 
-[node name="Antlers2" parent="Node2D/Tables2" unique_id=925699828 instance=ExtResource("10_h5gsp")]
+[node name="Antlers2" parent="Scene/Tables With Items" unique_id=925699828 instance=ExtResource("10_h5gsp")]
 position = Vector2(-713, 154)
 
-[node name="Dog Bone Earring" parent="Node2D/Tables2" unique_id=853598057 instance=ExtResource("8_hmplt")]
+[node name="Dog Bone Earring" parent="Scene/Tables With Items" unique_id=853598057 instance=ExtResource("8_hmplt")]
 position = Vector2(-837, 252)
 
-[node name="Dog Bone Earring2" parent="Node2D/Tables2" unique_id=771213530 instance=ExtResource("8_hmplt")]
+[node name="Dog Bone Earring2" parent="Scene/Tables With Items" unique_id=771213530 instance=ExtResource("8_hmplt")]
 position = Vector2(774, 374)
 
-[node name="Monocle" parent="Node2D/Tables2" unique_id=1879850579 instance=ExtResource("9_d2pce")]
+[node name="Monocle" parent="Scene/Tables With Items" unique_id=1879850579 instance=ExtResource("9_d2pce")]
 position = Vector2(591, -165)
 
-[node name="Pinecone 1" parent="Node2D/Tables2" unique_id=1670206423 instance=ExtResource("10_hmplt")]
+[node name="Pinecone 1" parent="Scene/Tables With Items" unique_id=1670206423 instance=ExtResource("10_hmplt")]
 position = Vector2(541, 76)
 
-[node name="DragElement" parent="Node2D/Tables2/Pinecone 1" index="0" unique_id=1129824742]
+[node name="DragElement" parent="Scene/Tables With Items/Pinecone 1" index="0" unique_id=1129824742]
 scale = Vector2(0.21000001, 0.21000001)
 
-[node name="Pinecone 2" parent="Node2D/Tables2" unique_id=2135268771 instance=ExtResource("10_hmplt")]
+[node name="Pinecone 2" parent="Scene/Tables With Items" unique_id=2135268771 instance=ExtResource("10_hmplt")]
 position = Vector2(576, 406)
 
-[node name="Pinecone 4" parent="Node2D/Tables2" unique_id=1552097 instance=ExtResource("10_hmplt")]
+[node name="Pinecone 4" parent="Scene/Tables With Items" unique_id=1552097 instance=ExtResource("10_hmplt")]
 position = Vector2(763, 123)
 scale = Vector2(0.627244, 0.627244)
 
-[node name="Pinecone 3" parent="Node2D/Tables2" unique_id=1514260614 instance=ExtResource("10_hmplt")]
+[node name="Pinecone 3" parent="Scene/Tables With Items" unique_id=1514260614 instance=ExtResource("10_hmplt")]
 position = Vector2(-637, -174)
 
-[node name="Animation" type="Node2D" parent="Node2D" unique_id=286354477]
+[node name="Corpse + Table" type="Node2D" parent="Scene" unique_id=286354477]
+position = Vector2(-38, -915)
+scale = Vector2(1.3599999, 1.3599999)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Animation" unique_id=875672336]
-libraries/ = SubResource("AnimationLibrary_j2tkq")
-autoplay = &"gameplay_cutscene"
-playback_auto_capture = false
+[node name="Corpse" type="Node2D" parent="Scene/Corpse + Table" unique_id=963418050]
 
-[node name="Node2D2" type="Node2D" parent="Node2D/Animation" unique_id=963418050]
+[node name="Guyy" type="Node2D" parent="Scene/Corpse + Table/Corpse" unique_id=1186473637]
 
-[node name="EnvironmentMorgue2" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=149925552]
-z_index = -10
-position = Vector2(0, -592)
-scale = Vector2(0.25, 0.339289)
-texture = ExtResource("10_04yrl")
-
-[node name="EnvironmentMorgue" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=635512563]
-z_index = -10
-position = Vector2(610.9999, 11.999998)
-scale = Vector2(0.94791675, 0.94791675)
-texture = ExtResource("11_y34tt")
-offset = Vector2(-644.5711, -14.769176)
-
-[node name="Guyy" type="Node2D" parent="Node2D/Animation/Node2D2" unique_id=1186473637]
-
-[node name="EnvironmentTable" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy" unique_id=984813290]
+[node name="EnvironmentTable" type="Sprite2D" parent="Scene/Corpse + Table/Corpse/Guyy" unique_id=984813290]
 z_index = -7
-position = Vector2(-79.49997, 246.39946)
-scale = Vector2(1.0950414, 1.0950414)
-texture = ExtResource("12_ff4d2")
+position = Vector2(-79.41177, 1259.559)
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("15_6ynke")
 
-[node name="Guyyyyyyy" type="Node2D" parent="Node2D/Animation/Node2D2/Guyy" unique_id=409722090 groups=["DeadGuy"]]
+[node name="Guyyyyyyy" type="Node2D" parent="Scene/Corpse + Table/Corpse/Guyy" unique_id=409722090 groups=["DeadGuy"]]
 
-[node name="Cadaver" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1351781870]
+[node name="Node2D" type="Node2D" parent="Scene/Corpse + Table/Corpse/Guyy/Guyyyyyyy" unique_id=175510309]
+scale = Vector2(0.5, 0.5)
+
+[node name="Cadaver" type="Sprite2D" parent="Scene/Corpse + Table/Corpse/Guyy/Guyyyyyyy/Node2D" unique_id=1351781870]
 z_index = -4
 material = ExtResource("9_2pa0e")
-position = Vector2(-37.000015, 283)
+position = Vector2(-138.00002, 1852.0002)
 scale = Vector2(0.98730844, 0.98730844)
-texture = ExtResource("10_uoilq")
+texture = SubResource("CompressedTexture2D_rbnyl")
 
-[node name="AttachmentScene2" type="StaticBody2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1718279705 groups=["Attachment", "ContainmentArea"]]
+[node name="AttachmentScene2" type="StaticBody2D" parent="Scene/Corpse + Table/Corpse/Guyy/Guyyyyyyy" unique_id=1718279705 groups=["Attachment", "ContainmentArea"]]
 position = Vector2(-82, 79)
 rotation = -3.1415925
 scale = Vector2(6.0940323, -7.2584877)
 script = ExtResource("15_c5vso")
 
-[node name="Area2D" type="Area2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy/AttachmentScene2" unique_id=1227093754]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy/AttachmentScene2/Area2D" unique_id=1481001542]
-position = Vector2(-5.9604645e-08, -15.98129)
-shape = SubResource("CapsuleShape2D_rbnyl")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy/AttachmentScene2/Area2D" unique_id=1619031659]
-position = Vector2(-0.820475, 42.84639)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_6ynke")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy/AttachmentScene2" unique_id=1352317540]
-position = Vector2(-5.9604645e-08, -15.98129)
-shape = SubResource("CapsuleShape2D_rbnyl")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy/AttachmentScene2" unique_id=1450326883]
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Scene/Corpse + Table/Corpse/Guyy/Guyyyyyyy/AttachmentScene2" unique_id=1621178248]
 position = Vector2(-0.8204788, 43.2597)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_6ynke")
+polygon = PackedVector2Array(26.451797, -47.25934, 14.328064, -44.79792, 3.7197876, -49.720768, -10.746037, -42.008305, -15.154667, -27.896141, -18.73668, -17.722254, -27.002867, -14.604452, -30.86042, -18.54273, -39.67768, -18.870922, -44.086315, -23.465584, -50.285954, -23.793774, -56.48559, -24.778343, -57.449978, -27.567955, -66.542786, -26.255196, -74.80897, -25.106537, -78.94206, -17.722263, -79.49314, -10.66618, -83.626236, -5.415142, -83.35069, 1.6409416, -83.35069, 9.025214, -78.39098, 15.589013, -78.39098, 20.183672, -75.36005, 20.840054, -72.191345, 22.645096, -67.782715, 25.106522, -62.960773, 27.239758, -59.10322, 25.106522, -56.761135, 20.511864, -56.485596, 25.434713, -52.352505, 25.434713, -47.94387, 24.121956, -42.98416, 21.332342, -37.06006, 20.511868, -34.304665, 19.199108, -31.4115, 18.870918, -27.553947, 14.93264, -25.211863, 13.127596, -21.07877, 15.260831, -19.012226, 19.85549, -16.945679, 25.762909, -13.914745, 33.639465, -11.572662, 37.41365, -8.403957, 39.875076, -2.4798584, 42.664692, 3.9953194, 41.680122, 10.194962, 42.008316, 14.603592, 43.81336, 19.976616, 45.618404, 25.625175, 45.946594, 30.86042, 46.602974, 29.482727, 47.587543, 28.518341, 42.664696, 27.14064, 35.280422, 26.727333, 28.388435, 27.14064, 20.840067, 27.14064, 13.455793, 26.45179, 4.4305706, 26.45179, -11.486639, 27.14064, -25.434711, 27.416183, -36.100883)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy/AttachmentScene2" unique_id=1643818400]
-visible = false
-texture = ExtResource("16_ruqv7")
-
-[node name="Camera2D" type="Camera2D" parent="Node2D/Animation" unique_id=2014514002]
-
-[node name="Node2D" type="Node2D" parent="Node2D/Animation/Camera2D" unique_id=2081903645]
-script = ExtResource("16_6ynke")
-max_lean_distance = 150.0
-smoothing = 3.0
-
-[node name="SubtitlePlayer" parent="Node2D/Animation/Camera2D/Node2D" unique_id=123456789 instance=ExtResource("22_2pa0e")]
-
-[editable path="Node2D/Tables2/Eye2"]
-[editable path="Node2D/Tables2/Button"]
-[editable path="Node2D/Tables2/Antlers"]
-[editable path="Node2D/Tables2/Pinecone 1"]
+[editable path="Scene/Tables With Items/Eye2"]
+[editable path="Scene/Tables With Items/Button"]
+[editable path="Scene/Tables With Items/Antlers"]
+[editable path="Scene/Tables With Items/Pinecone 1"]
