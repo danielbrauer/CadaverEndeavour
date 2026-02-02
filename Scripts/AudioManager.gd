@@ -112,7 +112,7 @@ func _play_game_audio() -> void:
 		if self.main_timer:
 			self.main_timer.timeout.disconnect(_on_main_track_finished)
 			self.main_timer = null
-		self.main_timer = get_tree().create_timer(110)
+		self.main_timer = get_tree().create_timer(109)
 		self.main_timer.timeout.connect(_on_main_track_finished)
 
 func _stop_game_audio() -> void:
