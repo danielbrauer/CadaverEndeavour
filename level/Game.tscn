@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b35ypgmnlbffe" path="res://images/Environment/environment_morgue_fullsize.png" id="15_ff4d2"]
 [ext_resource type="Script" path="res://scenes/cameraMover.gd" id="16_6ynke"]
 [ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="16_ruqv7"]
-[ext_resource type="Texture2D" uid="uid://byse7ig6olwo5" path="res://images/Characters/cadaver_fullbody.png" id="20_fsclo"]
+[ext_resource type="Texture2D" uid="uid://dhrj3yi6amt8f" path="res://images/Characters/cadaver_fullbody_scaled.png" id="20_ff4d2"]
 [ext_resource type="PackedScene" uid="uid://ckujbaafj31lx" path="res://subtitle_tools/subtitle_player.tscn" id="22_2pa0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04yrl"]
@@ -338,10 +338,9 @@ texture = ExtResource("10_uoilq")
 
 [node name="CadaverFullbody" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1171634283]
 z_index = -4
-material = ExtResource("9_2pa0e")
 position = Vector2(-38, 999)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("20_fsclo")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("20_ff4d2")
 
 [node name="AttachmentScene2" type="StaticBody2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1718279705 groups=["Attachment", "ContainmentArea"]]
 position = Vector2(-82, 79)
