@@ -20,8 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="12_ff4d2"]
 [ext_resource type="AudioStream" uid="uid://nuslbp0tv4pt" path="res://Audio/Music/Cadaver CUE02 v.1.wav" id="15_1ymms"]
 [ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="15_c5vso"]
-[ext_resource type="Script" uid="uid://ci830o60xoidd" path="res://scenes/cameraMover.gd" id="16_6ynke"]
+[ext_resource type="Texture2D" uid="uid://b35ypgmnlbffe" path="res://images/Environment/environment_morgue_fullsize.png" id="15_ff4d2"]
+[ext_resource type="Script" path="res://scenes/cameraMover.gd" id="16_6ynke"]
 [ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="16_ruqv7"]
+[ext_resource type="Texture2D" uid="uid://byse7ig6olwo5" path="res://images/Characters/cadaver_fullbody.png" id="20_fsclo"]
 [ext_resource type="PackedScene" uid="uid://ckujbaafj31lx" path="res://subtitle_tools/subtitle_player.tscn" id="22_2pa0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04yrl"]
@@ -74,6 +76,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7dwaf"]
 resource_name = "gameplay_cutscene"
@@ -82,13 +96,13 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 13.2137985, 16.961943),
-"transitions": PackedFloat32Array(1, -1.4640853, 0.00030056943),
+"times": PackedFloat32Array(10.333333, 16.961943),
+"transitions": PackedFloat32Array(-1.4640853, 0.00030056943),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.17, 1.17)]
+"values": [Vector2(0.305, 0.305), Vector2(1.17, 1.17)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -101,6 +115,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10.326361, 13.549783, 16.94436),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 862), Vector2(0, 200), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j2tkq"]
@@ -266,12 +292,20 @@ playback_auto_capture = false
 [node name="Node2D2" type="Node2D" parent="Node2D/Animation" unique_id=963418050]
 
 [node name="EnvironmentMorgue2" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=149925552]
+visible = false
 z_index = -10
 position = Vector2(0, -592)
 scale = Vector2(0.25, 0.339289)
 texture = ExtResource("10_04yrl")
 
+[node name="EnvironmentMorgueFullsize" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=2033106428]
+z_index = -11
+position = Vector2(80, 912)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("15_ff4d2")
+
 [node name="EnvironmentMorgue" type="Sprite2D" parent="Node2D/Animation/Node2D2" unique_id=635512563]
+visible = false
 z_index = -10
 position = Vector2(610.9999, 11.999998)
 scale = Vector2(0.94791675, 0.94791675)
@@ -286,14 +320,28 @@ position = Vector2(-79.49997, 246.39946)
 scale = Vector2(1.0950414, 1.0950414)
 texture = ExtResource("12_ff4d2")
 
+[node name="EnvironmentTable2" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy" unique_id=374342136]
+z_index = -7
+position = Vector2(-78.99999, 1954.9999)
+scale = Vector2(-1.095, -1.095)
+texture = ExtResource("12_ff4d2")
+
 [node name="Guyyyyyyy" type="Node2D" parent="Node2D/Animation/Node2D2/Guyy" unique_id=409722090 groups=["DeadGuy"]]
 
 [node name="Cadaver" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1351781870]
+visible = false
 z_index = -4
 material = ExtResource("9_2pa0e")
 position = Vector2(-37.000015, 283)
 scale = Vector2(0.98730844, 0.98730844)
 texture = ExtResource("10_uoilq")
+
+[node name="CadaverFullbody" type="Sprite2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1171634283]
+z_index = -4
+material = ExtResource("9_2pa0e")
+position = Vector2(-38, 999)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("20_fsclo")
 
 [node name="AttachmentScene2" type="StaticBody2D" parent="Node2D/Animation/Node2D2/Guyy/Guyyyyyyy" unique_id=1718279705 groups=["Attachment", "ContainmentArea"]]
 position = Vector2(-82, 79)
@@ -333,6 +381,7 @@ max_lean_distance = 150.0
 smoothing = 3.0
 
 [node name="SubtitlePlayer" parent="Node2D/Animation/Camera2D/Node2D" unique_id=123456789 instance=ExtResource("22_2pa0e")]
+scale = Vector2(3.5, 3.5)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="Node2D/Animation" unique_id=1708058806]
 stream = ExtResource("15_1ymms")

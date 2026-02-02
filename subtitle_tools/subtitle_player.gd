@@ -101,6 +101,7 @@ func _process(_delta: float) -> void:
 	
 	if camera:
 		position = camera.offset
+		scale = Vector2.ONE / camera.zoom
 	
 	var current_time = audio_player.get_playback_position()
 	var segment = _get_current_segment(current_time)
