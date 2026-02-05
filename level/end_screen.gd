@@ -14,6 +14,12 @@ func _ready() -> void:
 func _on_game_state_changed() -> void:
 	super._on_game_state_changed()
 	if AppStateManager.currentState == AppStateManager.States.ENDSCREEN:
+		modulate = Color.WHITE
+		var anim_player = $MainAnimation as AnimationPlayer
+		if anim_player:
+			anim_player.play("RESET")
+			anim_player.advance(0.0)
+			anim_player.play("end_scene")
 		if not sequence_started:
 			sequence_started = true
 			_sequence_family_scores()
@@ -44,6 +50,16 @@ func _sequence_family_scores() -> void:
 	for person in persons:
 		var score = person.calculate_score()
 		scores.append(score)
+		if score > 1.0:
+			if person.hearts:
+				person.hearts.visible = true
+			if person.tears:
+				person.tears.visible = false
+		else:
+			if person.tears:
+				person.tears.visible = true
+			if person.hearts:
+				person.hearts.visible = false
 	AudioManager.fade_to_neutral()
 
 func next_person():
@@ -67,8 +83,16 @@ func next_person():
 	
 	if score > 1.0:
 		happy_score = 1.0
+		if persons[current_person].hearts:
+			persons[current_person].hearts.visible = true
+		if persons[current_person].tears:
+			persons[current_person].tears.visible = false
 	else:
 		sad_score = 1.0
+		if persons[current_person].tears:
+			persons[current_person].tears.visible = true
+		if persons[current_person].hearts:
+			persons[current_person].hearts.visible = false
 	
 	label_node.text = person_name + ": " + str(score)
 	AudioManager.update_ending_music(happy_score, sad_score, 0, persons[current_person].person)
