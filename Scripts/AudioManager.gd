@@ -310,3 +310,6 @@ func play_coffin_sfx() -> void:
 		coffin_player.stream = coffin_sfx
 		print("[AudioManager] Playing coffin_sfx: ", coffin_sfx.resource_path if coffin_sfx else "null")
 		coffin_player.play()
+
+func play_character_sfx(person_type: Person.PersonType, ending_type: EndingType) -> void:
+	_play_character_sfx(person_type, ending_type)

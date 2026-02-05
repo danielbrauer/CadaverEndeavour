@@ -439,7 +439,7 @@ tracks/10/path = NodePath("Family/FamilySon:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(13.933333, 18.041916),
+"times": PackedFloat32Array(19.0, 20.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-6166.2856, 278.46136), Vector2(-1304.134, 835.38306)]
@@ -451,7 +451,7 @@ tracks/11/path = NodePath("Family/FamilySon/SonTears/TearsRightEye:emitting")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 18.633333),
+"times": PackedFloat32Array(0, 21.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -463,7 +463,7 @@ tracks/12/path = NodePath("Family/FamilySon/SonTears/TearsLeftEye:emitting")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 18.633333),
+"times": PackedFloat32Array(0, 21.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -475,7 +475,7 @@ tracks/13/path = NodePath("Family/FamilySon/SonHearts/Hearts:emitting")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 18.066668),
+"times": PackedFloat32Array(0, 21.066668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -487,7 +487,7 @@ tracks/14/path = NodePath("Family/FamilyBabyNany:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(17.933332, 22.1077),
+"times": PackedFloat32Array(26.5, 28.0),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(5140.9346, 672.9474), Vector2(278.7823, 1206.6641)]
@@ -499,7 +499,7 @@ tracks/15/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsLeftEye:emitting
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 22.366667),
+"times": PackedFloat32Array(0, 28.866667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -511,7 +511,7 @@ tracks/16/path = NodePath("Family/FamilyBabyNany/BabyTears/TearsRightEye:emittin
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 22.4),
+"times": PackedFloat32Array(0, 28.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -523,7 +523,7 @@ tracks/17/path = NodePath("Family/FamilyBabyNany/BabyHearts/Hearts:emitting")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 22.133333),
+"times": PackedFloat32Array(0, 28.633333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -535,7 +535,7 @@ tracks/18/path = NodePath(".")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(11.6, 17, 21.333334, 26.61818),
+"times": PackedFloat32Array(13.5, 21.0, 28.5, 36.0),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -551,14 +551,37 @@ tracks/18/keys = {
 "method": &"next_person"
 }]
 }
-tracks/19/type = "value"
+tracks/19/type = "method"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Button:visible")
+tracks/19/path = NodePath(".")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 27.366667),
+"times": PackedFloat32Array(8.666667, 13.5, 21.0, 28.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"play_coffin_sfx"
+}, {
+"args": [],
+"method": &"play_wife_sfx"
+}, {
+"args": [],
+"method": &"play_son_sfx"
+}, {
+"args": [],
+"method": &"play_baby_sfx"
+}]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Button:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 37.366667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]

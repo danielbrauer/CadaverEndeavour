@@ -95,5 +95,38 @@ func next_person():
 			persons[current_person].hearts.visible = false
 	
 	label_node.text = person_name + ": " + str(score)
-	AudioManager.update_ending_music(happy_score, sad_score, 0, persons[current_person].person)
 	current_person += 1
+
+func play_wife_sfx() -> void:
+	_play_character_sfx_for_type(Person.PersonType.WIFE)
+
+func play_son_sfx() -> void:
+	_play_character_sfx_for_type(Person.PersonType.SON)
+
+func play_baby_sfx() -> void:
+	_play_character_sfx_for_type(Person.PersonType.BABY)
+
+func play_coffin_sfx() -> void:
+	AudioManager.play_coffin_sfx()
+
+func _play_character_sfx_for_type(person_type: Person.PersonType) -> void:
+	if persons.is_empty():
+		return
+	
+	var person_index = -1
+	for i in range(persons.size()):
+		if persons[i].person == person_type:
+			person_index = i
+			break
+	
+	if person_index < 0 or person_index >= scores.size():
+		return
+	
+	var score = scores[person_index]
+	var ending_type: AudioManager.EndingType
+	if score > 1.0:
+		ending_type = AudioManager.EndingType.HAPPY
+	else:
+		ending_type = AudioManager.EndingType.SAD
+	
+	AudioManager.play_character_sfx(person_type, ending_type)
