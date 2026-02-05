@@ -98,7 +98,7 @@ func _play_title_music() -> void:
 		title_music_player.play()
 
 func _on_title_music_finished() -> void:
-	if title_music_player and AppStateManager.currentState in [AppStateManager.States.MENU, AppStateManager.States.INTRO]:
+	if title_music_player and AppStateManager.currentState in [AppStateManager.States.MENU, AppStateManager.States.INTRO, AppStateManager.States.ENDSCREEN]:
 		print("[AudioManager] Looping title_music_player")
 		title_music_player.play()
 
@@ -190,6 +190,29 @@ func update_ending_music(happy_score: float, sad_score: float, neutral_score: fl
 
 func fade_to_neutral() -> void:
 	_crossfade_to_ending(EndingType.NEUTRAL)
+
+func fade_to_title_music() -> void:
+	if not title_music or not title_music_player:
+		return
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	for ending in [EndingType.HAPPY, EndingType.SAD, EndingType.NEUTRAL]:
+		var player = _get_ending_player(ending)
+		if not player:
+			continue
+		tween.tween_property(player, "volume_db", -80.0, crossfade_duration)
+	
+	if not title_music_player.playing:
+		title_music_player.volume_db = -80.0
+		title_music_player.stream = title_music
+		if title_music_player.finished.is_connected(_on_title_music_finished):
+			title_music_player.finished.disconnect(_on_title_music_finished)
+		title_music_player.finished.connect(_on_title_music_finished)
+		title_music_player.play()
+	
+	tween.tween_property(title_music_player, "volume_db", 0.0, crossfade_duration)
 
 func _calculate_dominant_ending(happy_score: float, sad_score: float, neutral_score: float) -> EndingType:
 	var scores = {

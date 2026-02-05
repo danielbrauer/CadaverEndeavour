@@ -109,6 +109,12 @@ func play_baby_sfx() -> void:
 func play_coffin_sfx() -> void:
 	AudioManager.play_coffin_sfx()
 
+func fade_to_neutral() -> void:
+	AudioManager.fade_to_neutral()
+
+func fade_to_title_music() -> void:
+	AudioManager.fade_to_title_music()
+
 func _play_character_sfx_for_type(person_type: Person.PersonType) -> void:
 	if persons.is_empty():
 		return
@@ -123,10 +129,12 @@ func _play_character_sfx_for_type(person_type: Person.PersonType) -> void:
 		return
 	
 	var score = scores[person_index]
-	var ending_type: AudioManager.EndingType
-	if score > 1.0:
-		ending_type = AudioManager.EndingType.HAPPY
-	else:
-		ending_type = AudioManager.EndingType.SAD
+	var happy_score = 0.0
+	var sad_score = 0.0
 	
-	AudioManager.play_character_sfx(person_type, ending_type)
+	if score > 1.0:
+		happy_score = 1.0
+	else:
+		sad_score = 1.0
+	
+	AudioManager.update_ending_music(happy_score, sad_score, 0, person_type)
