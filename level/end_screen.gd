@@ -10,13 +10,14 @@ func _ready() -> void:
 	if valid_states.is_empty():
 		valid_states = [AppStateManager.States.ENDSCREEN]
 	super._ready()
-	AudioManager.fade_to_neutral()
 
 func _on_game_state_changed() -> void:
 	super._on_game_state_changed()
-	if AppStateManager.currentState == AppStateManager.States.ENDSCREEN and not sequence_started:
-		sequence_started = true
-		_sequence_family_scores()
+	if AppStateManager.currentState == AppStateManager.States.ENDSCREEN:
+		if not sequence_started:
+			sequence_started = true
+			_sequence_family_scores()
+		AudioManager.fade_to_neutral()
 
 func _get_persons_in_order() -> Array[Person]:
 	var family = $Family

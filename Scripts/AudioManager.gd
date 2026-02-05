@@ -70,10 +70,7 @@ func _ready() -> void:
 		son_sad_player.stream = son_sad_sfx
 	
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
-	if AppStateManager.currentState == AppStateManager.States.MENU:
-		_play_title_music()
-	elif AppStateManager.currentState == AppStateManager.States.INTRO:
-		_play_game_audio()
+	_on_game_state_changed()
 
 func _on_game_state_changed() -> void:
 	match AppStateManager.currentState:
@@ -97,16 +94,19 @@ func _play_title_music() -> void:
 		title_music_player.stream = title_music
 		title_music_player.volume_db = 0.0
 		title_music_player.finished.connect(_on_title_music_finished)
+		print("[AudioManager] Playing title_music_player: ", title_music.resource_path if title_music else "null")
 		title_music_player.play()
 
 func _on_title_music_finished() -> void:
 	if title_music_player and AppStateManager.currentState in [AppStateManager.States.MENU, AppStateManager.States.INTRO]:
+		print("[AudioManager] Looping title_music_player")
 		title_music_player.play()
 
 func _play_game_audio() -> void:
 	_stop_all_audio()
 	if main_combined_track and main_music_player:
 		main_music_player.stream = main_combined_track
+		print("[AudioManager] Playing main_music_player: ", main_combined_track.resource_path if main_combined_track else "null")
 		main_music_player.play()
 		# main_music_player.finished.connect(_on_main_track_finished)
 		if self.main_timer:
@@ -156,14 +156,17 @@ func _start_ending_music() -> void:
 	if happy_ending_player and happy_ending:
 		happy_ending_player.stop()
 		happy_ending_player.volume_db = -80.0
+		print("[AudioManager] Playing happy_ending_player: ", happy_ending.resource_path if happy_ending else "null")
 		happy_ending_player.play()
 	if sad_ending_player and sad_ending:
 		sad_ending_player.stop()
 		sad_ending_player.volume_db = -80.0
+		print("[AudioManager] Playing sad_ending_player: ", sad_ending.resource_path if sad_ending else "null")
 		sad_ending_player.play()
 	if neutral_ending_player and neutral_ending:
 		neutral_ending_player.stop()
 		neutral_ending_player.volume_db = -80.0
+		print("[AudioManager] Playing neutral_ending_player: ", neutral_ending.resource_path if neutral_ending else "null")
 		neutral_ending_player.play()
 
 func _input(event: InputEvent) -> void:
@@ -224,6 +227,8 @@ func _crossfade_to_ending(ending_type: EndingType) -> void:
 		
 		if ending == ending_type:
 			if not player.playing:
+				var ending_name = ["NONE", "HAPPY", "SAD", "NEUTRAL"][ending]
+				print("[AudioManager] Playing ", ending_name, " ending player (crossfade)")
 				player.play()
 			tween.tween_property(player, "volume_db", 0.0, crossfade_duration)
 		else:
@@ -234,6 +239,27 @@ func _play_character_sfx(person_type: Person.PersonType, ending_type: EndingType
 	var sfx_player = _get_character_sfx_player(person_type, ending_type)
 	if sfx_player:
 		await get_tree().create_timer(crossfade_duration).timeout
+		var person_name: String
+		match person_type:
+			Person.PersonType.BABY:
+				person_name = "BABY"
+			Person.PersonType.WIFE:
+				person_name = "WIFE"
+			Person.PersonType.SON:
+				person_name = "SON"
+			_:
+				person_name = "UNKNOWN"
+		var ending_name: String
+		match ending_type:
+			EndingType.HAPPY:
+				ending_name = "HAPPY"
+			EndingType.SAD:
+				ending_name = "SAD"
+			EndingType.NEUTRAL:
+				ending_name = "NEUTRAL"
+			_:
+				ending_name = "NONE"
+		print("[AudioManager] Playing character SFX: ", person_name, " - ", ending_name)
 		sfx_player.play()
 
 func _get_ending_player(ending_type: EndingType) -> AudioStreamPlayer:
@@ -270,14 +296,17 @@ func _get_character_sfx_player(person_type: Person.PersonType, ending_type: Endi
 func play_start_drag_sfx() -> void:
 	if drag_drop_player and start_drag_sfx:
 		drag_drop_player.stream = start_drag_sfx
+		print("[AudioManager] Playing start_drag_sfx: ", start_drag_sfx.resource_path if start_drag_sfx else "null")
 		drag_drop_player.play()
 
 func play_drop_sfx() -> void:
 	if drag_drop_player and drop_sfx:
 		drag_drop_player.stream = drop_sfx
+		print("[AudioManager] Playing drop_sfx: ", drop_sfx.resource_path if drop_sfx else "null")
 		drag_drop_player.play()
 
 func play_coffin_sfx() -> void:
 	if coffin_player and coffin_sfx:
 		coffin_player.stream = coffin_sfx
+		print("[AudioManager] Playing coffin_sfx: ", coffin_sfx.resource_path if coffin_sfx else "null")
 		coffin_player.play()
