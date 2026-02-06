@@ -51,10 +51,16 @@ func _ready() -> void:
 	if not happy_ending_player or not sad_ending_player or not neutral_ending_player:
 		return
 	
-	title_music_player.stream = title_music
-	happy_ending_player.stream = happy_ending
-	sad_ending_player.stream = sad_ending
-	neutral_ending_player.stream = neutral_ending
+	if title_music and title_music_player:
+		title_music_player.stream = title_music
+	if main_combined_track and main_music_player:
+		main_music_player.stream = main_combined_track
+	if happy_ending and happy_ending_player:
+		happy_ending_player.stream = happy_ending
+	if sad_ending and sad_ending_player:
+		sad_ending_player.stream = sad_ending
+	if neutral_ending and neutral_ending_player:
+		neutral_ending_player.stream = neutral_ending
 	
 	if baby_happy_player and baby_happy_sfx:
 		baby_happy_player.stream = baby_happy_sfx
@@ -68,6 +74,14 @@ func _ready() -> void:
 		son_happy_player.stream = son_happy_sfx
 	if son_sad_player and son_sad_sfx:
 		son_sad_player.stream = son_sad_sfx
+	if drag_drop_player and start_drag_sfx:
+		drag_drop_player.stream = start_drag_sfx
+	if drag_drop_player and drop_sfx:
+		drag_drop_player.stream = drop_sfx
+	if coffin_player and coffin_sfx:
+		coffin_player.stream = coffin_sfx
+	
+	print("[AudioManager] Preloaded all audio streams")
 	
 	AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
 	_on_game_state_changed()
@@ -107,8 +121,10 @@ func _play_game_audio() -> void:
 	if main_combined_track and main_music_player:
 		main_music_player.stream = main_combined_track
 		print("[AudioManager] Playing main_music_player: ", main_combined_track.resource_path if main_combined_track else "null")
+		if main_music_player.finished.is_connected(_on_main_track_finished):
+			main_music_player.finished.disconnect(_on_main_track_finished)
+		main_music_player.finished.connect(_on_main_track_finished)
 		main_music_player.play()
-		# main_music_player.finished.connect(_on_main_track_finished)
 		if self.main_timer:
 			self.main_timer.timeout.disconnect(_on_main_track_finished)
 			self.main_timer = null
