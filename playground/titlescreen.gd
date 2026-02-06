@@ -1,5 +1,13 @@
 extends Control
 
+func _ready() -> void:
+	var exit_button = get_node_or_null("ExitButton")
+	if exit_button:
+		if OS.has_feature("web"):
+			exit_button.visible = false
+		else:
+			exit_button.visible = true
+
 func on_finished() -> void:
 	AppStateManager.currentState = AppStateManager.States.INTRO
 
@@ -20,3 +28,7 @@ func _on_button_pressed() -> void:
 			tween.tween_property($Telephone, "rotation", 0, shake_duration)
 
 	$AudioStreamPlayer.finished.connect(on_finished)
+
+func _on_exit_button_pressed() -> void:
+	if not OS.has_feature("web"):
+		get_tree().quit()

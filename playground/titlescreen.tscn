@@ -79,4 +79,17 @@ theme_override_styles/hover = ExtResource("6_g3jd8")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i3jtb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_eyfdj")
 
+[node name="ExitButton" type="Button" parent="." unique_id=2098333548]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Exit"
+
 [connection signal="pressed" from="Telephone/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
