@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dfixntnlj1cyj"]
+
+[ext_resource type="PackedScene" uid="uid://bs3n78x74p74g" path="res://level/guy_and_background.tscn" id="1_uc3pj"]
+
+[node name="Free Game" type="Node2D" unique_id=723975388]
+
+[node name="GuyAndBackground" parent="." unique_id=25576242 instance=ExtResource("1_uc3pj")]

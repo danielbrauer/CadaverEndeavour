@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_crafts_bottlecap_blue.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="CraftsBottlecapBlue" type="Node2D" unique_id=472481078]
+
+[node name="DragElement" parent="." unique_id=1972656146 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=1437795115 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Crafts Bottlecap Blue"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=2145248729]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1742981024]
+polygon = PackedVector2Array(-22.0, -171.5, -20.0, -171.5, -20.0, -172.5, -22.0, -172.5)

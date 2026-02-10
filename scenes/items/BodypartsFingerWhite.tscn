@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_bodyparts_finger_white.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="BodypartsFingerWhite" type="Node2D" unique_id=224931862]
+
+[node name="DragElement" parent="." unique_id=744791446 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=1861505976 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Bodyparts Finger White"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=470843415]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=255470948]
+polygon = PackedVector2Array(67.0, -199.0, 58.0, -197.0, 55.0, -197.0, 52.0, -193.0, 51.0, -193.0, 35.0, -166.0, 35.0, -164.0, -9.0, -108.0, -10.0, -108.0, -25.0, -84.0, -26.0, -84.0, -59.0, 4.0, -59.0, 8.0, -90.0, 69.0, -91.0, 69.0, -122.0, 141.0, -123.0, 141.0, -121.0, 174.0, -121.0, 176.0, -105.0, 193.0, -105.0, 194.0, -92.0, 199.0, -92.0, 200.0, -69.0, 200.0, -54.0, 192.0, -52.0, 192.0, -45.0, 184.0, -43.0, 184.0, -29.0, 159.0, -28.0, 159.0, 64.0, -32.0, 65.0, -32.0, 90.0, -93.0, 90.0, -96.0, 122.0, -153.0, 123.0, -153.0, 121.0, -169.0, 121.0, -172.0, 111.0, -184.0, 111.0, -185.0, 92.0, -195.0, 92.0, -196.0, 67.0, -200.0)

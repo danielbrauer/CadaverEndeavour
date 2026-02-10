@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_bodyparts_ear_left.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="BodypartsEarLeft" type="Node2D" unique_id=1780770179]
+
+[node name="DragElement" parent="." unique_id=537359408 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=519795369 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Bodyparts Ear Left"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=1049797548]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=667975266]
+polygon = PackedVector2Array(-60.5, -282.5, -80.5, -277.5, -83.5, -277.5, -103.5, -267.5, -105.5, -267.5, -121.5, -256.5, -123.5, -256.5, -141.5, -239.5, -142.5, -239.5, -159.5, -216.5, -160.5, -216.5, -171.5, -196.5, -172.5, -196.5, -185.5, -153.5, -186.5, -153.5, -184.5, -51.5, -184.5, -40.5, -179.5, -25.5, -179.5, -15.5, -170.5, 8.5, -170.5, 16.5, -141.5, 75.5, -141.5, 77.5, -111.5, 114.5, -111.5, 116.5, -89.5, 137.5, -89.5, 138.5, -49.5, 164.5, -49.5, 165.5, 3.5, 191.5, 3.5, 192.5, 77.5, 213.5, 82.5, 213.5, 115.5, 199.5, 117.5, 199.5, 147.5, 162.5, 148.5, 162.5, 157.5, 130.5, 157.5, 127.5, 171.5, 94.5, 172.5, 94.5, 173.5, 71.5, 174.5, 71.5, 173.5, 55.5, 173.5, 52.5, 154.5, 22.5, 153.5, 22.5, 149.5, 4.5, 148.5, 4.5, 152.5, -20.5, 152.5, -24.5, 158.5, -37.5, 159.5, -37.5, 166.5, -62.5, 166.5, -88.5, 164.5, -104.5, 164.5, -110.5, 152.5, -157.5, 152.5, -161.5, 139.5, -186.5, 139.5, -188.5, 124.5, -206.5, 124.5, -207.5, 97.5, -229.5, 97.5, -230.5, 31.5, -263.5, 29.5, -263.5, 22.5, -269.5, 22.5, -270.5, -19.5, -282.5, -19.5, -283.5, -60.5, -283.5)

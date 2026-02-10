@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_bodyparts_lips_red.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="BodypartsLipsRed" type="Node2D" unique_id=928343680]
+
+[node name="DragElement" parent="." unique_id=2074383242 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=1974109211 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Bodyparts Lips Red"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=1525121357]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1278902378]
+polygon = PackedVector2Array(161.5, -300.0, 137.5, -295.0, 132.5, -295.0, 27.5, -261.0, 27.5, -260.0, 15.5, -259.0, 15.5, -258.0, 2.5, -258.0, -9.5, -262.0, -15.5, -262.0, -108.5, -290.0, -108.5, -291.0, -146.5, -298.0, -146.5, -299.0, -172.5, -299.0, -190.5, -295.0, -198.5, -295.0, -243.5, -280.0, -246.5, -280.0, -282.5, -262.0, -284.5, -262.0, -317.5, -241.0, -319.5, -241.0, -390.5, -190.0, -392.5, -190.0, -396.5, -186.0, -396.5, -184.0, -411.5, -174.0, -413.5, -174.0, -443.5, -149.0, -445.5, -149.0, -469.5, -123.0, -471.5, -123.0, -498.5, -89.0, -498.5, -87.0, -524.5, -59.0, -525.5, -59.0, -552.5, -21.0, -553.5, -21.0, -566.5, 4.0, -568.5, 4.0, -568.5, 23.0, -515.5, 92.0, -515.5, 94.0, -430.5, 183.0, -430.5, 184.0, -357.5, 234.0, -357.5, 235.0, -311.5, 257.0, -311.5, 258.0, -255.5, 281.0, -255.5, 282.0, -213.5, 292.0, -213.5, 293.0, -163.5, 298.0, -163.5, 299.0, -27.5, 301.0, 166.5, 301.0, 222.5, 291.0, 228.5, 291.0, 255.5, 280.0, 258.5, 280.0, 299.5, 258.0, 302.5, 258.0, 387.5, 208.0, 389.5, 208.0, 428.5, 182.0, 430.5, 182.0, 463.5, 155.0, 465.5, 155.0, 499.5, 122.0, 501.5, 122.0, 531.5, 78.0, 533.5, 78.0, 568.5, 21.0, 568.5, -11.0, 545.5, -46.0, 545.5, -48.0, 512.5, -86.0, 512.5, -87.0, 404.5, -183.0, 404.5, -184.0, 355.5, -219.0, 355.5, -221.0, 275.5, -271.0, 275.5, -272.0, 237.5, -292.0, 237.5, -293.0, 213.5, -300.0, 213.5, -301.0, 161.5, -301.0)

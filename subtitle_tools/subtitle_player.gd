@@ -38,12 +38,6 @@ func _ready() -> void:
 		if main_audio_player:
 			main_audio_player.finished.connect(_on_audio_finished)
 			was_playing = main_audio_player.playing
-			if was_playing:
-				print("[SubtitlePlayer] Audio already playing at _ready(), position: %f" % main_audio_player.get_playback_position())
-	
-	if AppStateManager:
-		AppStateManager.OnGameStateChanged.connect(_on_game_state_changed)
-		print("[SubtitlePlayer] Connected to AppStateManager, current state: %s" % AppStateManager.currentState)
 	
 	if config != null:
 		audio_file_path = config.get_audio_path()
@@ -106,7 +100,6 @@ func _process(_delta: float) -> void:
 	if not is_playing:
 		if was_playing:
 			was_playing = false
-			print("[SubtitlePlayer] Audio stopped playing, position was: %f" % main_audio_player.get_playback_position())
 		if current_segment_index != -1:
 			current_segment_index = -1
 			subtitle_label.text = ""
@@ -114,8 +107,6 @@ func _process(_delta: float) -> void:
 	
 	if not was_playing and is_playing:
 		was_playing = true
-		var start_position = main_audio_player.get_playback_position()
-		print("[SubtitlePlayer] Audio started playing, position: %f" % start_position)
 	
 	if camera:
 		position = camera.offset
@@ -131,27 +122,17 @@ func _process(_delta: float) -> void:
 		if adjusted_time < 0.0:
 			adjusted_time = 0.0
 	
-	if frame_count % 60 == 0:
-		if is_web:
-			print("[SubtitlePlayer] Playback position: %f, adjusted (web): %f" % [current_time, adjusted_time])
-		else:
-			print("[SubtitlePlayer] Playback position: %f" % current_time)
-	
 	var segment = _get_current_segment(adjusted_time)
 	
 	if not segment.is_empty():
 		var segment_index = segments.find(segment)
 		if segment_index != current_segment_index:
 			var subtitle_text = segment["text"].strip_edges()
-			if is_web:
-				print("[SubtitlePlayer] Subtitle changed at time %f (adjusted: %f) - Segment [%f - %f]: %s" % [current_time, adjusted_time, segment["start"], segment["end"], subtitle_text])
-			else:
-				print("[SubtitlePlayer] Subtitle changed at time %f - Segment [%f - %f]: %s" % [current_time, segment["start"], segment["end"], subtitle_text])
+	
 			current_segment_index = segment_index
 			subtitle_label.text = subtitle_text
 	else:
 		if current_segment_index != -1:
-			print("[SubtitlePlayer] Subtitle cleared at time %f" % current_time)
 			current_segment_index = -1
 			subtitle_label.text = ""
 
@@ -161,16 +142,7 @@ func _get_current_segment(time: float) -> Dictionary:
 			return segment
 	return {}
 
-func _on_game_state_changed() -> void:
-	var state = AppStateManager.currentState
-	var state_name = ["MENU", "INTRO", "GAME", "GAMEOVER", "ENDSCREEN"][state]
-	var playback_pos = 0.0
-	if main_audio_player:
-		playback_pos = main_audio_player.get_playback_position()
-	print("[SubtitlePlayer] Game state changed to: %s, audio playing: %s, position: %f" % [state_name, main_audio_player.playing if main_audio_player else false, playback_pos])
-
 func _on_audio_finished() -> void:
-	print("[SubtitlePlayer] Audio finished")
 	subtitle_label.text = ""
 	current_segment_index = -1
 	was_playing = false

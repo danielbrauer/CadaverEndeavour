@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_bodyparts_eyeball_side.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="BodypartsEyeballSide" type="Node2D" unique_id=1870639242]
+
+[node name="DragElement" parent="." unique_id=1564061856 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=666926586 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+item_name = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=473001670]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1477477435]
+polygon = PackedVector2Array(0.5, -128.0, -12.5, -126.0, -17.5, -126.0, -37.5, -119.0, -40.5, -119.0, -65.5, -104.0, -67.5, -104.0, -90.5, -82.0, -91.5, -82.0, -102.5, -65.0, -103.5, -65.0, -112.5, -45.0, -113.5, -45.0, -120.5, -11.0, -121.5, -11.0, -119.5, 21.0, -119.5, 26.0, -113.5, 44.0, -113.5, 47.0, -103.5, 65.0, -103.5, 67.0, -78.5, 96.0, -78.5, 97.0, -45.5, 118.0, -45.5, 119.0, -19.5, 127.0, -19.5, 128.0, -1.5, 131.0, 28.5, 131.0, 55.5, 124.0, 58.5, 124.0, 89.5, 107.0, 91.5, 107.0, 102.5, 97.0, 104.5, 97.0, 121.5, 77.0, 122.5, 77.0, 138.5, 45.0, 139.5, 45.0, 145.5, 16.0, 146.5, 16.0, 146.5, -13.0, 139.5, -39.0, 139.5, -42.0, 124.5, -69.0, 124.5, -71.0, 100.5, -96.0, 100.5, -97.0, 84.5, -108.0, 84.5, -109.0, 56.5, -121.0, 56.5, -122.0, 31.5, -127.0, 31.5, -128.0, 0.5, -129.0)

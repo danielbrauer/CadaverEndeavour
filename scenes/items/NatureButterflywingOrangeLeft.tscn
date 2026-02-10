@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_nature_butterflywing_orange_left.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="NatureButterflywingOrangeLeft" type="Node2D" unique_id=1794750260]
+
+[node name="DragElement" parent="." unique_id=1108636619 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=412387721 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Nature Butterflywing Orange Left"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=123463951]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=593308595]
+polygon = PackedVector2Array(-66.0, -152.0, -78.0, -149.0, -81.0, -149.0, -84.0, -145.0, -85.0, -145.0, -90.0, -122.0, -90.0, -116.0, -85.0, -101.0, -85.0, -98.0, -73.0, -77.0, -72.0, -77.0, -72.0, -62.0, -72.0, -59.0, -64.0, -48.0, -64.0, -32.0, -47.0, -4.0, -47.0, -3.0, -29.0, 2.0, -29.0, 3.0, 3.0, 5.0, 14.0, 5.0, 13.0, 8.0, 13.0, 9.0, -13.0, 21.0, -15.0, 21.0, -27.0, 34.0, -28.0, 34.0, -38.0, 50.0, -39.0, 50.0, -36.0, 66.0, -35.0, 66.0, -38.0, 81.0, -38.0, 83.0, -32.0, 91.0, -31.0, 91.0, -28.0, 110.0, -28.0, 113.0, -10.0, 127.0, -9.0, 127.0, -3.0, 140.0, -3.0, 141.0, 17.0, 148.0, 20.0, 148.0, 28.0, 154.0, 28.0, 155.0, 46.0, 152.0, 46.0, 151.0, 52.0, 154.0, 54.0, 154.0, 78.0, 143.0, 80.0, 143.0, 84.0, 138.0, 85.0, 138.0, 94.0, 110.0, 94.0, 107.0, 114.0, 71.0, 115.0, 71.0, 125.0, 33.0, 126.0, 33.0, 123.0, 6.0, 123.0, 1.0, 116.0, -14.0, 116.0, -17.0, 95.0, -52.0, 95.0, -54.0, 72.0, -81.0, 72.0, -82.0, 28.0, -117.0, 28.0, -118.0, -6.0, -138.0, -6.0, -139.0, -40.0, -150.0, -40.0, -151.0, -66.0, -153.0)

@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_crafts_button_blue.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="CraftsButtonBlue" type="Node2D" unique_id=1063468362]
+
+[node name="DragElement" parent="." unique_id=1968371440 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=196059971 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+item_name = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=1707811911]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1945187405]
+polygon = PackedVector2Array(-22.5, -200.0, -34.5, -199.0, -42.5, -199.0, -77.5, -189.0, -80.5, -189.0, -106.5, -176.0, -109.5, -176.0, -139.5, -154.0, -141.5, -154.0, -163.5, -132.0, -164.5, -132.0, -176.5, -116.0, -177.5, -116.0, -199.5, -76.0, -200.5, -76.0, -207.5, -55.0, -208.5, -55.0, -215.5, -20.0, -216.5, -20.0, -217.5, -2.0, -218.5, -2.0, -216.5, 31.0, -216.5, 40.0, -211.5, 60.0, -211.5, 65.0, -201.5, 91.0, -201.5, 94.0, -187.5, 119.0, -187.5, 121.0, -163.5, 151.0, -163.5, 153.0, -149.5, 166.0, -149.5, 167.0, -120.5, 188.0, -120.5, 189.0, -96.5, 201.0, -96.5, 202.0, -50.5, 216.0, -50.5, 217.0, -29.5, 219.0, -29.5, 220.0, 9.5, 219.0, 19.5, 219.0, 67.5, 205.0, 70.5, 205.0, 99.5, 189.0, 101.5, 189.0, 117.5, 176.0, 119.5, 176.0, 142.5, 153.0, 144.5, 153.0, 160.5, 132.0, 161.5, 132.0, 171.5, 115.0, 172.5, 115.0, 187.5, 80.0, 188.5, 80.0, 195.5, 51.0, 196.5, 51.0, 199.5, 21.0, 200.5, 21.0, 200.5, -4.0, 196.5, -27.0, 196.5, -34.0, 183.5, -72.0, 183.5, -75.0, 159.5, -115.0, 159.5, -117.0, 132.5, -145.0, 132.5, -147.0, 97.5, -172.0, 97.5, -173.0, 58.5, -190.0, 58.5, -191.0, 17.5, -199.0, 17.5, -200.0, -22.5, -201.0)

@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_animals_catears_black_left.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="AnimalsCatearsBlackLeft" type="Node2D" unique_id=1764230333]
+
+[node name="DragElement" parent="." unique_id=1562997816 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=994219833 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+item_name = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=415629643]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=217549640]
+polygon = PackedVector2Array(-86.5, -162.0, -88.5, -161.0, -101.5, -161.0, -115.5, -153.0, -117.5, -153.0, -126.5, -137.0, -127.5, -137.0, -126.5, -132.0, -126.5, -128.0, -129.5, -121.0, -129.5, -34.0, -126.5, -7.0, -126.5, 6.0, -117.5, 35.0, -117.5, 39.0, -106.5, 62.0, -106.5, 68.0, -102.5, 72.0, -101.5, 72.0, -93.5, 89.0, -93.5, 91.0, -79.5, 110.0, -79.5, 112.0, -66.5, 127.0, -66.5, 128.0, -62.5, 130.0, -50.5, 130.0, -46.5, 137.0, -46.5, 140.0, -40.5, 140.0, -36.5, 140.0, -35.5, 132.0, -29.5, 132.0, -29.5, 123.0, -29.5, 120.0, -22.5, 113.0, -21.5, 113.0, -20.5, 105.0, -20.5, 101.0, -14.5, 89.0, -14.5, 87.0, -8.5, 80.0, -8.5, 78.0, 0.5, 72.0, 1.5, 72.0, 5.5, 63.0, 5.5, 60.0, 9.5, 60.0, 15.5, 51.0, 18.5, 51.0, 20.5, 47.0, 20.5, 43.0, 27.5, 38.0, 28.5, 38.0, 28.5, 34.0, 33.5, 30.0, 34.5, 30.0, 32.5, 29.0, 32.5, 26.0, 37.5, 26.0, 41.5, 23.0, 41.5, 20.0, 58.5, 10.0, 61.5, 10.0, 61.5, 6.0, 69.5, 6.0, 69.5, 4.0, 69.5, 1.0, 76.5, -2.0, 76.5, -5.0, 97.5, -13.0, 99.5, -13.0, 102.5, -18.0, 102.5, -21.0, 111.5, -23.0, 112.5, -23.0, 112.5, -44.0, 112.5, -49.0, 108.5, -58.0, 108.5, -60.0, 103.5, -64.0, 103.5, -65.0, 95.5, -67.0, 88.5, -67.0, 78.5, -80.0, 78.5, -81.0, 69.5, -81.0, 50.5, -89.0, 43.5, -89.0, 30.5, -99.0, 30.5, -100.0, 1.5, -115.0, -0.5, -115.0, -10.5, -123.0, -10.5, -124.0, -54.5, -148.0, -57.5, -148.0, -59.5, -152.0, -59.5, -153.0, -72.5, -162.0, -72.5, -163.0, -86.5, -163.0)

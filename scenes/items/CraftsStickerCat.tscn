@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_crafts_sticker_cat.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="CraftsStickerCat" type="Node2D" unique_id=560772944]
+
+[node name="DragElement" parent="." unique_id=202645320 instance=ExtResource("1_dragelem")]
+scale = Vector2(1, 1)
+
+[node name="ItemPoints" parent="DragElement" unique_id=862978191 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Crafts Sticker Cat"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=1676078532]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1871848353]
+polygon = PackedVector2Array(45.5, -85.5, 22.5, -73.5, 22.5, -72.5, 17.5, -73.5, 0.5, -73.5, -13.5, -69.5, -13.5, -68.5, -31.5, -74.5, -31.5, -75.5, -45.5, -75.5, -46.5, -75.5, -46.5, -57.5, -39.5, -39.5, -38.5, -39.5, -44.5, -5.5, -44.5, -4.5, -43.5, -3.5, -39.5, -3.5, -37.5, 0.5, -37.5, 2.5, -21.5, 14.5, -21.5, 19.5, -34.5, 44.5, -34.5, 48.5, -49.5, 48.5, -52.5, 48.5, -63.5, 57.5, -64.5, 57.5, -66.5, 63.5, -68.5, 63.5, -68.5, 73.5, -63.5, 80.5, -63.5, 81.5, -50.5, 86.5, -50.5, 87.5, -43.5, 87.5, -43.5, 88.5, -21.5, 88.5, -11.5, 82.5, -11.5, 79.5, 30.5, 79.5, 43.5, 79.5, 51.5, 76.5, 51.5, 73.5, 63.5, 71.5, 64.5, 71.5, 58.5, 49.5, 57.5, 49.5, 56.5, 31.5, 56.5, 22.5, 51.5, 8.5, 51.5, 3.5, 65.5, -18.5, 65.5, -20.5, 60.5, -26.5, 59.5, -26.5, 53.5, -42.5, 52.5, -42.5, 54.5, -60.5, 54.5, -68.5, 51.5, -79.5, 51.5, -83.5, 45.5, -86.5)
