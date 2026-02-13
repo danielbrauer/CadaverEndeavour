@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bs3n78x74p74g"]
+
+[ext_resource type="Texture2D" uid="uid://bk15cdjud1ydp" path="res://images/Environment/environment_morguetop.jpg" id="1_cs3a1"]
+[ext_resource type="Texture2D" uid="uid://b35ypgmnlbffe" path="res://images/Environment/environment_morgue_fullsize.png" id="2_ll5qu"]
+[ext_resource type="Texture2D" uid="uid://dki7bik43e7d3" path="res://images/Environment/environment_morgue.png" id="3_blhad"]
+[ext_resource type="Texture2D" uid="uid://dxxcbnjejg4ec" path="res://images/Environment/environment_table.png" id="4_yufi0"]
+[ext_resource type="Material" uid="uid://demj7t6qpd6wn" path="res://Materials/shadow.tres" id="5_7k4nr"]
+[ext_resource type="Texture2D" uid="uid://br3mxba1sgyj7" path="res://images/Characters/cadaver.png" id="6_d5nsj"]
+[ext_resource type="Texture2D" uid="uid://dhrj3yi6amt8f" path="res://images/Characters/cadaver_fullbody_scaled.png" id="7_6vjq4"]
+[ext_resource type="Script" uid="uid://32tww7uqkaos" path="res://scenes/attachment_scene.gd" id="8_xlwmx"]
+[ext_resource type="Texture2D" uid="uid://c1n6o7fvgfpu7" path="res://icon.svg" id="9_bxxu2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rbnyl"]
+radius = 34.295845
+height = 98.64314
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ynke"]
+radius = 27.002869
+height = 129.9632
+
+[node name="GuyAndBackground" type="Node2D" unique_id=25576242]
+
+[node name="EnvironmentMorgue2" type="Sprite2D" parent="." unique_id=1682583678]
+visible = false
+z_index = -10
+position = Vector2(0, -592)
+scale = Vector2(0.25, 0.339289)
+texture = ExtResource("1_cs3a1")
+
+[node name="EnvironmentMorgueFullsize" type="Sprite2D" parent="." unique_id=328861740]
+z_index = -11
+position = Vector2(80, 912)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("2_ll5qu")
+
+[node name="EnvironmentMorgue" type="Sprite2D" parent="." unique_id=1779953072]
+visible = false
+z_index = -10
+position = Vector2(610.9999, 11.999998)
+scale = Vector2(0.94791675, 0.94791675)
+texture = ExtResource("3_blhad")
+offset = Vector2(-644.5711, -14.769176)
+
+[node name="Guyy" type="Node2D" parent="." unique_id=1863744735]
+
+[node name="EnvironmentTable" type="Sprite2D" parent="Guyy" unique_id=658098491]
+z_index = -7
+position = Vector2(-79.49997, 246.39946)
+scale = Vector2(1.0950414, 1.0950414)
+texture = ExtResource("4_yufi0")
+
+[node name="EnvironmentTable2" type="Sprite2D" parent="Guyy" unique_id=1326986505]
+z_index = -7
+position = Vector2(-78.99999, 1954.9999)
+scale = Vector2(-1.095, -1.095)
+texture = ExtResource("4_yufi0")
+
+[node name="Guyyyyyyy" type="Node2D" parent="Guyy" unique_id=1045412634 groups=["DeadGuy"]]
+
+[node name="Cadaver" type="Sprite2D" parent="Guyy/Guyyyyyyy" unique_id=535613280]
+visible = false
+z_index = -4
+material = ExtResource("5_7k4nr")
+position = Vector2(-37.000015, 283)
+scale = Vector2(0.98730844, 0.98730844)
+texture = ExtResource("6_d5nsj")
+
+[node name="CadaverFullbody" type="Sprite2D" parent="Guyy/Guyyyyyyy" unique_id=1122177536]
+z_index = -4
+position = Vector2(-38, 999)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_6vjq4")
+
+[node name="AttachmentScene2" type="StaticBody2D" parent="Guyy/Guyyyyyyy" unique_id=424646753 groups=["Attachment", "ContainmentArea"]]
+position = Vector2(-82, 79)
+rotation = -3.1415925
+scale = Vector2(6.0940323, -7.2584877)
+script = ExtResource("8_xlwmx")
+
+[node name="Area2D" type="Area2D" parent="Guyy/Guyyyyyyy/AttachmentScene2" unique_id=430904543]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guyy/Guyyyyyyy/AttachmentScene2/Area2D" unique_id=2051855172]
+position = Vector2(-5.9604645e-08, -15.98129)
+shape = SubResource("CapsuleShape2D_rbnyl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Guyy/Guyyyyyyy/AttachmentScene2/Area2D" unique_id=1430788167]
+position = Vector2(-0.820475, 42.84639)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6ynke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guyy/Guyyyyyyy/AttachmentScene2" unique_id=2081589552]
+position = Vector2(-5.9604645e-08, -15.98129)
+shape = SubResource("CapsuleShape2D_rbnyl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Guyy/Guyyyyyyy/AttachmentScene2" unique_id=61343499]
+position = Vector2(-0.8204788, 43.2597)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6ynke")
+
+[node name="Sprite2D" type="Sprite2D" parent="Guyy/Guyyyyyyy/AttachmentScene2" unique_id=1205582486]
+visible = false
+texture = ExtResource("9_bxxu2")

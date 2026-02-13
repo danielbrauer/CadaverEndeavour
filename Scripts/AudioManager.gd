@@ -99,6 +99,8 @@ func _on_game_state_changed() -> void:
 		AppStateManager.States.ENDSCREEN:
 			_stop_game_audio()
 			_start_ending_music()
+		AppStateManager.States.FREEPLAY:
+			_play_free_play_music()
 
 func _play_title_music() -> void:
 	_stop_all_audio()
@@ -112,7 +114,7 @@ func _play_title_music() -> void:
 		title_music_player.play()
 
 func _on_title_music_finished() -> void:
-	if title_music_player and AppStateManager.currentState in [AppStateManager.States.MENU, AppStateManager.States.INTRO, AppStateManager.States.ENDSCREEN]:
+	if title_music_player and AppStateManager.currentState in [AppStateManager.States.MENU, AppStateManager.States.INTRO, AppStateManager.States.ENDSCREEN, AppStateManager.States.FREEPLAY]:
 		print("[AudioManager] Looping title_music_player")
 		title_music_player.play()
 
@@ -198,6 +200,17 @@ func _input(event: InputEvent) -> void:
 
 func _on_main_track_finished() -> void:
 	OnMainAudioFinished.emit()
+
+func _play_free_play_music() -> void:
+	_stop_all_audio()
+	if title_music and title_music_player:
+		if title_music_player.finished.is_connected(_on_title_music_finished):
+			title_music_player.finished.disconnect(_on_title_music_finished)
+		title_music_player.stream = title_music
+		title_music_player.volume_db = 0.0
+		title_music_player.finished.connect(_on_title_music_finished)
+		print("[AudioManager] Playing title_music_player for free play: ", title_music.resource_path if title_music else "null")
+		title_music_player.play()
 
 func update_ending_music(happy_score: float, sad_score: float, neutral_score: float, person_type: Person.PersonType = Person.PersonType.BABY) -> void:
 	var new_dominant = _calculate_dominant_ending(happy_score, sad_score, neutral_score)

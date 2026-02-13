@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_accessories_catcollar.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="AccessoriesCatcollar" type="Node2D" unique_id=796257948]
+
+[node name="DragElement" parent="." unique_id=907740623 instance=ExtResource("1_dragelem")]
+scale = Vector2(0.25, 0.25)
+
+[node name="ItemPoints" parent="DragElement" unique_id=774485300 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Accessories Catcollar"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=560988718]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1532030214]
+polygon = PackedVector2Array(204.0, -398.0, 207.0, -398.0, 207.0, -399.0, 204.0, -399.0)

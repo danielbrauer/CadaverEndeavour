@@ -105,7 +105,12 @@ func _perform_disable() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	
-	# 3. Wait 0.5 seconds, then Respawn
+	# 3. In FREEPLAY mode, delete the item instead of respawning
+	if AppStateManager.currentState == AppStateManager.States.FREEPLAY:
+		get_tree().create_timer(0.5).timeout.connect(queue_free)
+		return
+	
+	# 4. Wait 0.5 seconds, then Respawn (for GAME mode)
 	get_tree().create_timer(0.5).timeout.connect(_respawn_at_start)
 
 func _respawn_at_start() -> void:

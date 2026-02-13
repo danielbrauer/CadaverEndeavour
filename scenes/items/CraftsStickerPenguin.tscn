@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_crafts_Sticker_penguin.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="CraftsStickerPenguin" type="Node2D" unique_id=2083078874]
+
+[node name="DragElement" parent="." unique_id=296941444 instance=ExtResource("1_dragelem")]
+scale = Vector2(0.25, 0.25)
+
+[node name="ItemPoints" parent="DragElement" unique_id=1710317357 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Crafts Sticker Penguin"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=1920076359]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1402862202]
+polygon = PackedVector2Array(-32.5, -176.5, -62.5, -168.5, -65.5, -168.5, -82.5, -158.5, -84.5, -158.5, -97.5, -147.5, -99.5, -147.5, -123.5, -118.5, -124.5, -118.5, -132.5, -100.5, -133.5, -100.5, -139.5, -75.5, -140.5, -75.5, -140.5, -54.5, -140.5, -43.5, -133.5, -23.5, -133.5, -18.5, -150.5, 5.5, -151.5, 5.5, -164.5, 35.5, -164.5, 66.5, -154.5, 83.5, -154.5, 85.5, -130.5, 103.5, -128.5, 103.5, -112.5, 125.5, -111.5, 125.5, -111.5, 138.5, -105.5, 150.5, -105.5, 152.5, -92.5, 161.5, -92.5, 162.5, -75.5, 166.5, -75.5, 167.5, -61.5, 167.5, -29.5, 156.5, -26.5, 156.5, -20.5, 163.5, -20.5, 164.5, 3.5, 175.5, 3.5, 176.5, 24.5, 176.5, 28.5, 176.5, 46.5, 163.5, 48.5, 163.5, 71.5, 138.5, 71.5, 136.5, 84.5, 126.5, 86.5, 126.5, 103.5, 107.5, 103.5, 106.5, 116.5, 108.5, 129.5, 108.5, 140.5, 105.5, 143.5, 105.5, 157.5, 94.5, 158.5, 94.5, 163.5, 83.5, 164.5, 83.5, 164.5, 57.5, 155.5, 35.5, 155.5, 32.5, 139.5, 11.5, 139.5, 9.5, 109.5, -18.5, 108.5, -18.5, 101.5, -31.5, 100.5, -31.5, 99.5, -83.5, 99.5, -88.5, 92.5, -105.5, 92.5, -108.5, 80.5, -127.5, 80.5, -129.5, 55.5, -153.5, 55.5, -154.5, 31.5, -167.5, 31.5, -168.5, -1.5, -176.5, -1.5, -177.5, -32.5, -177.5)

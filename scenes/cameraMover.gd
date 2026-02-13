@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not camera: return
-	if AppStateManager.currentState != AppStateManager.States.GAME && AppStateManager.currentState != AppStateManager.States.GAMEOVER:
+	if AppStateManager.currentState != AppStateManager.States.GAME && AppStateManager.currentState != AppStateManager.States.GAMEOVER && AppStateManager.currentState != AppStateManager.States.FREEPLAY:
 		return
 
 	# 2. Get Mouse Position relative to the center of the screen

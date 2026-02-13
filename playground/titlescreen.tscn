@@ -66,7 +66,36 @@ size_flags_vertical = 8
 texture = ExtResource("4_tuund")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="Telephone" unique_id=796547443]
+[node name="FreePlay" type="Button" parent="Telephone" unique_id=1845907024]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 444.0
+offset_right = 511.52417
+offset_bottom = 629.4286
+rotation = 0.6938088
+scale = Vector2(1.1485889, 0.36512333)
+theme_override_styles/normal = ExtResource("5_6178g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6178g")
+theme_override_styles/hover = ExtResource("6_g3jd8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i3jtb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eyfdj")
+
+[node name="Label" type="Label" parent="Telephone/FreePlay" unique_id=509840120]
+layout_mode = 0
+offset_left = 9.2394085
+offset_top = 43.509922
+offset_right = 110.23941
+offset_bottom = 95.50992
+rotation = -0.16226062
+scale = Vector2(1.2950292, 1.8375273)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.99322957, 0.88881433, 0.88665557, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_g3jd8")
+theme_override_font_sizes/font_size = 45
+text = "Free Play"
+
+[node name="StartButton" type="Button" parent="Telephone" unique_id=796547443]
 layout_mode = 0
 offset_left = 478.59598
 offset_top = 209.11272
@@ -91,5 +120,6 @@ offset_bottom = -10.0
 grow_vertical = 0
 text = "Exit"
 
-[connection signal="pressed" from="Telephone/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Telephone/FreePlay" to="." method="_on_free_play_pressed"]
+[connection signal="pressed" from="Telephone/StartButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

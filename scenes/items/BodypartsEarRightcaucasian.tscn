@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://10u3iwnvbokh" path="res://Prefabs/DragElement.tscn" id="1_dragelem"]
+[ext_resource type="Texture2D" path="res://images/objects/object_bodyparts_ear_rightcaucasian.png" id="2_texture"]
+[ext_resource type="PackedScene" uid="uid://d3fshonmxcdsv" path="res://scenes/item_points.tscn" id="3_itempoints"]
+
+[node name="BodypartsEarRightcaucasian" type="Node2D" unique_id=377707696]
+
+[node name="DragElement" parent="." unique_id=107020911 instance=ExtResource("1_dragelem")]
+scale = Vector2(0.25, 0.25)
+
+[node name="ItemPoints" parent="DragElement" unique_id=54329809 instance=ExtResource("3_itempoints")]
+position = Vector2(-1, 0)
+key = "Bodyparts Ear Rightcaucasian"
+
+[node name="Sprite2D" type="Sprite2D" parent="DragElement" unique_id=668010870]
+texture = ExtResource("2_texture")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DragElement" unique_id=1829886437]
+polygon = PackedVector2Array(20.0, -265.5, -6.0, -260.5, -6.0, -259.5, -30.0, -258.5, -35.0, -258.5, -52.0, -248.5, -54.0, -248.5, -87.0, -222.5, -88.0, -222.5, -105.0, -196.5, -105.0, -194.5, -121.0, -178.5, -122.0, -178.5, -132.0, -141.5, -133.0, -141.5, -137.0, -49.5, -137.0, -43.5, -163.0, 24.5, -164.0, 24.5, -177.0, 85.5, -178.0, 85.5, -178.0, 103.5, -179.0, 103.5, -179.0, 130.5, -174.0, 150.5, -174.0, 188.5, -160.0, 232.5, -160.0, 235.5, -145.0, 253.5, -145.0, 254.5, -124.0, 261.5, -124.0, 262.5, -102.0, 264.5, -79.0, 264.5, -65.0, 257.5, -63.0, 257.5, -40.0, 240.5, -38.0, 240.5, 0.0, 205.5, 0.0, 204.5, 50.0, 182.5, 52.0, 182.5, 68.0, 172.5, 70.0, 172.5, 89.0, 155.5, 91.0, 155.5, 99.0, 145.5, 100.0, 145.5, 154.0, 53.5, 155.0, 53.5, 186.0, -16.5, 187.0, -16.5, 193.0, -40.5, 194.0, -40.5, 194.0, -99.5, 184.0, -139.5, 184.0, -148.5, 175.0, -168.5, 175.0, -172.5, 154.0, -204.5, 154.0, -207.5, 140.0, -222.5, 140.0, -224.5, 129.0, -234.5, 129.0, -235.5, 115.0, -243.5, 115.0, -244.5, 86.0, -257.5, 86.0, -258.5, 60.0, -264.5, 60.0, -265.5, 20.0, -266.5)
