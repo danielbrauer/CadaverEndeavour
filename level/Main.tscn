@@ -19,5 +19,6 @@ valid_states = Array[int]([1, 2, 3])
 visible = false
 
 [node name="Free Game" parent="." unique_id=723975388 instance=ExtResource("5_svb3r")]
+visible = false
 script = ExtResource("4_svb3r")
 valid_states = Array[int]([5])

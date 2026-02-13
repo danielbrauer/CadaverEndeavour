@@ -107,7 +107,10 @@ func _on_release():
 
 	# --- RESET VISUALS ---
 	draggedRB.scale = original_scale
-	draggedRB.z_index = original_z
+	
+	# --- SET HIGH Z-INDEX TO DISPLAY ON TOP ---
+	var max_z = _get_max_z_index()
+	draggedRB.z_index = max_z + 1
 	
 	# --- REORDER SIBLINGS ---
 	# Move to bottom of parent's list to draw on top of siblings
@@ -133,6 +136,23 @@ func _on_release():
 	DraggingManager.is_dragging = false
 	current_velocity = Vector2.ZERO
 	AudioManager.play_drop_sfx()
+
+func _get_max_z_index() -> int:
+	var max_z = 0
+	var scene_root = get_tree().current_scene
+	var max_z_array = [0]
+	_find_max_z_recursive(scene_root, max_z_array)
+	return max_z_array[0]
+
+func _find_max_z_recursive(node: Node, max_z_ref: Array) -> void:
+	if node is CanvasItem:
+		var canvas_item = node as CanvasItem
+		if canvas_item.is_in_group("Grabbable"):
+			if canvas_item.z_index > max_z_ref[0]:
+				max_z_ref[0] = canvas_item.z_index
+	
+	for child in node.get_children():
+		_find_max_z_recursive(child, max_z_ref)
 
 func _stop_animations(node: Node) -> void:
 	var animation_players = node.find_children("*", "AnimationPlayer", true, false)

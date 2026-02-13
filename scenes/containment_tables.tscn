@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="1_1px"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(368, 213)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(431, 628)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3"]
+size = Vector2(1108, 281)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4"]
+size = Vector2(373, 272.4137)
+
+[node name="ContainmentTables" type="Node2D"]
+
+[node name="Table 1" type="StaticBody2D" parent="." groups=["ContainmentArea"]]
+position = Vector2(770, 495)
+
+[node name="Sprite2D" type="Sprite2D" parent="Table 1"]
+visible = false
+scale = Vector2(501.315, 350)
+texture = ExtResource("1_1px")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table 1"]
+position = Vector2(-64, -93.5)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Table TopRight" type="StaticBody2D" parent="." groups=["ContainmentArea"]]
+position = Vector2(710, -370)
+
+[node name="Sprite2D" type="Sprite2D" parent="Table TopRight"]
+visible = false
+scale = Vector2(501.315, 350)
+texture = ExtResource("1_1px")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table TopRight"]
+position = Vector2(-40.5, 220)
+shape = SubResource("RectangleShape2D_2")
+
+[node name="Table TopRight2" type="StaticBody2D" parent="." groups=["ContainmentArea"]]
+position = Vector2(-514, -758)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table TopRight2"]
+position = Vector2(120, 275)
+shape = SubResource("RectangleShape2D_3")
+
+[node name="Table Left" type="StaticBody2D" parent="." groups=["ContainmentArea"]]
+position = Vector2(-757, 16)
+scale = Vector2(1, 2.3200006)
+
+[node name="Sprite2D" type="Sprite2D" parent="Table Left"]
+visible = false
+scale = Vector2(501.315, 350)
+texture = ExtResource("1_1px")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table Left"]
+position = Vector2(20.5, 5.1724153)
+shape = SubResource("RectangleShape2D_4")

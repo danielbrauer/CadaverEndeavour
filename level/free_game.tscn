@@ -1,7 +1,97 @@
 [gd_scene format=3 uid="uid://dfixntnlj1cyj"]
 
 [ext_resource type="PackedScene" uid="uid://bs3n78x74p74g" path="res://level/guy_and_background.tscn" id="1_uc3pj"]
+[ext_resource type="PackedScene" uid="uid://85p0cinoa4ay" path="res://scenes/mouse_follower.tscn" id="2_mouse"]
+[ext_resource type="Script" uid="uid://ci830o60xoidd" path="res://scenes/cameraMover.gd" id="2_xb1ep"]
+[ext_resource type="Texture2D" uid="uid://c0w1gpw6qyqv5" path="res://resources/1px.png" id="4_xb1ep"]
+[ext_resource type="PackedScene" path="res://scenes/item_spawner.tscn" id="5_spawner"]
+[ext_resource type="Script" path="res://scenes/global_input_handler.gd" id="6_input"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(539, 322)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(638, 841)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3"]
+size = Vector2(1031, 355.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4"]
+size = Vector2(570, 269.39645)
 
 [node name="Free Game" type="Node2D" unique_id=723975388]
 
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("6_input")
+
+[node name="MouseFollower" parent="." unique_id=1743398419 instance=ExtResource("2_mouse")]
+position = Vector2(2, -3)
+
+[node name="CameraSetup" type="Camera2D" parent="." unique_id=1507110857]
+zoom = Vector2(1.17, 1.17)
+
+[node name="Node2D" type="Node2D" parent="CameraSetup" unique_id=1764910913]
+script = ExtResource("2_xb1ep")
+lean_strength = 0.4
+max_lean_distance = 900.0
+smoothing = 1.5
+
 [node name="GuyAndBackground" parent="." unique_id=25576242 instance=ExtResource("1_uc3pj")]
+
+[node name="ContainmentTables" type="Node2D" parent="." unique_id=308135733]
+
+[node name="Table 1" type="StaticBody2D" parent="ContainmentTables" unique_id=1304746994 groups=["ContainmentArea"]]
+position = Vector2(770, 495)
+
+[node name="Sprite2D" type="Sprite2D" parent="ContainmentTables/Table 1" unique_id=2122351532]
+visible = false
+scale = Vector2(501.315, 350)
+texture = ExtResource("4_xb1ep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContainmentTables/Table 1" unique_id=2050159237]
+position = Vector2(21.5, -39)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="ItemSpawner" parent="ContainmentTables/Table 1" instance=ExtResource("5_spawner")]
+position = Vector2(0, -50)
+
+[node name="Table TopRight" type="StaticBody2D" parent="ContainmentTables" unique_id=1950002234 groups=["ContainmentArea"]]
+position = Vector2(710, -370)
+
+[node name="Sprite2D" type="Sprite2D" parent="ContainmentTables/Table TopRight" unique_id=1710998743]
+visible = false
+scale = Vector2(501.315, 350)
+texture = ExtResource("4_xb1ep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContainmentTables/Table TopRight" unique_id=148526069]
+position = Vector2(63, 113.5)
+shape = SubResource("RectangleShape2D_2")
+
+[node name="ItemSpawner" parent="ContainmentTables/Table TopRight" instance=ExtResource("5_spawner")]
+position = Vector2(0, -50)
+
+[node name="Table TopRight2" type="StaticBody2D" parent="ContainmentTables" unique_id=79362026 groups=["ContainmentArea"]]
+position = Vector2(-514, -758)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContainmentTables/Table TopRight2" unique_id=1874934201]
+position = Vector2(158.5, 237.75)
+shape = SubResource("RectangleShape2D_3")
+
+[node name="ItemSpawner" parent="ContainmentTables/Table TopRight2" instance=ExtResource("5_spawner")]
+position = Vector2(0, -50)
+
+[node name="Table Left" type="StaticBody2D" parent="ContainmentTables" unique_id=1113887256 groups=["ContainmentArea"]]
+position = Vector2(-757, 16)
+scale = Vector2(1, 2.3200006)
+
+[node name="Sprite2D" type="Sprite2D" parent="ContainmentTables/Table Left" unique_id=1804334849]
+visible = false
+scale = Vector2(501.315, 350)
+texture = ExtResource("4_xb1ep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContainmentTables/Table Left" unique_id=1812471748]
+position = Vector2(-78, 3.663794)
+shape = SubResource("RectangleShape2D_4")
+
+[node name="ItemSpawner" parent="ContainmentTables/Table Left" instance=ExtResource("5_spawner")]
+position = Vector2(0, -50)

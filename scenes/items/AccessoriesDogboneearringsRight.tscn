@@ -7,7 +7,7 @@
 [node name="AccessoriesDogboneearringsRight" type="Node2D" unique_id=181509643]
 
 [node name="DragElement" parent="." unique_id=395899283 instance=ExtResource("1_dragelem")]
-scale = Vector2(1, 1)
+scale = Vector2(0.25, 0.25)
 
 [node name="ItemPoints" parent="DragElement" unique_id=74636755 instance=ExtResource("3_itempoints")]
 position = Vector2(-1, 0)

@@ -7,7 +7,7 @@
 [node name="BodypartTeethYellow" type="Node2D" unique_id=302363833]
 
 [node name="DragElement" parent="." unique_id=1954323741 instance=ExtResource("1_dragelem")]
-scale = Vector2(1, 1)
+scale = Vector2(0.25, 0.25)
 
 [node name="ItemPoints" parent="DragElement" unique_id=1406652751 instance=ExtResource("3_itempoints")]
 position = Vector2(-1, 0)
